@@ -5,11 +5,9 @@
 <div class="container-fluid justify-content-center">
 
     <div class="container">
-      <div class="row justify-content-center">
-
-        <div class="col-lg-12 col-md-4">
-
-          <div class="card o-hidden border-0 shadow-lg my-5 col-md-6">
+      {{-- <div class="row justify-content-center"> --}}
+        <div class="col-lg-8">
+          <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
               <!-- Nested Row within Card Body -->
               <div class="row justify-content-center align-items-center">
@@ -53,7 +51,7 @@
 
         </div>
 
-      </div>
+      {{-- </div> --}}
     </div>
     <!-- Outer Row -->
 
