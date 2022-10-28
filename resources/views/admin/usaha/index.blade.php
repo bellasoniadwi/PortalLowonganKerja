@@ -27,7 +27,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $toko->nama }}</td>
                             <td>{{ $toko->pemilik }}</td>
-                            <td><img width="70px" height="60px" src="{{ asset('storage/app/public/images/' . $toko->image) }}"></td>
+                            <td><img width="70px" height="60px" src="{{ asset('storage/' . $toko->image) }}"></td>
                             <td>{{ $toko->no_hp }}</td>
                             <td>{{ $toko->alamat }}</td>
                             <td>

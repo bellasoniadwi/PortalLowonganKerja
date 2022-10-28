@@ -150,7 +150,7 @@
 
       var curLocation = [0, 0];
       if (curLocation[0] == 0 && curLocation[1] == 0) {
-        curLocation = [-0.471852, 117.160556];
+        curLocation = [-7.9440167,112.6151627];
       }
 
       var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -160,7 +160,7 @@
           , attribution: osmAttrib
         });
 
-      var map = L.map('map').setView([-0.471852, 117.160556], 17).addLayer(osm);
+      var map = L.map('map').setView([-7.9439407,112.6150103], 17).addLayer(osm);
 
       map.attributionControl.setPrefix(false);
       var marker = new L.marker(curLocation, {
