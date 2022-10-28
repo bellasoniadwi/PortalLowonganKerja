@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\KategoriController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MapController;
@@ -10,7 +11,9 @@ use App\Http\Controllers\Dashboard\TokoController;
 use App\Http\Controllers\Dashboard\TitikController;
 use App\Http\Controllers\Dashboard\StatusController;
 use App\Http\Controllers\Dashboard\LayananController;
+use App\Http\Controllers\Dashboard\LowonganPekerjaanController;
 use App\Http\Controllers\Dashboard\TransaksiController;
+use App\Models\Kategori;
 use App\Models\Titik;
 
 /*
@@ -52,7 +55,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);
     Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
+    Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
     Route::resource('/dashboard/transaksi', TransaksiController::class)->except(['show']);
     Route::resource('/dashboard/toko', TokoController::class)->except(['show']);
+    Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class)->except(['show']);
     Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
 });
