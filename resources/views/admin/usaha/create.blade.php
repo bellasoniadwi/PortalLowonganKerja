@@ -24,7 +24,7 @@
         <div class="col-md-6">
           <input type="text" class="form-control form-control-plaintext @error('pemilik')
                     is-invalid
-                @enderror" id="pemilik" name="pemilik" placeholder="Enter Owners" required value="{{ auth()->user()->name }}" readonly/>
+                @enderror" id="pemilik" name="pemilik" placeholder="Enter Owners" required value="{{ auth()->user()->nama }}" readonly/>
           @error('pemilik')
           <div class="invalid-feedback">
             {{ $message }}
@@ -33,11 +33,11 @@
         </div>
       </div>
       <div class="form-group row mb-2">
-        <label for="no_hp" class="col-sm-3 text-end control-label col-form-label">No HP</label>
+        <label for="no_hp" class="col-sm-3 text-end control-label col-form-label">No Telepon</label>
         <div class="col-md-6">
           <input type="text" class="form-control form-control-plaintext @error('no_hp')
                     is-invalid
-                @enderror" id="no_hp" name="no_hp" placeholder="Enter Phone Number" required value="{{ old('no_hp') }}"/>
+                @enderror" id="no_hp" name="no_hp" placeholder="Enter Phone Number" required value="{{ auth()->user()->no_telp }}"/>
           @error('no_hp')
             <div class="invalid-feedback">
                 {{ $message }}

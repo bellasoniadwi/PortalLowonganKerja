@@ -25,7 +25,7 @@ class TokoController extends Controller
             ]);
         }
 
-        $user = auth()->user()->name;
+        $user = auth()->user()->nama;
         if($user)
         {
             return view('admin.usaha.index',[
