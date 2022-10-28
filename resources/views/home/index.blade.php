@@ -1,7 +1,7 @@
-@extends('layouts.main')
+@extends('newlayouts.main')
 
 @section('content')
-    <div class="container-fluid">
+    {{-- <div class="container-fluid"> --}}
         <div id="map" style="height: 500px; margin: 50px;">
             <script>
                 // var map = L.map('map').setView([-0.471852, 117.160556], 13);
@@ -105,5 +105,5 @@
                 <?php } ?>
             </script>
         </div>
-    </div>
+    // </div>
 @endsection
