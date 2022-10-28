@@ -43,10 +43,10 @@
                         @csrf
 
                         <div class="wrap-input100 validate-input" data-validate="Enter username">
-                            <input class="input100 @error('email') is-invalid @enderror" type="email" id="email" name="email"
-                                placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
+                            <input class="input100 @error('username') is-invalid @enderror" type="username" id="username" name="username"
+                                placeholder="username" value="{{ old('username') }}" required autocomplete="username">
 
-                            @error('email')
+                            @error('username')
                                 <span class="focus-input100" data-placeholder="&#xe82a;">
                                     <strong>{{ $message }}</strong>
                                 </span>

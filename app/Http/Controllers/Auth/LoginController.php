@@ -45,6 +45,20 @@ class LoginController extends Controller
         return view('page.login');
     }
 
+    public function login(Request $request){
+        $input = $request->all();
+        $this->validate($request,[
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if(Auth()->attempt(array('username'=>$input['username'], 'password'=>$input['password']))){
+                return redirect()->route('home');
+        } else {
+            return redirect()->route('login')->with('error', 'Login failed!');
+        }
+    }
+
     public function logout(Request $request)
     {
         $this->guard()->logout();
