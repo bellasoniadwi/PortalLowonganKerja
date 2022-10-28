@@ -25,15 +25,15 @@ use App\Models\Titik;
 */
 
 // belum login
-Route::get('/about', function () {
-    return view('home.about', [
-        "nama" => "Deuwi Satria Irawan",
-        "email" => "satriai418@gmail.com",
-        "nomor" => "082253332802",
-        "nim" => "H181600607",
-        "image" => "satria.jpg"
-    ]);
-})->name('about');
+// Route::get('/about', function () {
+//     return view('home.about', [
+//         "nama" => "Deuwi Satria Irawan",
+//         "email" => "satriai418@gmail.com",
+//         "nomor" => "082253332802",
+//         "nim" => "H181600607",
+//         "image" => "satria.jpg"
+//     ]);
+// })->name('about');
 
 // seluruh titik laundry
 Route::get('/', [PetaController::class, 'index'])->name('peta.index');
