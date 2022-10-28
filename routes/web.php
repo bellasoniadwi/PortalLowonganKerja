@@ -13,8 +13,6 @@ use App\Http\Controllers\Dashboard\StatusController;
 use App\Http\Controllers\Dashboard\LayananController;
 use App\Http\Controllers\Dashboard\LowonganPekerjaanController;
 use App\Http\Controllers\Dashboard\TransaksiController;
-use App\Models\Kategori;
-use App\Models\Titik;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +24,6 @@ use App\Models\Titik;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// belum login
-// Route::get('/about', function () {
-//     return view('home.about', [
-//         "nama" => "Deuwi Satria Irawan",
-//         "email" => "satriai418@gmail.com",
-//         "nomor" => "082253332802",
-//         "nim" => "H181600607",
-//         "image" => "satria.jpg"
-//     ]);
-// })->name('about');
 
 // seluruh titik laundry
 Route::get('/', [PetaController::class, 'index'])->name('peta.index');

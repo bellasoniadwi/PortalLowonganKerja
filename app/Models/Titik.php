@@ -13,7 +13,7 @@ class Titik extends Model
 {
     use HasFactory;
 
-    protected $table = 'tokos';
+    protected $table = 'lowongan_pekerjaans';
     protected $guarded = 'id';
 
     /**
