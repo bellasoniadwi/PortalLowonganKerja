@@ -1,67 +1,174 @@
-@extends('layouts.main')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <title>Register Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset('layoutAuth/images/icons/favicon.ico') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('layoutAuth/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('layoutAuth/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/css/main.css') }}">
+    <!--===============================================================================================-->
+</head>
 
+<body>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-12 col-md-12">
-                <div class="p-5">
-                  <div class="text-center align-items-center justify-content-center">
-                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                  </div>
-                  <form class="form-group user" action="{{ route('register') }}" method="post">
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('{{ asset('layoutAuth/images/bg-01.jpg') }}'">
+            <div class="wrap-login100 p-t-30 p-b-50">
+                <span class="login100-form-title p-b-41">
+                    Account Register
+                </span>
+                <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group my-3">
-                      <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                      @error('name')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-                    </div>
-                    <div class="form-group my-3">
-                      <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                      @error('email')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-                    </div>
-                    <div class="form-group row my-3">
-                      <div class="col-md-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required autocomplete="current-password">
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                      </div>
-                      <div class="col-md-6">
-                        <input type="password" class="form-control form-control-user" id="password-confirm" placeholder="Password" name="password_confirmation" required autocomplete="new-password">
-                      </div>
-                    </div>
-                    <div class="col-md-12 d-flex justify-content-center">
-                        <button class="btn btn-dark btn-user btn-block" type="submit">Sign Up</button>
-                    </div>
-                    <hr>
-                  </form>
-                  <div class="text-center">
-                    <a class="small text-danger" href="{{ route('login') }}">Already have an account? Login!</a>
-                  </div>
-                  <hr>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter Name">
+                        <input class="input100 @error('nama') is-invalid @enderror" type="text" name="nama"
+                            id="nama" placeholder="Nama Lengkap" value="{{ old('nama') }}" required
+                            autocomplete="nama">
 
-      </div>
+                        @error('nama')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter Username">
+                        <input class="input100 @error('username') is-invalid @enderror" type="username" name="username"
+                            id="username" placeholder="Username" value="{{ old('username') }}" required
+                            autocomplete="username">
+
+                        @error('username')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter Email">
+                        <input class="input100 @error('email') is-invalid @enderror" type="email" name="email"
+                            id="email" placeholder="Email" value="{{ old('email') }}" required
+                            autocomplete="email">
+
+                        @error('email')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100 @error('password') is-invalid @enderror" type="password" name="password"
+                            id="password" placeholder="Password" required autocomplete="current-password">
+
+                        @error('password')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input type="password" class="input100" id="password-confirm"
+                            placeholder="Password Confirmation" name="password_confirmation" required autocomplete="new-password">
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter Number">
+                        <input class="input100 @error('no_telp') is-invalid @enderror" type="number" name="no_telp"
+                            id="no_telp" placeholder="No Telepon" value="{{ old('no_telp') }}" required
+                            autocomplete="no_telp">
+
+                        @error('no_telp')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter Perusahaan">
+                        <input class="input100 @error('perusahaan') is-invalid @enderror" type="text"
+                            name="perusahaan" id="perusahaan" placeholder="Agency / Office"
+                            value="{{ old('perusahaan') }}" required autocomplete="perusahaan">
+
+                        @error('perusahaan')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter Image">
+                        <input class="input100 @error('foto') is-invalid @enderror" type="file" name="foto"
+                            onchange="return showPreview(this)" id="foto" placeholder="Upload Foto Profil"
+                            required autocomplete="profil">
+
+                        @error('profil')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-32">
+                        <button type="submit" class="login100-form-btn">
+                            Register
+                        </button>
+
+                        <a class="btn btn-link" href="{{ route('login') }}">
+                            Already have an account?
+                        </a>
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-32">
+                        <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
+                            Back to Maps
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-@endsection
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('layoutAuth/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('layoutAuth/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('layoutAuth/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('layoutAuth/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('layoutAuth/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('layoutAuth/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('layoutAuth/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('layoutAuth/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('layoutAuth/js/main.js') }}"></script>
+
+</body>
+
+</html>

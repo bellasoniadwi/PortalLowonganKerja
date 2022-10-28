@@ -40,49 +40,50 @@
                     Account Login
                 </span>
                 <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
-                        @csrf
+                    @csrf
 
-                        <div class="wrap-input100 validate-input" data-validate="Enter username">
-                            <input class="input100 @error('username') is-invalid @enderror" type="username" id="username" name="username"
-                                placeholder="username" value="{{ old('username') }}" required autocomplete="username">
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100 @error('username') is-invalid @enderror" type="username" id="username"
+                            name="username" placeholder="username" value="{{ old('username') }}" required
+                            autocomplete="username">
 
-                            @error('username')
-                                <span class="focus-input100" data-placeholder="&#xe82a;">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        @error('username')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Enter password">
-                            <input class="input100 @error('password') is-invalid @enderror" type="password" id="password" name="password"
-                                placeholder="Password" required autocomplete="current-password">
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100 @error('password') is-invalid @enderror" type="password" id="password"
+                            name="password" placeholder="Password" required autocomplete="current-password">
 
-                            @error('password')
-                                <span class="focus-input100" data-placeholder="&#xe82a;">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        @error('password')
+                            <span class="focus-input100" data-placeholder="&#xe82a;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-                        <div class="container-login100-form-btn m-t-32">
-                            <button type="submit" class="login100-form-btn">
-                                Sign In
-                            </button>
+                    <div class="container-login100-form-btn m-t-32">
+                        <button type="submit" class="login100-form-btn">
+                            Sign In
+                        </button>
 
-                            <a class="btn btn-link" href="{{ route('register') }}">
-                                Belum Punya Akun ?
-                            </a>
-                        </div>
+                        <a class="btn btn-link" href="{{ route('register') }}">
+                            Not have an account?
+                        </a>
+                    </div>
 
-                        <div class="container-login100-form-btn m-t-32">
-                          <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
-                              Back to Maps
-                          </a>
-                      </div>
+                    <div class="container-login100-form-btn m-t-32">
+                        <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
+                            Back to Maps
+                        </a>
+                    </div>
                 </form>
-              </div>
             </div>
         </div>
+    </div>
     </div>
 
 
