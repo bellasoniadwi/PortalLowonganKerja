@@ -49,11 +49,23 @@
                 Perusahaan
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('dashboard/lowonganpekerjaan*') ? 'active' : '' }}" href="{{ route('lowonganpekerjaan.index') }}">
+                <span data-feather="cpu" class="align-text-bottom"></span>
+                Lowongan Pekerjaan
+              </a>
+            </li>
             @can('admin')
             <li class="nav-item">
               <a class="nav-link {{ Request::is('dashboard/status*') ? 'active' : '' }}" href="{{ route('status.index') }}">
                 <span data-feather="tag" class="align-text-bottom"></span>
                 Status
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('dashboard/kategori*') ? 'active' : '' }}" href="{{ route('kategori.index') }}">
+                <span data-feather="tag" class="align-text-bottom"></span>
+                Kategori
               </a>
             </li>
             @endcan
