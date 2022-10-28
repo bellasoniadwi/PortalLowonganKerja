@@ -94,7 +94,7 @@
                 <div class="icon-choose-image"></div>
                 <input type="file" class="form-control form-control-file @error('image')
                     is-invalid
-                @enderror" id="image" name="image" onchange="return showPreview(this)">
+                @enderror" id="image" name="image"  value="{{ old('image') }}" onchange="return showPreview(this)">
             @error('image')
             <div class="invalid-feedback">
             {{ $message }}

@@ -52,27 +52,41 @@ class TokoController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
             'no_hp' => 'required',
             'pemilik' => 'required',
+            'image' => 'required|max:5120|mimes:jpg,png,jpeg',
             'x' => 'required',
             'y' => 'required',
             'jam_buka' => 'required',
             'jam_tutup' => 'required',
         ]);
 
-        if($request->pemilik){
-            $validate['pemilik'] = auth()->user()->nama;
-        }
+        $toko = new Toko;
 
-        if($request->file('image')){
-            $validate['image'] = $request->file('image')->store('images');
-        }
+        $toko->nama = $request->get('nama');
+        $toko->pemilik = $request->get('pemilik');
+        $toko->alamat = $request->get('alamat');
+        $toko->no_hp = $request->get('no_hp');
+        $toko->x = $request->get('x');
+        $toko->y = $request->get('y');
+        $toko->jam_buka = $request->get('jam_buka');
+        $toko->jam_tutup = $request->get('jam_tutup');
+        $toko->image = $request->file('image')->store('images','public');  
 
-        Toko::create($validate);
 
+        // if($request->pemilik){
+        //     $validate['pemilik'] = $request->get('pemilik');
+        // }
+
+        // if($request->image){
+        //     $validate['image'] = $request->file('image')->store('images','public');
+        // }
+
+        // Toko::create($validate);
+        $toko->save();
         return redirect('/dashboard/toko')->with('success','Added Successfully!');
     }
 
