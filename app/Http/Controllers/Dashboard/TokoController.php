@@ -41,7 +41,7 @@ class TokoController extends Controller
      */
     public function create()
     {
-        return view('admin.usaha.create');
+        return view('admin.perusahaan.create');
     }
 
     /**

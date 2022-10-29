@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="section-header">
-        <h1>DataTables</h1>
+        {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('toko.index') }}">Perusahaan</a></div>
@@ -71,16 +71,18 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <p>Showing
-                                {{$tokos->firstItem()}}
-                                to
-                                {{$tokos->lastItem()}}
-                                of
-                                {{$tokos->total()}}
-                                entries
-                            </p>
-                            <div class="section-header-breadcrumb">
-                                <div class="breadcrumb-item">
+                            <div class="form-row">
+                                <div class="form-group col-md-9">
+                                    <p>Showing
+                                        {{$tokos->firstItem()}}
+                                        to
+                                        {{$tokos->lastItem()}}
+                                        of
+                                        {{$tokos->total()}}
+                                        entries
+                                    </p>
+                                </div>
+                                <div class="form-group col-md-3">
                                     {{$tokos->links()}}
                                 </div>
                             </div>
