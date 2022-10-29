@@ -20,15 +20,15 @@ class TokoController extends Controller
         $admin = auth()->user()->is_admin;
         if($admin)
         {
-            return view('admin.usaha.index',[
-                'tokos' => Toko::latest()->get()
+            return view('admin.perusahaan.index',[
+                'tokos' => Toko::paginate(5)
             ]);
         }
 
         $user = auth()->user()->nama;
         if($user)
         {
-            return view('admin.usaha.index',[
+            return view('admin.perusahaan.index',[
                 'tokos' => Toko::where('pemilik', '=', $user)->get()
             ]);
         }
