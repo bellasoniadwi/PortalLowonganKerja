@@ -1,4 +1,6 @@
-@extends('admin.layouts.main')
+@extends('newlayouts.main')
+
+@section('peta', 'active')
 
 @section('content')
     <div class="container-fluid">
