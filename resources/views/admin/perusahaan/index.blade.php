@@ -58,13 +58,23 @@
                                         <td>{{ $toko->no_hp }}</td>
                                         <td>{{ $toko->alamat }}</td>
                                         <td>
-                                            <a href="/dashboard/toko/{{ $toko->nama }}/edit" class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
-                                            <form action="/dashboard/toko/{{ $toko->nama }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button href="/dashboard/toko/{{ strtolower($toko->nama) }}"
-                                                    class="btn btn-danger" type="submit" onclick="return confirm('Are you sure?')"><i class="fas fa-trash-alt"></i></button>
-                                            </form>
+                                            <div class="form-group col-md-1">
+                                                
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                                <a href="/dashboard/toko/{{ $toko->nama }}/edit"
+                                                    class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                                <form action="/dashboard/toko/{{ $toko->nama }}" method="post">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button href="/dashboard/toko/{{ strtolower($toko->nama) }}"
+                                                        class="btn btn-danger" type="submit"
+                                                        onclick="return confirm('Are you sure?')"><i
+                                                            class="fas fa-trash-alt"></i></button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -74,19 +84,19 @@
                             <div class="form-row">
                                 <div class="form-group col-md-9">
                                     <p>Showing
-                                        {{$tokos->firstItem()}}
+                                        {{ $tokos->firstItem() }}
                                         to
-                                        {{$tokos->lastItem()}}
+                                        {{ $tokos->lastItem() }}
                                         of
-                                        {{$tokos->total()}}
+                                        {{ $tokos->total() }}
                                         entries
                                     </p>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    {{$tokos->links()}}
+                                    {{ $tokos->links() }}
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
