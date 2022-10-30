@@ -44,8 +44,10 @@ class LowonganPekerjaanController extends Controller
     public function create()
     {
         $kategori = Kategori::all();
+        $sorted = $kategori->SortBy('nama_kategori');
+
         return view('admin.lowonganpekerjaan.create',
-        ['kategori'=>$kategori]);
+        ['kategori'=>$sorted]);
     }
 
     /**
