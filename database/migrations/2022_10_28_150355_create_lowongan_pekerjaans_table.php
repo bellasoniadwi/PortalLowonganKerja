@@ -23,7 +23,7 @@ class CreateLowonganPekerjaansTable extends Migration
             $table->double('x')->nullable();
             $table->double('y')->nullable();
             $table->string('deskripsi')->nullable();
-            $table->string('customer_service')->nullable();
+            $table->string('contact_person')->nullable();
             $table->string('no_telp')->nullable();
             $table->timestamps();
         });

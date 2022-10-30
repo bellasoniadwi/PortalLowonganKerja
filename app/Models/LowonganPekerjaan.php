@@ -20,7 +20,7 @@ class LowonganPekerjaan extends Model
         'x',
         'y',
         'deskripsi',
-        'customer_service',
+        'contact_person',
         'no_telp',
     ];
 

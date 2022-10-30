@@ -21,7 +21,7 @@ class LowonganPekerjaanController extends Controller
         if($admin)
         {
             return view('admin.lowonganpekerjaan.index',[
-                'lowongan' => LowonganPekerjaan::latest()->get()
+                'lowongan' => LowonganPekerjaan::paginate(5)
             ]);
         }
 
@@ -29,7 +29,9 @@ class LowonganPekerjaanController extends Controller
         if($user)
         {
             return view('admin.lowonganpekerjaan.index',[
-                'lowongan' => LowonganPekerjaan::where('customer_service', '=', $user)->get()
+                'lowongan' => LowonganPekerjaan::where('contact_person', '=', $user)
+                // ->get()
+                ->paginate(5)
             ]);
         }
     }
@@ -62,7 +64,7 @@ class LowonganPekerjaanController extends Controller
             'x' => 'required',
             'y' => 'required',
             'deskripsi' => 'required',
-            'customer_service' => 'required',
+            'contact_person' => 'required',
             'no_telp' => 'required',
         ]);
 
@@ -73,7 +75,7 @@ class LowonganPekerjaanController extends Controller
         $lowongan->tipe_pekerjaan = $request->get('tipe_pekerjaan');
         $lowongan->perusahaan = $request->get('perusahaan');
         $lowongan->deskripsi = $request->get('deskripsi');
-        $lowongan->customer_service = $request->get('customer_service');
+        $lowongan->contact_person = $request->get('contact_person');
         $lowongan->no_telp = $request->get('no_telp');
         $lowongan->x = $request->get('x');
         $lowongan->y = $request->get('y');
@@ -114,7 +116,7 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LowonganPekerjaan $toko)
+    public function update(Request $request, LowonganPekerjaan $lowonganpekerjaan)
     {
         $rules = [
             'x' => 'required',
@@ -141,7 +143,7 @@ class LowonganPekerjaanController extends Controller
             $validate['image'] = $request->file('image')->store('images');
         }
 
-        LowonganPekerjaan::where('id', $toko->id)->update($validate);
+        LowonganPekerjaan::where('id', $lowonganpekerjaan->id)->update($validate);
 
         return redirect('/dashboard/toko')->with('success','Updated Successfully!');
     }
@@ -152,12 +154,12 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\LowonganPekerjaan  $toko
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LowonganPekerjaan $toko)
+    public function destroy(LowonganPekerjaan $lowonganpekerjaan)
     {
-        LowonganPekerjaan::destroy($toko->id);
+        LowonganPekerjaan::destroy($lowonganpekerjaan->id);
 
-        if($toko->image){
-            Storage::delete([$toko->image]);
+        if($lowonganpekerjaan->image){
+            Storage::delete([$lowonganpekerjaan->image]);
         }
 
         return redirect('/dashboard/toko')->with('success','Deleted Successfully!');
