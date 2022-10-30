@@ -109,7 +109,7 @@ class TokoController extends Controller
      */
     public function edit(Toko $toko)
     {
-        return view('admin.usaha.edit',[
+        return view('admin.perusahaan.edit',[
             'tokos' => $toko
         ]);
     }
@@ -130,7 +130,7 @@ class TokoController extends Controller
             'alamat' => 'required',
             'no_hp' => 'required',
             'pemilik' => 'required',
-            'image' => 'required|max:5120|mimes:jpg,png',
+            // 'image' => 'required|max:5120|mimes:jpg,png',
             'jam_buka' => 'required',
             'jam_tutup' => 'required',
         ];
