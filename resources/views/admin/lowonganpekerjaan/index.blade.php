@@ -1,54 +1,116 @@
-@extends('admin.layouts.main')
+@extends('newlayouts.main')
+
+@section('lowonganpekerjaan', 'active')
 
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success container container-fluid" role="alert">
-            {{ session('success') }}
+    <div class="section-header">
+        {{-- <h1>DataTables</h1> --}}
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}">Lowongan Pekerjaan</a></div>
         </div>
-    @endif
-    <div class="container-fluid">
-        <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-success mb-2"><i data-feather="file-plus"></i></a>
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered" id="myTable">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Pekerjaan</th>
-                        <th>Perusahaan</th>
-                        <th>Kategori</th>
-                        <th>Tipe Pekerjaan</th>
-                        <th>Deskripsi</th>
-                        <th>Customer Service</th>
-                        <th>Nomor Telepon</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($lowongan as $lp)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $lp->nama_pekerjaan }}</td>
-                            <td>{{ $lp->perusahaan }}</td>
-                            <td>{{ $lp->kategori->nama_kategori }}</td>
-                            <td>{{ $lp->tipe_pekerjaan }}</td>
-                            <td>{{ $lp->deskripsi }}</td>
-                            <td>{{ $lp->customer_service }}</td>
-                            <td>{{ $lp->no_telp }}</td>
-                            <td>
-                                <a href="/dashboard/lowonganpekerjaan/{{ $lp->nama_pekerjaan }}/edit" class="btn btn-warning"><i
-                                        data-feather="edit"></i></a>
-                                <form action="/dashboard/lowonganpekerjaan/{{ $lp->nama_pekerjaan }}" method="post" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button href="/dashboard/lowonganpekerjaan/{{ strtolower($lp->nama_pekerjaan) }}" class="btn btn-danger"
-                                        type="submit" onclick="return confirm('Are you sure?')"><i
-                                            data-feather="trash"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    </div>
+
+    <div class="section-body">
+        <p class="section-lead">
+            @if (session('success'))
+                <div class="alert alert-success alert-has-icon">
+                    <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                    <div class="alert-body">
+                        <div class="alert-title">Success</div>
+                        {{ session('success') }}
+                    </div>
+                </div>
+            @endif
+        </p>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    @cannot('admin')
+                    <div class="card-header">
+                        <h4>List Lowongan Pekerjaan Yang Anda Kelola</h4>
+                    </div>
+                    @endcannot
+                    @can('admin')
+                        <div class="card-header">
+                            <h4>List Seluruh Lowongan Pekerjaan</h4>
+                        </div>
+                    @endcan
+                    <div class="card-body">
+                        <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
+                        <div class="table-responsive">
+                            <br>
+                            <table class="table table-striped" id="table-1">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Pekerjaan</th>
+                                        <th>Perusahaan</th>
+                                        <th>Kategori</th>
+                                        <th>Tipe Pekerjaan</th>
+                                        <th>Deskripsi</th>
+                                        <th>Contact Person</th>
+                                        <th>Nomor Telepon</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        @foreach ($lowongan as $lp)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $lp->nama_pekerjaan }}</td>
+                                        <td>{{ $lp->perusahaan }}</td>
+                                        <td>{{ $lp->kategori->kategori_id }}</td>
+                                        <td>{{ $lp->tipe_pekerjaan }}</td>
+                                        <td>{{ $lp->deskripsi }}</td>
+                                        <td>{{ $lp->contact_person }}</td>
+                                        <td>{{ $lp->no_telp }}</td>
+                                        <td>
+                                            <div class="form-group col-md-1">
+
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                                <a href="/dashboard/lowonganpekerjaan/{{ $lp->nama_pekerjaan }}/edit"
+                                                    class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                                <form action="/dashboard/toko/{{ $lp->nama_pekerjaan }}" method="post">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button href="/dashboard/toko/{{ strtolower($lp->nama_pekerjaan) }}"
+                                                        class="btn btn-danger" type="submit"
+                                                        onclick="return confirm('Are you sure?')"><i
+                                                            class="fas fa-trash-alt"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="form-row">
+                                <div class="form-group col-md-9">
+                                    <p>Showing
+                                        {{ $lowongan->firstItem() }}
+                                        to
+                                        {{ $lowongan->lastItem() }}
+                                        of
+                                        {{ $lowongan->total() }}
+                                        entries
+                                    </p>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    {{ $lowongan->links() }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
