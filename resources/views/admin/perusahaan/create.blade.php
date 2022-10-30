@@ -117,7 +117,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="y">Latitude</label>
+                                    <label for="y">Longitude</label>
                                     <input type="text" class="form-control @error('y') is-invalid @enderror"
                                         id="y" name="y" placeholder="Longitude" required
                                         value="{{ old('y') }}" readonly>
