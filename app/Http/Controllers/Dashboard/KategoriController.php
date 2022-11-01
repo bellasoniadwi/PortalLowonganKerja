@@ -16,8 +16,7 @@ class KategoriController extends Controller
     public function index()
     {
         return view('admin.kategori.index',[
-            'kategori' => Kategori::asc()
-            ->paginate(5)
+            'kategori' => Kategori::paginate(5)
         ]);
     }
 
