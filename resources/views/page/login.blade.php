@@ -66,18 +66,18 @@
                     </div>
 
                     <div class="container-login100-form-btn m-t-32">
+                        <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
+                            Back to Maps
+                        </a>
+                        <a></a>
                         <button type="submit" class="login100-form-btn">
                             Sign In
                         </button>
-
-                        <a class="btn btn-link" href="{{ route('register') }}">
-                            Not have an account?
-                        </a>
                     </div>
 
                     <div class="container-login100-form-btn m-t-32">
-                        <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
-                            Back to Maps
+                        <a class="btn btn-link" href="{{ route('register') }}">
+                            Not have an account?
                         </a>
                     </div>
                 </form>
