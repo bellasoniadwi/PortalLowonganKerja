@@ -1,13 +1,13 @@
 @extends('newlayouts.main')
 
-@section('perusahaan', 'active')
+@section('kategori', 'active')
 
 @section('content')
     <div class="section-header">
         {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}">Perusahaan</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}">Kategori</a></div>
         </div>
     </div>
 
