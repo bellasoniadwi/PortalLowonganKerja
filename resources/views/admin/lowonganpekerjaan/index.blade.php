@@ -72,14 +72,14 @@
 
                                             </div>
                                             <div class="form-group col-md-1">
-                                                <a href="/dashboard/lowonganpekerjaan/{{ $lp->nama_pekerjaan }}/edit"
+                                                <a href="{{ route('lowonganpekerjaan.edit', $lp->id) }}"
                                                     class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
                                             </div>
                                             <div class="form-group col-md-1">
-                                                <form action="/dashboard/toko/{{ $lp->nama_pekerjaan }}" method="post">
+                                                <form action="{{ route('lowonganpekerjaan.destroy', $lp->id) }}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button href="/dashboard/toko/{{ strtolower($lp->nama_pekerjaan) }}"
+                                                    <button
                                                         class="btn btn-danger" type="submit"
                                                         onclick="return confirm('Are you sure?')"><i
                                                             class="fas fa-trash-alt"></i></button>

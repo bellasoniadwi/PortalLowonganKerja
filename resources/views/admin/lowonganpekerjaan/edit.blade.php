@@ -7,14 +7,15 @@
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}">Perusahaan</a></div>
-            <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->perusahaan }}/edit">Edit Lowongan Pekerjaan</a></div>
+            <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}/edit">Edit Kategori</a>
+            </div>
         </div>
     </div>
 
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
-                <form method="post" action="/dashboard/lowonganpekerjaan/{{ strtolower($lowongan->nama_pekerjaan) }}" enctype="multipart/form-data">
+                <form method="post" action="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}">
                     @method('put')
                     @csrf
                     <div class="card">
@@ -74,11 +75,13 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="kategori_id">Kategori</label>
-                                    <select class="form-control select2 @error('kategori_id') is-invalid @enderror" 
+                                    <select class="form-control select2 @error('kategori_id') is-invalid @enderror"
                                         id="kategori_id" name="kategori_id" required>
                                         <option value="">--Pilih Kategori Pekerjaan--</option>
                                         @foreach ($kategori as $data)
-                                            <option value="{{$data->id}}" {{old('kategori_id') == $data->id ? 'selected' : ''}}>{{$data->nama_kategori}}</option>
+                                            <option value="{{ $data->id }}"
+                                                {{ old('kategori_id') == $data->id ? 'selected' : '' }}>
+                                                {{ $data->nama_kategori }}</option>
                                         @endforeach
                                     </select>
                                     @error('kategori_id')
@@ -89,8 +92,8 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="x">Latitude</label>
-                                    <input type="text"
-                                        class="form-control @error('x') is-invalid @enderror" id="x" name="x" placeholder="Latitude" required
+                                    <input type="text" class="form-control @error('x') is-invalid @enderror"
+                                        id="x" name="x" placeholder="Latitude" required
                                         value="{{ old('x', $lowongan->x) }}" readonly />
                                     @error('x')
                                         <div class="invalid-feedback">
@@ -105,8 +108,10 @@
                                     <select class="form-control select2 @error('tipe_pekerjaan') is-invalid @enderror"
                                         id="tipe_pekerjaan" name="tipe_pekerjaan" required>
                                         <option value="">--Pilih Tipe Pekerjaan--</option>
-                                        <option value="Part Time" {{old('tipe_pekerjaan') == 'Part Time' ? 'selected' : ''}}>Part Time</option>
-                                        <option value="Full Time" {{old('tipe_pekerjaan') == 'Full Time' ? 'selected' : ''}}>Full Time</option>
+                                        <option value="Part Time"
+                                            {{ old('tipe_pekerjaan') == 'Part Time' ? 'selected' : '' }}>Part Time</option>
+                                        <option value="Full Time"
+                                            {{ old('tipe_pekerjaan') == 'Full Time' ? 'selected' : '' }}>Full Time</option>
                                     </select>
                                     @error('tipe_pekerjaan')
                                         <div class="invalid-feedback">
@@ -127,8 +132,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="deskripsi">Deskripsi</label>
-                                    <input type="text"
-                                        class="form-control @error('deskripsi') is-invalid @enderror"
+                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
                                         id="deskripsi" name="deskripsi" placeholder="Deskripsi" required
                                         value="{{ old('deskripsi', $lowongan->deskripsi) }}" readonly />
                                     @error('deskripsi')
@@ -211,4 +215,3 @@
         </div>
     </div>
 @endsection
-
