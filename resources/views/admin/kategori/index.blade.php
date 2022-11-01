@@ -31,7 +31,7 @@
                         <h4>List Kategori</h4>
                     </div>
                     <div class="card-body">
-                        <a href="/dashboard/toko/create" class="btn btn-primary"> + Tambah </a>
+                        <a href="/dashboard/kategori/create" class="btn btn-primary"> + Tambah </a>
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">
