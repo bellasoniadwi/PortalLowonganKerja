@@ -1,36 +1,55 @@
-@extends('admin.layouts.main')
+@extends('newlayouts.main')
+
+@section('kategori', 'active')
 
 @section('content')
-<div class="container-fluid">
-  <form class="form-horizontal" method="post" action="/dashboard/kategori/{{ $kategori->id }}">
-    @method('put')
-    @csrf
-    <div class="card-body mb-2">
-      <h4 class="card-title d-flex justify-content-center pb-2">Edit Data</h4>
-      <br>
-      <div class="form-group row">
-        <label for="status" class="col-sm-3 text-end control-label col-form-label">Nama Kategori</label>
-        <div class="col-md-6">
-          <input type="text" class="form-control @error('nama_kategori')
-                  is-invalid
-              @enderror" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" required value="{{ old('nama_kategori',$kategori->nama_kategori) }}" />
-        @error('nama_kategori')
-        <div class="invalid-feedback">
-          {{ $message }}
+    <div class="section-header">
+        <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+          <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}">Kategori</a></div>
+            <div class="breadcrumb-item"><a href="/dashboard/kategori/{{ $kategori->id }}/edit">Edit Kategori</a></div>
         </div>
-        @enderror
+    </div>
+
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <form method="post" action="/dashboard/kategori/{{ $kategori->id }}">
+                    @method('put')
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Form Edit Data Kategori</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="nama_kategori">Nama Kategori</label>
+                                    <input type="text" class="form-control @error('nama_kategori') is-invalid @enderror"
+                                        id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" required
+                                        value="{{ old('nama_kategori', $kategori->nama_kategori) }}">
+                                    @error('nama_kategori')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="form-group col-md-5">
+                                    
+                              </div>
+                                <div class="form-group col-md-1">
+                                    <a href="{{ route('kategori.index') }}" class="btn btn-primary">Back</a>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-      <br>
     </div>
-    <div class="card-body">
-      <div class="card-body d-flex justify-content-center">
-        <a href="{{ route('kategori.index') }}" class="btn btn-info me-1"><i data-feather="arrow-left"></i></a>
-        <button type="submit" class="btn btn-success">
-          <i data-feather="file-plus"></i>
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
 @endsection
