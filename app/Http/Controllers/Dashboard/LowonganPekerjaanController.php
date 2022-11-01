@@ -104,11 +104,13 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function edit(LowonganPekerjaan $toko)
+    public function edit($id)
     {
-        return view('admin.lowonganpekerjaan.edit',[
-            'tokos' => $toko
-        ]);
+        $lowongan = LowonganPekerjaan::find($id);
+        $kategori = Kategori::all();
+        
+        return view('admin.lowonganpekerjaan.edit', compact('lowongan','kategori'));
+        
     }
 
     /**
@@ -118,22 +120,22 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LowonganPekerjaan $lowonganpekerjaan)
+    public function update(Request $request, LowonganPekerjaan $lowongan)
     {
         $rules = [
+            'nama_pekerjaan' => 'required',
+            'kategori_id' => 'required',
+            'tipe_pekerjaan' => 'required',
+            'perusahaan' => 'required',
             'x' => 'required',
             'y' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'no_hp' => 'required',
-            'pemilik' => 'required',
-            'image' => 'required|max:5120|mimes:jpg,png',
-            'jam_buka' => 'required',
-            'jam_tutup' => 'required',
+            'deskripsi' => 'required',
+            'contact_person' => 'required',
+            'no_telp' => 'required',
         ];
 
-        if($request->pemilik){
-            $validate['pemilik'] = auth()->user()->nama;
+        if($request->nama_pekerjaan){
+            $validate['nama_pekerjaan'] = auth()->user()->nama_pekerjaan;
         }
 
         $validate = $request->validate($rules);
@@ -145,9 +147,9 @@ class LowonganPekerjaanController extends Controller
             $validate['image'] = $request->file('image')->store('images');
         }
 
-        LowonganPekerjaan::where('id', $lowonganpekerjaan->id)->update($validate);
+        LowonganPekerjaan::where('id', $lowongan->id)->update($validate);
 
-        return redirect('/dashboard/toko')->with('success','Updated Successfully!');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success','Updated Successfully!');
     }
 
     /**
@@ -156,14 +158,14 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\LowonganPekerjaan  $toko
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LowonganPekerjaan $lowonganpekerjaan)
+    public function destroy(LowonganPekerjaan $lowongan)
     {
-        LowonganPekerjaan::destroy($lowonganpekerjaan->id);
+        LowonganPekerjaan::destroy($lowongan->id);
 
-        if($lowonganpekerjaan->image){
-            Storage::delete([$lowonganpekerjaan->image]);
+        if($lowongan->image){
+            Storage::delete([$lowongan->image]);
         }
 
-        return redirect('/dashboard/toko')->with('success','Deleted Successfully!');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success','Deleted Successfully!');
     }
 }
