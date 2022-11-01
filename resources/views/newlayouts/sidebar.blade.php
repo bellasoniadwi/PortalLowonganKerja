@@ -17,7 +17,6 @@
                 <li class="@yield('perusahaan')"><a class="nav-link" href="{{ route('toko.index') }}"><i class="fas fa-th-large"></i> <span>Perusahaan</span></a></li>
                 @endcan
                 <li class="@yield('lowonganpekerjaan')"><a class="nav-link" href="{{ route('lowonganpekerjaan.index') }}"><i class="fas fa-plug"></i> <span>Lowongan Pekerjaan</span></a></li>
-                <li class="@yield('status')"><a class="nav-link" href="{{ route('status.index') }}"><i class="fas fa-exclamation"></i> <span>Status</span></a></li>
                 <li class="@yield('kategori')"><a class="nav-link" href="{{ route('kategori.index') }}"><i class="fas fa-ellipsis-h"></i> <span>Kategori</span></a></li>
                 </li>
             </ul>
