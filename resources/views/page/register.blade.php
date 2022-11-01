@@ -37,7 +37,7 @@
         <div class="container-login100" style="background-image: url('{{ asset('layoutAuth/images/bg-01.jpg') }}'">
             <div class="wrap-login100 p-t-30 p-b-50">
                 <span class="login100-form-title p-b-41">
-                    Account Register
+                    Daftar Akun
                 </span>
                 <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf

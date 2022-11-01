@@ -37,12 +37,12 @@
         <div class="container-login100" style="background-image: url('{{ asset('layoutAuth/images/bg-01.jpg') }}'">
             <div class="wrap-login100 p-t-30 p-b-50">
                 <span class="login100-form-title p-b-41">
-                    Account Login
+                    Login Akun
                 </span>
                 <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
                     @csrf
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    <div class="wrap-input100 validate-input" data-validate="Masukkan username">
                         <input class="input100 @error('username') is-invalid @enderror" type="username" id="username"
                             name="username" placeholder="username" value="{{ old('username') }}" required
                             autocomplete="username">
@@ -54,7 +54,7 @@
                         @enderror
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <div class="wrap-input100 validate-input" data-validate="Masukkan password">
                         <input class="input100 @error('password') is-invalid @enderror" type="password" id="password"
                             name="password" placeholder="Password" required autocomplete="current-password">
 
@@ -67,7 +67,7 @@
 
                     <div class="container-login100-form-btn m-t-32">
                         <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
-                            Back to Maps
+                            Kembali
                         </a>
                         <a></a>
                         <button type="submit" class="login100-form-btn">
@@ -77,7 +77,7 @@
 
                     <div class="container-login100-form-btn m-t-32">
                         <a class="btn btn-link" href="{{ route('register') }}">
-                            Not have an account?
+                            Belum memiliki akun?
                         </a>
                     </div>
                 </form>
