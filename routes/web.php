@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\StatusController;
 use App\Http\Controllers\Dashboard\LayananController;
 use App\Http\Controllers\Dashboard\LowonganPekerjaanController;
 use App\Http\Controllers\Dashboard\TransaksiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,8 @@ Auth::routes();
 // udah login
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+    
+    Route::resource('/dashboard/profile', UserController::class)->only(['edit', 'update']);
     Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);
     Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
     Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
