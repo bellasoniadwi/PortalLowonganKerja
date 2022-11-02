@@ -40,7 +40,7 @@
                                     <label for="contact_person">Contact Person</label>
                                     <input type="text" class="form-control @error('contact_person') is-invalid @enderror"
                                         id="contact_person" name="contact_person" placeholder="Contact Person" required
-                                        value="{{ old('contact_person', $lowongan->contact_person) }}">
+                                        value="{{ old('contact_person', $lowongan->contact_person) }}" readonly>
                                     @error('contact_person')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -77,11 +77,11 @@
                                     <label for="kategori_id">Kategori</label>
                                     <select class="form-control select2 @error('kategori_id') is-invalid @enderror"
                                         id="kategori_id" name="kategori_id" required>
-                                        <option value="">--Pilih Kategori Pekerjaan--</option>
                                         @foreach ($kategori as $data)
-                                            <option value="{{ $data->id }}"
-                                                {{ old('kategori_id') == $data->id ? 'selected' : '' }}>
-                                                {{ $data->nama_kategori }}</option>
+                                          <option value="{{$data->id}}"
+                                            @if ($data->id == $data->nama_kategori) selected
+                                            @endif>{{$data->nama_kategori}}
+                                          </option>
                                         @endforeach
                                     </select>
                                     @error('kategori_id')
@@ -91,6 +91,33 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
+                                    <label for="tipe_pekerjaan">Tipe Pekerjaan</label>
+                                    <select class="form-control select2 @error('tipe_pekerjaan') is-invalid @enderror"
+                                        id="tipe_pekerjaan" name="tipe_pekerjaan" required>
+                                        <option value="Part Time" @if ($lowongan->tipe_pekerjaan == "Part Time")selected @endif>Part Time</option>
+                                        <option value="Full Time" @if ($lowongan->tipe_pekerjaan == "Full Time")selected @endif>Full Time</option>
+                                    </select>
+                                    @error('tipe_pekerjaan')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="deskripsi">Deskripsi</label>
+                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
+                                        id="deskripsi" name="deskripsi" placeholder="Deskripsi" required
+                                        value="{{ old('deskripsi', $lowongan->deskripsi) }}" >
+                                    @error('deskripsi')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-3">
                                     <label for="x">Latitude</label>
                                     <input type="text" class="form-control @error('x') is-invalid @enderror"
                                         id="x" name="x" placeholder="Latitude" required
@@ -101,41 +128,12 @@
                                         </div>
                                     @enderror
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <label for="tipe_pekerjaan">Tipe Pekerjaan</label>
-                                    <select class="form-control select2 @error('tipe_pekerjaan') is-invalid @enderror"
-                                        id="tipe_pekerjaan" name="tipe_pekerjaan" required>
-                                        <option value="">--Pilih Tipe Pekerjaan--</option>
-                                        <option value="Part Time"
-                                            {{ old('tipe_pekerjaan') == 'Part Time' ? 'selected' : '' }}>Part Time</option>
-                                        <option value="Full Time"
-                                            {{ old('tipe_pekerjaan') == 'Full Time' ? 'selected' : '' }}>Full Time</option>
-                                    </select>
-                                    @error('tipe_pekerjaan')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
                                 <div class="form-group col-md-3">
                                     <label for="y">Longitude</label>
-                                    <input type="time" class="form-control @error('y') is-invalid @enderror"
+                                    <input type="text" class="form-control @error('y') is-invalid @enderror"
                                         id="y" name="y" placeholder="Longitude" required
-                                        value="{{ old('y', $lowongan->y) }}">
+                                        value="{{ old('y', $lowongan->y) }}" readonly>
                                     @error('y')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="deskripsi">Deskripsi</label>
-                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-                                        id="deskripsi" name="deskripsi" placeholder="Deskripsi" required
-                                        value="{{ old('deskripsi', $lowongan->deskripsi) }}" readonly />
-                                    @error('deskripsi')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
