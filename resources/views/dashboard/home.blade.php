@@ -11,7 +11,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">
-                    <i class="far fa-user"></i>
+                    <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="card-wrap" href="{{ route('titik.index') }}">
                     <div class="card-header">
@@ -41,7 +41,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                    <i class="far fa-file"></i>
+                    <i class="fas fa-clipboard-list"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
@@ -57,11 +57,11 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                    <i class="fas fa-circle"></i>
+                    <i class="far fa-user"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Admin</h4>
+                        <h4>Kontributor</h4>
                     </div>
                     <div class="card-body">
                         {{ App\Models\User::where('is_admin', false)->count() }}

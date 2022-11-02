@@ -90,7 +90,7 @@
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
                         <input type="password" class="input100" id="password-confirm"
-                            placeholder="Password Confirmation" name="password_confirmation" required autocomplete="new-password">
+                            placeholder="Konfirmasi Password" name="password_confirmation" required autocomplete="new-password">
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter Number">
@@ -107,7 +107,7 @@
 
                     <div class="wrap-input100 validate-input" data-validate="Enter Perusahaan">
                         <input class="input100 @error('perusahaan') is-invalid @enderror" type="text"
-                            name="perusahaan" id="perusahaan" placeholder="Agency / Office"
+                            name="perusahaan" id="perusahaan" placeholder="Perusahaan"
                             value="{{ old('perusahaan') }}" required autocomplete="perusahaan">
 
                         @error('perusahaan')
@@ -131,17 +131,17 @@
 
                     <div class="container-login100-form-btn m-t-32">
                         <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
-                            Back to Maps
+                            Kembali
                         </a>
                         
                         <button type="submit" class="login100-form-btn">
-                            Register
+                            Daftar
                         </button>
                     </div>
 
                     <div class="container-login100-form-btn m-t-32">
                         <a class="btn btn-link" href="{{ route('login') }}">
-                            Already have an account?
+                            Sudah Memiliki Akun?
                         </a>
                     </div>
                 </form>
