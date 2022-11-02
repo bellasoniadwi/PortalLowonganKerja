@@ -64,7 +64,7 @@
                         <h4>Admin</h4>
                     </div>
                     <div class="card-body">
-                        {{ App\Models\User::count() }}
+                        {{ App\Models\User::where('is_admin', false)->count() }}
                     </div>
                 </div>
             </div>
