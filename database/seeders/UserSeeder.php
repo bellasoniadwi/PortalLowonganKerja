@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('admin123'),
             'is_admin' => true,
+            'is_block' => false,
             'remember_token' => Str::random(10),
         ]);
 
@@ -37,7 +38,7 @@ class UserSeeder extends Seeder
             'perusahaan' => 'Ambi Corp',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
-            'is_admin' => false,
+            'is_block' => false,
             'remember_token' => Str::random(10),
         ]);
     }
