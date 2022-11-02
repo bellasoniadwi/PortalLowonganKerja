@@ -6,8 +6,8 @@
     <div class="section-header">
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}">Perusahaan</a></div>
-            <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}/edit">Edit Kategori</a>
+            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}">Lowongan Pekerjaan</a></div>
+            <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}/edit">Edit Lowongan Pekerjaan</a>
             </div>
         </div>
     </div>
@@ -21,7 +21,6 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Form Edit Data Lowongan Pekerjaan</h4>
-                            <input type="hidden" name="oldImage" value="{{ $lowongan->image }}">
                         </div>
                         <div class="card-body">
                             <div class="form-row">

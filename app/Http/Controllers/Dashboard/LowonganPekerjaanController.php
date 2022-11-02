@@ -120,9 +120,9 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LowonganPekerjaan $lowongan)
+    public function update(Request $request, $id)
     {
-        $rules = [
+        $request->validate([
             'nama_pekerjaan' => 'required',
             'kategori_id' => 'required',
             'tipe_pekerjaan' => 'required',
@@ -132,23 +132,21 @@ class LowonganPekerjaanController extends Controller
             'deskripsi' => 'required',
             'contact_person' => 'required',
             'no_telp' => 'required',
-        ];
+        ]);
 
-        if($request->nama_pekerjaan){
-            $validate['nama_pekerjaan'] = auth()->user()->nama_pekerjaan;
-        }
+        $lowongan = LowonganPekerjaan::findOrFail($id);
 
-        $validate = $request->validate($rules);
+        $lowongan->nama_pekerjaan = $request->nama_pekerjaan;
+        $lowongan->kategori_id = $request->kategori_id;
+        $lowongan->tipe_pekerjaan = $request->tipe_pekerjaan;
+        $lowongan->perusahaan = $request->perusahaan;
+        $lowongan->deskripsi = $request->deskripsi;
+        $lowongan->contact_person = $request->contact_person;
+        $lowongan->no_telp = $request->no_telp;
+        $lowongan->x = $request->x;
+        $lowongan->y = $request->y;
 
-        if($request->file('image')){
-            if($request->oldImage){
-                Storage::delete([$request->oldImage]);
-            }
-            $validate['image'] = $request->file('image')->store('images');
-        }
-
-        LowonganPekerjaan::where('id', $lowongan->id)->update($validate);
-
+        $lowongan->save();
         return redirect('/dashboard/lowonganpekerjaan')->with('success','Updated Successfully!');
     }
 
@@ -158,14 +156,9 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\LowonganPekerjaan  $toko
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LowonganPekerjaan $lowongan)
+    public function destroy($id)
     {
-        LowonganPekerjaan::destroy($lowongan->id);
-
-        if($lowongan->image){
-            Storage::delete([$lowongan->image]);
-        }
-
+        LowonganPekerjaan::find($id)->delete();
         return redirect('/dashboard/lowonganpekerjaan')->with('success','Deleted Successfully!');
     }
 }
