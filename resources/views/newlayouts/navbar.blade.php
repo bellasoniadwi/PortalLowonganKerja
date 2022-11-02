@@ -15,13 +15,17 @@
                     <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth()->user()->nama }}</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <form action="{{ route('logout') }}" method="post">
-                    @method('post')
-                    @csrf
-                    <button class="dropdown-item has-icon text-danger" type="submit" onclick="return confirm('Are you sure?')">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </button>
-                  </form>
+                    <a href="/dashboard/profile/{{ Auth()->user()->id }}/edit" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Profile
+                    </a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @method('post')
+                        @csrf
+                        <button class="dropdown-item has-icon text-danger" type="submit"
+                            onclick="return confirm('Are you sure?')">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </form>
                 </div>
             </li>
         </ul>

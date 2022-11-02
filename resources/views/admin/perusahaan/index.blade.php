@@ -7,7 +7,7 @@
         {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('toko.index') }}">Perusahaan</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('perusahaan') }}">Perusahaan</a></div>
         </div>
     </div>
 
@@ -31,49 +31,47 @@
                         <h4>List Perusahaan</h4>
                     </div>
                     <div class="card-body">
-                        <a href="/dashboard/toko/create" class="btn btn-primary"> + Tambah </a>
+                        {{-- <a href="/dashboard/toko/create" class="btn btn-primary"> + Tambah </a> --}}
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Usaha</th>
-                                        <th>Owners</th>
-                                        <th>Images</th>
-                                        <th>No HP</th>
-                                        <th>Alamat</th>
+                                        <th>Nama Perusahaan</th>
+                                        <th>Contact Person</th>
+                                        <th>Nomor Telepon</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        @foreach ($tokos as $toko)
+                                        @foreach ($user as $us)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $toko->nama }}</td>
-                                        <td>{{ $toko->pemilik }}</td>
-                                        <td><img width="70px" height="60px" src="{{ asset('storage/' . $toko->image) }}">
+                                        <td>{{ $us->perusahaan }}</td>
+                                        <td>{{ $us->nama }}</td>
+                                        <td>{{ $us->no_telp }}</td>
+                                        <td>{{ $us->email }}</td>
+                                        <td>
+                                            @if ($us->is_block == 'no')
+                                                Safe
+                                            @else
+                                                Blocked
+                                            @endif
                                         </td>
-                                        <td>{{ $toko->no_hp }}</td>
-                                        <td>{{ $toko->alamat }}</td>
                                         <td>
                                             <div class="form-group col-md-1">
-                                                
+
                                             </div>
                                             <div class="form-group col-md-1">
-                                                <a href="/dashboard/toko/{{ $toko->nama }}/edit"
-                                                    class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
+                                                <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                             </div>
                                             <div class="form-group col-md-1">
-                                                <form action="/dashboard/toko/{{ $toko->nama }}" method="post">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button href="/dashboard/toko/{{ strtolower($toko->nama) }}"
-                                                        class="btn btn-danger" type="submit"
-                                                        onclick="return confirm('Are you sure?')"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </form>
+                                                <a href="#" class="btn btn-danger"><i
+                                                        class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -84,16 +82,16 @@
                             <div class="form-row">
                                 <div class="form-group col-md-9">
                                     <p>Showing
-                                        {{ $tokos->firstItem() }}
+                                        {{ $user->firstItem() }}
                                         to
-                                        {{ $tokos->lastItem() }}
+                                        {{ $user->lastItem() }}
                                         of
-                                        {{ $tokos->total() }}
+                                        {{ $user->total() }}
                                         entries
                                     </p>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    {{ $tokos->links() }}
+                                    {{ $user->links() }}
                                 </div>
                             </div>
 

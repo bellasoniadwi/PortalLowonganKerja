@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\StatusController;
 use App\Http\Controllers\Dashboard\LayananController;
 use App\Http\Controllers\Dashboard\LowonganPekerjaanController;
 use App\Http\Controllers\Dashboard\TransaksiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,12 +40,16 @@ Auth::routes();
 // udah login
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+    Route::get('/dashboard/perusahaan',[UserController::class, 'index'])->name('perusahaan');
+    
+    Route::resource('/dashboard/profile', UserController::class);
     Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);
     Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
     Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
     Route::resource('/dashboard/transaksi', TransaksiController::class)->except(['show']);
-    Route::resource('/dashboard/toko', TokoController::class)->except(['show']);
     Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class)->except(['show']);
     Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
+
+    //gadipake
+    Route::resource('/dashboard/toko', TokoController::class)->except(['show']);
 });
