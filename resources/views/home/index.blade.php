@@ -16,7 +16,29 @@
                         attribution: osmAttrib
                     });
                 var map = L.map('map').setView([<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>], 13).addLayer(osm);
+                
+                function onAccuratePositionProgress (e) {
+                    console.log(e.accuracy);
+                    console.log(e.latlng);
+                }
 
+                function onAccuratePositionFound (e) {
+                    console.log(e.accuracy);
+                    console.log(e.latlng);
+                }
+
+                function onAccuratePositionError (e) {
+                    console.log(e.message)
+                }
+
+                map.on('accuratepositionprogress', onAccuratePositionProgress);
+                map.on('accuratepositionfound', onAccuratePositionFound);
+                map.on('accuratepositionerror', onAccuratePositionError);
+
+                map.findAccuratePosition({
+                    maxWait: 15000, // defaults to 10000
+                    desiredAccuracy: 30 // defaults to 20
+                });
                 var data = [
                     <?php foreach ($kordinats as $key => $value) { ?>
                         {"lokasi":[<?= $value->x ?>, <?= $value->y ?>], "nama":"<?= $value->nama ?>"},
