@@ -44,7 +44,7 @@
 
                     <div class="wrap-input100 validate-input" data-validate="Masukkan username">
                         <input class="input100 @error('username') is-invalid @enderror" type="username" id="username"
-                            name="username" placeholder="username" value="{{ old('username') }}" required
+                            name="username" placeholder="Username" value="{{ old('username') }}" required
                             autocomplete="username">
 
                         @error('username')
