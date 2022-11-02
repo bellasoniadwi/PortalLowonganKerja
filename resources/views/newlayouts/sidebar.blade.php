@@ -14,7 +14,7 @@
                 <li class="menu-header">Main Menu</li>
                 <li class="@yield('peta')"><a class="nav-link" href="{{ route('titik.index') }}"><i class="fas fa-map-marker-alt"></i> <span>Peta</span></a></li>
                 @can('admin')
-                <li class="@yield('perusahaan')"><a class="nav-link" href="{{ route('toko.index') }}"><i class="fas fa-th-large"></i> <span>Perusahaan</span></a></li>
+                <li class="@yield('perusahaan')"><a class="nav-link" href="{{ route('perusahaan') }}"><i class="fas fa-th-large"></i> <span>Perusahaan</span></a></li>
                 @endcan
                 <li class="@yield('lowonganpekerjaan')"><a class="nav-link" href="{{ route('lowonganpekerjaan.index') }}"><i class="fas fa-plug"></i> <span>Lowongan Pekerjaan</span></a></li>
                 @can('admin')

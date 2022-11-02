@@ -17,7 +17,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $admin = auth()->user()->is_admin;
+        if($admin)
+        {
+            return view('admin.perusahaan.index',[
+                'user' => User::paginate(5)
+            ]);
+        }
     }
 
     /**
