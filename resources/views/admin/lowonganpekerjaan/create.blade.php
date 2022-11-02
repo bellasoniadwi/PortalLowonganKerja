@@ -99,19 +99,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="x">Latitude</label>
-                                    <input type="text" class="form-control @error('x') is-invalid @enderror"
-                                        id="x" name="x" placeholder="Latitude" required
-                                        value="{{ old('x') }}" readonly>
-                                    @error('x')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
                                     <label for="tipe_pekerjaan">Tipe Pekerjaan</label>
                                     <select class="form-control select2 @error('tipe_pekerjaan') is-invalid @enderror"
                                         id="tipe_pekerjaan" name="tipe_pekerjaan" required>
@@ -120,17 +107,6 @@
                                         <option value="Full Time" {{old('tipe_pekerjaan') == 'Full Time' ? 'selected' : ''}}>Full Time</option>
                                     </select>
                                     @error('tipe_pekerjaan')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="y">Longitude</label>
-                                    <input type="text" class="form-control @error('y') is-invalid @enderror"
-                                        id="y" name="y" placeholder="Longitude" required
-                                        value="{{ old('y') }}" readonly>
-                                    @error('y')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -149,6 +125,31 @@
                                         </div>
                                     @enderror
                                 </div>
+                                <div class="form-group col-md-3">
+                                    <label for="x">Latitude</label>
+                                    <input type="text" class="form-control @error('x') is-invalid @enderror"
+                                        id="x" name="x" placeholder="Latitude" required
+                                        value="{{ old('x') }}" readonly>
+                                    @error('x')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="y">Longitude</label>
+                                    <input type="text" class="form-control @error('y') is-invalid @enderror"
+                                        id="y" name="y" placeholder="Longitude" required
+                                        value="{{ old('y') }}" readonly>
+                                    @error('y')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                
                                 <div class="form-group col-md-1">
                                     <a href="{{ route('lowonganpekerjaan.index') }}" class="btn btn-primary">Back</a>
                                 </div>

@@ -148,64 +148,6 @@
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12" id="map"
-                                    style="height: 500px; margin-top: 50px;">
-                                    <script>
-                                        function showPreview(objFileInput) {
-                                            if (objFileInput.files[0]) {
-                                                var fileReader = new FileReader();
-                                                fileReader.onload = function(e) {
-                                                    $('#blah').attr('src', e.target.result);
-                                                    $("#targetLayer").html('<img src="' + e.target.result + '" class="img-fluid w-25 h-25 m-md-2" />');
-                                                    $("#targetLayer").css('opacity', '0.7');
-                                                    $(".icon-choose-image").css('opacity', '0.5');
-                                                }
-                                                fileReader.readAsDataURL(objFileInput.files[0]);
-                                            }
-                                        }
-
-                                        var curLocation = [0, 0];
-                                        if (curLocation[0] == 0 && curLocation[1] == 0) {
-                                            curLocation = [<?= $lowongan->x ?>, <?= $lowongan->y ?>];
-                                        }
-
-                                        var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                                            osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                                            osm = L.tileLayer(osmUrl, {
-                                                maxZoom: 18,
-                                                attribution: osmAttrib
-                                            });
-
-                                        var map = L.map('map').setView([<?= $lowongan->x ?>, <?= $lowongan->y ?>], 17).addLayer(osm);
-
-                                        map.attributionControl.setPrefix(false);
-                                        var marker = new L.marker(curLocation, {
-                                            draggable: 'true'
-                                        });
-
-                                        marker.on('dragend', function(event) {
-                                            var position = marker.getLatLng();
-                                            marker.setLatLng(position, {
-                                                draggable: 'true'
-                                            }).bindPopup(position).update();
-                                            //id (longitude atau latitude) pada blade html akan dikenali sebagai identitas tempat untuk menempatkan hasil marker pada peta
-                                            $("#x").val(position.lat);
-                                            $("#y").val(position.lng).keyup();
-                                        });
-
-                                        //Nilai longitude dan latitude berubah seiring berubahnya posisi marker
-                                        $("#x, #y").change(function() {
-                                            var position = [parseInt($("#x").val()), parseInt($("#y").val())];
-                                            marker.setLatLng(position, {
-                                                draggable: 'true'
-                                            }).bindPopup(position).update();
-                                            map.panTo(position);
-                                        });
-                                        map.addLayer(marker);
-                                    </script>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </form>
