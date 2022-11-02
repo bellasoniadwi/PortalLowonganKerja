@@ -38,7 +38,9 @@
                         </div>
                     @endcan
                     <div class="card-body">
+                        @cannot('admin')
                         <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
+                        @endcan
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">
@@ -52,7 +54,9 @@
                                         <th>Deskripsi</th>
                                         <th>Contact Person</th>
                                         <th>Nomor Telepon</th>
+                                        @cannot('admin')
                                         <th>Action</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +71,7 @@
                                         <td>{{ $lp->deskripsi }}</td>
                                         <td>{{ $lp->contact_person }}</td>
                                         <td>{{ $lp->no_telp }}</td>
+                                        @cannot('admin')
                                         <td>
                                             <div class="form-group col-md-1">
 
@@ -86,6 +91,7 @@
                                                 </form>
                                             </div>
                                         </td>
+                                        @endcan
                                     </tr>
                                     @endforeach
                                     </tr>
