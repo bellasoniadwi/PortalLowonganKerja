@@ -38,9 +38,6 @@
                         </div>
                     @endcan
                     <div class="card-body">
-                        @cannot('admin')
-                            <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
-                        @endcan
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">

@@ -55,9 +55,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="password">Konfirmasi Password</label>
+                                    <label for="password">Ganti Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        id="password" name="password" placeholder="Konfirmasi Password">
+                                        id="password" name="password" placeholder="Ganti Password">
                                     @error('password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -78,15 +78,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="password">Ganti Password</label>
+                                    <label for="password">Konfirmasi Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        id="password" name="password" placeholder="Ganti Password">
+                                        id="password" name="password" placeholder="Konfirmasi Password">
                                     @error('password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
+                                
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -101,13 +102,14 @@
                                         </div>
                                     @enderror
                                 </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
+                                <div class="form-group col-md-1">
+                                </div>
+                                <div class="form-group col-md-1,5">
+                                    <br><br>
                                     <a href="{{ route('home') }}" class="btn btn-primary">Dashboard</a>
                                 </div>
-                                <div class="form-group col-md-10">
+                                <div class="form-group col-md-3">
+                                    <br><br>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
