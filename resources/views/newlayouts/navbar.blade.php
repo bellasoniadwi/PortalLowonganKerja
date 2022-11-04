@@ -21,8 +21,7 @@
                     <form action="{{ route('logout') }}" method="post">
                         @method('post')
                         @csrf
-                        <button class="dropdown-item has-icon text-danger" type="submit"
-                            onclick="return confirm('Are you sure?')">
+                        <button class="dropdown-item has-icon text-danger show_confirmation" type="submit">
                             <i class="fas fa-sign-out-alt"></i> Logout
                         </button>
                     </form>
@@ -54,3 +53,32 @@
         </nav>
     </div>
 @endguest
+
+@section('js')
+{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+ 
+     $('.show_confirmation').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Yakin Ingin Keluar ?`,
+              text: "Setelah Anda keluar, Anda harus login kembali apabila ingin memanajemen akun Anda",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willLogout) => {
+            if (willLogout) {
+              form.submit();
+              swal("Anda Berhasil Logout. Selamat Tinggal :(");
+            } else {
+                swal("Terima Kasih :)");
+            }
+          });
+      });
+  
+</script>
+@endsection
