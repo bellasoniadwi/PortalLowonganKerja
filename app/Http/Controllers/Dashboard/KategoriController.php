@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Throwable;
 
 class KategoriController extends Controller
 {
@@ -100,8 +101,13 @@ class KategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
-        Kategori::destroy($kategori->id);
-
-        return redirect('/dashboard/kategori')->with('success','Kategori Berhasil Dihapus');
+        try{
+            Kategori::destroy($kategori->id);
+            return redirect('/dashboard/kategori')->with('success','Kategori Berhasil Dihapus');
+        }catch(Throwable $error){
+            report($error);
+            return redirect('/dashboard/kategori')->with('warning', 
+            'Mohon Maaf Data Kategori Tidak Bisa Dihapus');
+        }
     }
 }
