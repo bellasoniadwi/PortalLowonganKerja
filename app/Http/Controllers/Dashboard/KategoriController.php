@@ -45,7 +45,7 @@ class KategoriController extends Controller
 
         Kategori::create($validate);
 
-        return redirect('/dashboard/kategori')->with('success','Added Successfully!');
+        return redirect('/dashboard/kategori')->with('success','Kategori Baru Berhasil Ditambahkan');
     }
 
     /**
@@ -89,7 +89,7 @@ class KategoriController extends Controller
 
         Kategori::where('id', $kategori->id)->update($validate);
 
-        return redirect('/dashboard/kategori')->with('success','Updated Successfully!');
+        return redirect('/dashboard/kategori')->with('success','Kategori Berhasil Diupdate');
     }
 
     /**
@@ -102,6 +102,6 @@ class KategoriController extends Controller
     {
         Kategori::destroy($kategori->id);
 
-        return redirect('/dashboard/kategori')->with('success','Deleted Successfully!');
+        return redirect('/dashboard/kategori')->with('success','Kategori Berhasil Dihapus');
     }
 }

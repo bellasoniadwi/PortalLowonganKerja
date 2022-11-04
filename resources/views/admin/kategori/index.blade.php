@@ -12,7 +12,7 @@
     </div>
 
     <div class="section-body">
-        <p class="section-lead">
+        {{-- <p class="section-lead">
             @if (session('success'))
                 <div class="alert alert-success alert-has-icon">
                     <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             @endif
-        </p>
+        </p> --}}
 
         <div class="row">
             <div class="col-12">
