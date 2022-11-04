@@ -65,6 +65,8 @@
             @include('newlayouts.footer')
         </div>
     </div>
+
+    @include('sweetalert::alert')
     @yield('js')
 
     <!-- General JS Scripts -->

@@ -107,7 +107,7 @@ class LowonganPekerjaanController extends Controller
         
         
         $lowongan->save();
-        return redirect('/dashboard/lowonganpekerjaan')->with('success','Added Successfully!');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success','Lowongan Pekerjaan Baru Berhasil Ditambahkan');
     }
 
     /**
@@ -183,7 +183,7 @@ class LowonganPekerjaanController extends Controller
         }
 
         $lowongan->save();
-        return redirect('/dashboard/lowonganpekerjaan')->with('success','Updated Successfully!');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success','Lowongan Pekerjaan Berhasil Diupdate');
     }
 
     /**
@@ -195,7 +195,7 @@ class LowonganPekerjaanController extends Controller
     public function destroy($id)
     {
         LowonganPekerjaan::find($id)->delete();
-        return redirect('/dashboard/lowonganpekerjaan')->with('success','Deleted Successfully!');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success','Lowongan Pekerjaan Berhasil Dihapus');
     }
 
     public function updateStatus(Request $request)
