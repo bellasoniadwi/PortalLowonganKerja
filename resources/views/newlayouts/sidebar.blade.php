@@ -16,7 +16,10 @@
                 @can('admin')
                 <li class="@yield('perusahaan')"><a class="nav-link" href="{{ route('perusahaan') }}"><i class="fas fa-city"></i> <span>Perusahaan</span></a></li>
                 @endcan
-                <li class="@yield('lowonganpekerjaan')"><a class="nav-link" href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i> <span>Lowongan Pekerjaan</span></a></li>
+                <li class="@yield('lowonganpekerjaan')"><a class="nav-link" href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i> <span>Lowongan Aktif</span></a></li>
+                
+                <li class="@yield('lowonganpekerjaan-inactive')"><a class="nav-link" href="{{ route('lowonganpekerjaan.inactive') }}"><i class="fas fa-book"></i> <span> Arsip Lowongan</span></a></li>
+                
                 @can('admin')
                 <li class="@yield('kategori')"><a class="nav-link" href="{{ route('kategori.index') }}"><i class="fas fa-clipboard-list"></i> <span>Kategori</span></a></li>
                 @endcan
