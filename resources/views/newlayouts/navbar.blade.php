@@ -11,7 +11,7 @@
         <ul class="navbar-nav navbar-right">
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                    <img alt="image" src="{{ asset('storage/' . Auth()->user()->foto) }}" class="rounded-circle mr-1">
+                    {{-- <img alt="image" src="{{ asset('storage/' . Auth()->user()->foto) }}" class="rounded-circle mr-1"> --}}
                     <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth()->user()->nama }}</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
