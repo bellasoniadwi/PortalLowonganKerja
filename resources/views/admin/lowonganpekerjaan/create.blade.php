@@ -14,7 +14,7 @@
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
-                <form method="post" action="/dashboard/lowonganpekerjaan">
+                <form method="post" action="/dashboard/lowonganpekerjaan" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         @if ($errors->any())
@@ -116,9 +116,9 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="deskripsi">Deskripsi</label>
-                                    <textarea class="form-control @error('deskripsi') is-invalid @enderror"
+                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
                                         id="deskripsi" name="deskripsi" placeholder="Gaji, Tunjangan, dll" required
-                                        value="{{ old('deskripsi') }}"></textarea>
+                                        value="{{ old('deskripsi') }}">
                                     @error('deskripsi')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -149,11 +149,27 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                
+                                <div class="form-group col-md-6">
+                                    <label for="foto">Foto Perusahaan</label>
+                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
+                                        id="foto" name="foto" placeholder="Upload Foto" required
+                                        value="{{ old('foto') }}" onchange="return showPreview(this)">
+                                    @error('foto')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                                 <div class="form-group col-md-1">
+                                    
+                                    <a></a>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <br><br>
                                     <a href="{{ route('lowonganpekerjaan.index') }}" class="btn btn-primary">Back</a>
                                 </div>
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-1">
+                                    <br><br>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
