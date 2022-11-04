@@ -16,12 +16,14 @@ class LowonganPekerjaan extends Model
         'nama_pekerjaan',
         'kategori_id',
         'tipe_pekerjaan',
+        'status',
+        'foto',
         'perusahaan',
         'x',
         'y',
         'deskripsi',
         'contact_person',
-        'no_telp',
+        'no_telp'
     ];
 
     public function kategori(){
