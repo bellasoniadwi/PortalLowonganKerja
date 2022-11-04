@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
     Route::resource('/dashboard/transaksi', TransaksiController::class)->except(['show']);
     Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class)->except(['show']);
+    Route::get('/dashboard/arsiplowonganpekerjaan', [LowonganPekerjaanController::class, 'inactive'])->name('lowonganpekerjaan.inactive');
     Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
 
     //ajax

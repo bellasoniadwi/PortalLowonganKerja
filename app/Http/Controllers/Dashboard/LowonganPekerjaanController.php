@@ -21,7 +21,7 @@ class LowonganPekerjaanController extends Controller
         if($admin)
         {
             return view('admin.lowonganpekerjaan.index',[
-                'lowongan' => LowonganPekerjaan::paginate(5)
+                'lowongan' => LowonganPekerjaan::where('status', true)->paginate(5)
             ]);
         }
 
@@ -30,7 +30,28 @@ class LowonganPekerjaanController extends Controller
         {
             return view('admin.lowonganpekerjaan.index',[
                 'lowongan' => LowonganPekerjaan::where('contact_person', '=', $user)
-                // ->get()
+                ->where('status', true)
+                ->paginate(5)
+            ]);
+        }
+    }
+
+    public function inactive()
+    {
+        $admin = auth()->user()->is_admin;
+        if($admin)
+        {
+            return view('admin.lowonganpekerjaan.inactive',[
+                'lowongan' => LowonganPekerjaan::where('status', false)->paginate(5)
+            ]);
+        }
+
+        $user = auth()->user()->nama;
+        if($user)
+        {
+            return view('admin.lowonganpekerjaan.inactive',[
+                'lowongan' => LowonganPekerjaan::where('contact_person', '=', $user)
+                ->where('status', false)
                 ->paginate(5)
             ]);
         }
