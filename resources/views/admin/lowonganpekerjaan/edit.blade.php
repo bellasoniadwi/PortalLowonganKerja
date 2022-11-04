@@ -15,12 +15,13 @@
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
-                <form method="post" action="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}">
+                <form method="post" action="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}" enctype="multipart/form-data">
                     @method('put')
                     @csrf
                     <div class="card">
                         <div class="card-header">
                             <h4>Form Edit Data Lowongan Pekerjaan</h4>
+                            <input type="hidden" name="oldImage" value="{{ $lowongan->foto }}">
                         </div>
                         <div class="card-body">
                             <div class="form-row">
@@ -140,10 +141,27 @@
                                 </div>
                             </div>
                             <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="foto">Foto Perusahaan</label>
+                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
+                                        id="foto" name="foto" placeholder="Upload Foto"
+                                        value="{{ old('foto', $lowongan->foto) }}" onchange="return showPreview(this)">
+                                        <br><img width="100px" height="70"src="{{asset('storage/'. $lowongan->foto)}}" >
+                                    @error('foto')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                                 <div class="form-group col-md-1">
+                                    <a></a>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <br><br>
                                     <a href="{{ route('lowonganpekerjaan.index') }}" class="btn btn-primary">Back</a>
                                 </div>
-                                <div class="form-group col-md-11">
+                                <div class="form-group col-md-1">
+                                    <br><br>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
