@@ -68,9 +68,10 @@ class LowonganPekerjaanController extends Controller
             'deskripsi' => 'required',
             'contact_person' => 'required',
             'no_telp' => 'required',
+            'foto' => 'required|max:5120g',
         ]);
 
-        $lowongan = new LowonganPekerjaan();
+        $lowongan = new LowonganPekerjaan;
 
         $lowongan->nama_pekerjaan = $request->get('nama_pekerjaan');
         $lowongan->kategori_id = $request->get('kategori_id');
@@ -81,6 +82,7 @@ class LowonganPekerjaanController extends Controller
         $lowongan->no_telp = $request->get('no_telp');
         $lowongan->x = $request->get('x');
         $lowongan->y = $request->get('y');
+        $lowongan->foto = $request->file('foto')->store('images','public');  
         
         
         $lowongan->save();
@@ -134,17 +136,30 @@ class LowonganPekerjaanController extends Controller
             'no_telp' => 'required',
         ]);
 
-        $lowongan = LowonganPekerjaan::findOrFail($id);
+        $lowongan = LowonganPekerjaan::where('id', $id)->first();
 
-        $lowongan->nama_pekerjaan = $request->nama_pekerjaan;
-        $lowongan->kategori_id = $request->kategori_id;
-        $lowongan->tipe_pekerjaan = $request->tipe_pekerjaan;
-        $lowongan->perusahaan = $request->perusahaan;
-        $lowongan->deskripsi = $request->deskripsi;
-        $lowongan->contact_person = $request->contact_person;
-        $lowongan->no_telp = $request->no_telp;
-        $lowongan->x = $request->x;
-        $lowongan->y = $request->y;
+        // if($request->file('foto')){
+        //     if($request->oldImage){
+        //         Storage::delete([$request->oldImage]);
+        //     }
+        //     $validate['foto'] = $request->file('foto')->store('images');
+        // }
+        $lowongan->nama_pekerjaan = $request->get('nama_pekerjaan');
+        $lowongan->kategori_id = $request->get('kategori_id');
+        $lowongan->tipe_pekerjaan = $request->get('tipe_pekerjaan');
+        $lowongan->perusahaan = $request->get('perusahaan');
+        $lowongan->deskripsi = $request->get('deskripsi');
+        $lowongan->contact_person = $request->get('contact_person');
+        $lowongan->no_telp = $request->get('no_telp');
+        $lowongan->x = $request->get('x');
+        $lowongan->y = $request->get('y');
+        if ($request->hasFile('foto')) {
+            if ($lowongan->foto && file_exists(storage_path('app/public/' . $lowongan->gambar))) {
+                Storage::delete('public/' . $lowongan->foto);
+            }
+            $image_name = $request->file('foto')->store('images', 'public');
+            $lowongan->foto = $image_name;
+        }
 
         $lowongan->save();
         return redirect('/dashboard/lowonganpekerjaan')->with('success','Updated Successfully!');
@@ -160,5 +175,13 @@ class LowonganPekerjaanController extends Controller
     {
         LowonganPekerjaan::find($id)->delete();
         return redirect('/dashboard/lowonganpekerjaan')->with('success','Deleted Successfully!');
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $lp = LowonganPekerjaan::find($request->id); 
+        $lp->status = $request->status; 
+        $lp->save(); 
+        return response()->json(['success'=>'Status change successfully.']); 
     }
 }
