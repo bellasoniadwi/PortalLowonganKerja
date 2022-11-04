@@ -117,18 +117,6 @@
                         @enderror
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter Image">
-                        <input class="input100 @error('foto') is-invalid @enderror" type="file" name="foto"
-                            onchange="return showPreview(this)" id="foto" placeholder="Upload Foto Profil"
-                            required autocomplete="profil">
-
-                        @error('profil')
-                            <span class="focus-input100" data-placeholder="&#xe82a;">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
                     <div class="container-login100-form-btn m-t-32">
                         <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
                             Kembali

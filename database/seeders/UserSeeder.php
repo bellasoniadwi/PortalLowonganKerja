@@ -18,7 +18,6 @@ class UserSeeder extends Seeder
         User::create([
             'nama' => 'Admin',
             'username' => 'admin',
-            'foto' => null,
             'email' => 'admin@gmail.com',
             'no_telp' => '081222333444',
             'perusahaan' => 'Portal',
@@ -32,7 +31,6 @@ class UserSeeder extends Seeder
         User::create([
             'nama' => 'Ambi',
             'username' => 'ambi',
-            'foto' => null,
             'email' => 'ambi@gmail.com',
             'no_telp' => '089876543212',
             'perusahaan' => 'Ambi Corp',

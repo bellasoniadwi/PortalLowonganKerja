@@ -56,7 +56,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'no_telp' => ['required', 'string', 'max:13', 'unique:users'],
             'perusahaan' => ['required','string'],
-            'foto' => ['required']
         ]);
     }
 
@@ -75,7 +74,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'no_telp' => $data['no_telp'],
             'perusahaan' => $data['perusahaan'],
-            'foto' => $data['foto']->store('profil', 'public')
         ]);
     }
 

@@ -20,11 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('foto')->nullable();
             $table->string('no_telp',13);
             $table->string('perusahaan');
             $table->boolean('is_admin')->default(false);
-            $table->string('is_block', 5)->default('no');
+            $table->enum('is_block', ['Yes','No'])->default('No');
             $table->rememberToken();
             $table->timestamps();
         });
