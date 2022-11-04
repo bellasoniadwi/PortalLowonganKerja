@@ -6,8 +6,8 @@
     <div class="section-header">
         {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('perusahaan') }}">Perusahaan</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('home') }}" ><i class="fas fa-desktop"></i> Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('perusahaan') }}"><i class="fas fa-city"></i> Perusahaan</a></div>
         </div>
     </div>
 

@@ -6,8 +6,8 @@
     <div class="section-header">
         {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-file"></i> Lowongan Pekerjaan</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.inactive') }}"><i class="fas fa-book"></i> Arsip Lowongan</a></div>
         </div>
     </div>
 
