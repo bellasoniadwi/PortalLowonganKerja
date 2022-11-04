@@ -3,7 +3,7 @@
 @section('content')
     <div class="section-header">
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
         </div>
     </div>
 
@@ -55,12 +55,10 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="no_telp">Nomor Telepon</label>
-                                    <input type="number"
-                                        class="form-control @error('no_telp') is-invalid @enderror"
-                                        id="no_telp" name="no_telp" placeholder="Nomor Telepon" required
-                                        value="{{ old('no_telp', $user->no_telp) }}" />
-                                    @error('no_telp')
+                                    <label for="password">Konfirmasi Password</label>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                        id="password" name="password" placeholder="Konfirmasi Password">
+                                    @error('password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -92,22 +90,12 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="foto">Foto Profil</label>
-                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                        id="foto" name="foto" placeholder="Upload Image"
-                                        value="{{ old('foto') }}">
-                                        <img width="80px" height="100"src="{{asset('storage/'. $user->foto)}}" >
-                                    @error('foto')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="password">Konfirmasi Password</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        id="password" name="password" placeholder="Konfirmasi Password">
-                                    @error('password')
+                                    <label for="no_telp">Nomor Telepon</label>
+                                    <input type="number"
+                                        class="form-control @error('no_telp') is-invalid @enderror"
+                                        id="no_telp" name="no_telp" placeholder="Nomor Telepon" required
+                                        value="{{ old('no_telp', $user->no_telp) }}" />
+                                    @error('no_telp')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
