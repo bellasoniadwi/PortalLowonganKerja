@@ -101,9 +101,7 @@
                                                         method="post">
                                                         @method('delete')
                                                         @csrf
-                                                        <button class="btn btn-danger" type="submit"
-                                                            onclick="return confirm('Are you sure?')"><i
-                                                                class="fas fa-trash-alt"></i></button>
+                                                        <button class="btn btn-danger show_confirm" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -140,7 +138,7 @@
 <!-- Toggle -->
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/> --}}
-      
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script>
     $(function() { 
             $('.toggle-class').change(function() { 
@@ -157,7 +155,27 @@
              } 
           }); 
        }) 
-    }); 
+    });
+    
+    $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Yakin ingin menghapus data?`,
+              text: "Data ini akan terhapus permanen setelah anda menyetujui pesan ini",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            } else {
+                swal("Data Anda Aman!");
+            }
+          });
+      });
  </script>
 @endsection
 

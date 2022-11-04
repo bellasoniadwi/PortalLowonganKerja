@@ -61,8 +61,7 @@
                                                     @method('delete')
                                                     @csrf
                                                     <button href="/dashboard/kategori/{{ $kat->id }}"
-                                                        class="btn btn-danger" type="submit"
-                                                        onclick="return confirm('Are you sure?')"><i
+                                                        class="btn btn-danger show_confirm" type="submit"><i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </div>
@@ -94,4 +93,31 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+ 
+     $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Yakin ingin menghapus data?`,
+              text: "Data ini akan terhapus permanen setelah anda menyetujui pesan ini",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            } else {
+                swal("Data Anda Aman!");
+            }
+          });
+      });
+  
+</script>
 @endsection
