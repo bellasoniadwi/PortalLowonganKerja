@@ -50,6 +50,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class)->except(['show']);
     Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
 
+    //ajax
+    Route::get('/status/update', [LowonganPekerjaanController::class, 'updateStatus'])->name('update.status');
+
     //gadipake
     Route::resource('/dashboard/toko', TokoController::class)->except(['show']);
 });
