@@ -29,11 +29,13 @@
   <script src="{{ asset('leaflet-search/dist/leaflet-search.min.js') }}"></script>
 
   <script src="{{ asset('jQuery/jquery-3.6.0.js') }}"></script>
-    -->
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="{{ asset('jQuery/jquery-3.6.0.min.js') }}"></script>
+
   <!-- Leaflet Routing Machine -->
   <link rel="stylesheet" href="{{ asset('leaflet-routing-machine/dist/leaflet-routing-machine.css')}}" />
+  
   <!--link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /-->
   <script src="{{asset('leaflet-routing-machine/dist/leaflet-routing-machine.js')}}"></script>
   <script src="{{asset('leaflet-routing-machine/examples/Control.Geocoder.js')}}"></script>
@@ -63,6 +65,7 @@
             @include('newlayouts.footer')
         </div>
     </div>
+    @yield('js')
 
     <!-- General JS Scripts -->
   <script src="{{ asset('newlayouts/dist/assets/modules/jquery.min.js')}}"></script>
