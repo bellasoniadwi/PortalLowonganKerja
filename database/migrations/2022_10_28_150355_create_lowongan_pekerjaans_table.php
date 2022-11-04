@@ -25,6 +25,8 @@ class CreateLowonganPekerjaansTable extends Migration
             $table->string('deskripsi')->nullable();
             $table->string('contact_person')->nullable();
             $table->string('no_telp')->nullable();
+            $table->string('foto')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
