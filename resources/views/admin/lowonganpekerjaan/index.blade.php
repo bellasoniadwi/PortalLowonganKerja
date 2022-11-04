@@ -88,14 +88,14 @@
                                         @endcan
                                         @cannot('admin')
                                             <td class="text-center">
-                                                
+                                                <div class="form-group col-md-1">
+                                                    {{-- <a></a> --}}
+                                                </div>
                                                 <div class="form-group col-md-1">
                                                     <a href="{{ route('lowonganpekerjaan.edit', $lp->id) }}"
                                                         class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
                                                 </div>
-                                                <div class="form-group col-md-1">
-                                                    <a></a>
-                                                </div>
+                                                
                                                 <div class="form-group col-md-1">
                                                     <form action="{{ route('lowonganpekerjaan.destroy', $lp->id) }}"
                                                         method="post">
@@ -138,8 +138,8 @@
 @endsection
 @section('js')
 <!-- Toggle -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/> --}}
       
 <script>
     $(function() { 
