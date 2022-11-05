@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Portal Lowongan Pekerjaan</title>
+  <link rel="icon" type="image/png" href="{{ asset('layoutAuth/images/icons/loker.png') }}" />
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('newlayouts/dist/assets/modules/bootstrap/css/bootstrap.min.css')}}">
