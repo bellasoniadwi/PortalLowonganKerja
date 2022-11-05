@@ -56,7 +56,7 @@
                                         <td>{{ $us->no_telp }}</td>
                                         <td>{{ $us->email }}</td>
                                         <td>
-                                            @if ($us->is_block == 'no')
+                                            @if ($us->is_block == 'No')
                                                 Safe
                                             @else
                                                 Blocked
