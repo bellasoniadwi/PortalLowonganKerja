@@ -89,7 +89,7 @@ class LowonganPekerjaanController extends Controller
             'deskripsi' => 'required',
             'contact_person' => 'required',
             'no_telp' => 'required',
-            'foto' => 'required|max:5120g',
+            'foto' => 'required|max:5120',
         ]);
 
         $lowongan = new LowonganPekerjaan;
@@ -129,11 +129,10 @@ class LowonganPekerjaanController extends Controller
      */
     public function edit($id)
     {
-        $lowongan = LowonganPekerjaan::find($id);
-        $kategori = Kategori::all();
-        
-        return view('admin.lowonganpekerjaan.edit', compact('lowongan','kategori'));
-        
+            $lowongan = LowonganPekerjaan::find($id);
+            $kategori = Kategori::all();
+            
+            return view('admin.lowonganpekerjaan.edit', compact('lowongan','kategori'));
     }
 
     /**
