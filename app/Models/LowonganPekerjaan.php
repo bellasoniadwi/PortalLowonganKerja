@@ -30,6 +30,11 @@ class LowonganPekerjaan extends Model
         return $this->belongsTo('App\Models\Kategori', 'kategori_id', 'id');
     }
 
+    public function titik(): BelongsTo
+    {
+        return $this->belongsTo(Titik::class);
+    }
+
     // /**
     //  * Get the route key for the model.
     //  *
