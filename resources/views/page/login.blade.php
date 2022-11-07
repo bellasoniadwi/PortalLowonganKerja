@@ -41,6 +41,11 @@
                 </span>
                 <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
                     @csrf
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <div class="wrap-input100 validate-input" data-validate="Masukkan username">
                         <input class="input100 @error('username') is-invalid @enderror" type="username" id="username"
