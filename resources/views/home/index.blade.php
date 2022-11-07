@@ -18,11 +18,15 @@
                 var map = L.map('map').setView([<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>], 13).addLayer(osm);
 
                 map. locate({setView: true, maxZoom: 16});
-
+                
                 navigator.geolocation.getCurrentPosition(function(location) {
                     var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
-                    alert(latlng);
-                    var marker = L.marker(latlng).addTo(map);
+                    // alert(latlng);
+                    // var marker = L.marker(latlng).addTo(map);
+                    
+                    var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup();
+                    // var marker = L.marker(latlng).addTo(map).bindPopup('<button class="btn btn-info btn-sm mb-2" onclick="dariSini('+ location.coords.latitude, location.coords.longitude +')">Dari Sini</button>'+
+                    //     '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini('+ location.coords.latitude, location.coords.longitude +')">Ke Sini</button>').openPopup();
                 });
                 
                 
