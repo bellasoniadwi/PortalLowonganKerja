@@ -16,7 +16,7 @@ class TitikController extends Controller
     public function index()
     {
         return view('admin.kordinat.index',[
-            'kordinats' => Titik::get()
+            'kordinats' => Titik::where('status', true)->get()
         ]);
     }
 
