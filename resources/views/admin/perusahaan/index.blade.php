@@ -42,7 +42,7 @@
                                         <th>Contact Person</th>
                                         <th>Nomor Telepon</th>
                                         <th>Email</th>
-                                        <th>Status</th>
+                                        <th>Status Aktif</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -55,12 +55,11 @@
                                         <td>{{ $us->nama }}</td>
                                         <td>{{ $us->no_telp }}</td>
                                         <td>{{ $us->email }}</td>
-                                        <td>
-                                            @if ($us->is_block == 'No')
-                                                Safe
-                                            @else
-                                                Blocked
-                                            @endif
+                                        <td class="text-center">
+                                            <label class="custom-switch mt-2">
+                                            <input data-id="{{$us->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $us->is_active ? 'checked' : '' }}> 
+                                            <span class="custom-switch-description">Diizinkan</span>
+                                            </label>
                                         </td>
                                         <td>
                                             <div class="form-group col-md-1">
@@ -70,7 +69,7 @@
                                                 <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                             </div>
                                             <div class="form-group col-md-1">
-                                                <a href="#" class="btn btn-danger"><i
+                                                <a href="#" class="btn btn-danger show_confirm"><i
                                                         class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </td>
@@ -102,3 +101,48 @@
         </div>
     </div>
 @endsection
+@section('js')
+<!-- Toggle -->
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script>
+    $(function() { 
+            $('.toggle-class').change(function() { 
+            var is_active = $(this).prop('checked') == true ? 1 : 0;  
+            var id = $(this).data('id');  
+            $.ajax({ 
+     
+                type: "GET", 
+                dataType: "json", 
+                url: '/allowuser/update', 
+                data: {'is_active': is_active, 'id': id}, 
+                success: function(data){ 
+                console.log(data.success) 
+             } 
+          }); 
+       }) 
+    }); 
+
+    $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Yakin ingin menghapus data?`,
+              text: "Data ini akan terhapus permanen setelah anda menyetujui pesan ini",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            } else {
+                swal("Data Anda Aman!");
+            }
+          });
+      });
+ </script>
+@endsection
+

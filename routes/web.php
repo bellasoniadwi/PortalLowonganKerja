@@ -40,8 +40,8 @@ Auth::routes();
 // udah login
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+
     Route::get('/dashboard/perusahaan',[UserController::class, 'index'])->name('perusahaan');
-    
     Route::resource('/dashboard/profile', UserController::class);
     Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);
     Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
 
     //ajax
     Route::get('/status/update', [LowonganPekerjaanController::class, 'updateStatus'])->name('update.status');
+    Route::get('/allowuser/update', [UserController::class, 'updateStatus'])->name('allowuser');
 
     //gadipake
     Route::resource('/dashboard/toko', TokoController::class)->except(['show']);

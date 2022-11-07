@@ -121,4 +121,12 @@ class UserController extends Controller
     {
         //
     }
+
+    public function updateStatus(Request $request)
+    {
+        $us = User::find($request->id); 
+        $us->is_active = $request->is_active; 
+        $us->save(); 
+        return response()->json(['success'=>'Status change successfully.']); 
+    }
 }
