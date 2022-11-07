@@ -39,5 +39,17 @@ class UserSeeder extends Seeder
             'is_active' => false,
             'remember_token' => Str::random(10),
         ]);
+
+        User::create([
+            'nama' => 'Ambi',
+            'username' => 'ambi123',
+            'email' => 'ambi123@gmail.com',
+            'no_telp' => '089876543212',
+            'perusahaan' => 'Ambi Corp',
+            'email_verified_at' => now(),
+            'password' => bcrypt('ambi123'),
+            'is_active' => true,
+            'remember_token' => Str::random(10),
+        ]);
     }
 }

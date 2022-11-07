@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\LowonganPekerjaan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\TokoSeeder;
@@ -26,7 +27,9 @@ class DatabaseSeeder extends Seeder
             TokoSeeder::class,
             LayananSeeder::class,
             StatusSeeder::class,
-            TransaksiSeeder::class
+            TransaksiSeeder::class,
+            KategoriSeeder::class,
+            LowonganPekerjaanSeeder::class
         ]);
     }
 }
