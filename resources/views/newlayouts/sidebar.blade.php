@@ -40,20 +40,12 @@
         <ul class="sidebar-menu">
             <li class="menu-header"></li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Kategori
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-clipboard-list"></i><span>Kategori
                         Pekerjaan</span></a>
                 <ul class="dropdown-menu">
                     @foreach ($kategori as $kat)
                         <li><a class="nav-link" href="#">{{ $kat->nama_kategori }}</a></li>
                     @endforeach
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Jabatan</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="#">Kasir</a></li>
-                    <li><a class="nav-link" href="#">Pelayan</a></li>
-                    <li><a class="nav-link" href="b#">Tukang</a></li>
                 </ul>
             </li>
         </ul>
