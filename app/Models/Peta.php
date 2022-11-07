@@ -14,21 +14,20 @@ use phpDocumentor\Reflection\PseudoTypes\LowercaseString;
 class Peta extends Model
 {
     use HasFactory;
-
-    protected $table = 'tokos';
-    protected $guarded = 'id';
+    protected $table = 'lowongan_pekerjaans';
 
     protected $fillable = [
-        'nama',
-        'alamat',
-        'no_hp',
-        'pemilik',
-        'image',
-        'token',
+        'nama_pekerjaan',
+        'kategori_id',
+        'tipe_pekerjaan',
+        'status',
+        'foto',
+        'perusahaan',
         'x',
         'y',
-        'jam_buka',
-        'jam_tutup'
+        'deskripsi',
+        'contact_person',
+        'no_telp'
     ];
 
     /**
@@ -46,38 +45,40 @@ class Peta extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function layanan(): BelongsTo
-    {
-        return $this->belongsTo(Layanan::class);
-    }
+    // public function layanan(): BelongsTo
+    // {
+    //     return $this->belongsTo(Layanan::class);
+    // }
 
     /**
      * Get the Transaksi that owns the Toko
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function transaksi(): BelongsTo
-    {
-        return $this->belongsTo(Transaksi::class);
-    }
+    // public function transaksi(): BelongsTo
+    // {
+    //     return $this->belongsTo(Transaksi::class);
+    // }
 
     /**
      * Get the status that owns the Peta
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function status(): BelongsTo
-    {
-        return $this->belongsTo(Status::class);
-    }
+    // public function status(): BelongsTo
+    // {
+    //     return $this->belongsTo(Status::class);
+    // }
 
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search){
-            return $query->where('nama','like', '%' . $search . '%')
-            ->orWhere('pemilik','like', '%' . $search . '%')
-            ->orWhere('alamat','like', '%' . $search . '%')
-            ->orWhere('no_hp','like', '%' . $search . '%');
+            return $query->where('nama_pekerjaan','like', '%' . $search . '%')
+            ->orWhere('perusahaan','like', '%' . $search . '%')
+            ->orWhere('contact_person','like', '%' . $search . '%')
+            ->orWhere('no_telp','like', '%' . $search . '%')
+            ->orWhere('tipe_pekerjaan','like', '%' . $search . '%')
+            ->orWhere('deskripsi','like', '%' . $search . '%');
         });
     }
 }

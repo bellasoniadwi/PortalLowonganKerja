@@ -50,7 +50,7 @@
                                         <th class="text-center">Tipe Pekerjaan</th>
                                         <th class="text-center">Deskripsi</th>
                                         @cannot('admin')
-                                        <th class="text-center">Status Aktif</th>
+                                        <th class="text-center">Status</th>
                                         @endcannot
                                         @can('admin')
                                             <th class="text-center">Contact Person</th>
@@ -74,8 +74,11 @@
                                         <td class="text-center">{{ $lp->deskripsi }}</td>
                                         <!-- CheckBox Status -->
                                         @cannot('admin')
-                                        <td class="text-center"> 
+                                        <td class="text-center">
+                                            <label class="custom-switch mt-2">
                                             <input data-id="{{$lp->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $lp->status ? 'checked' : '' }}> 
+                                            <span class="custom-switch-description">Aktif</span>
+                                            </label>
                                         </td>
                                         @endcannot
 
