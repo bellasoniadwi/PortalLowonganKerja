@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peta;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class PetaController extends Controller
@@ -14,9 +15,9 @@ class PetaController extends Controller
      */
     public function index()
     {
-        return view('home.index',[
-            'kordinats' => Peta::get()
-        ]);
+        $kategori = Kategori::all(); 
+
+        return view('home.index',['kordinats' => Peta::get()], ['kategori'=>$kategori]);
     }
 
     /**
