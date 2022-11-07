@@ -43,8 +43,9 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Kategori
                         Pekerjaan</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="#">Perdagangan</a></li>
-                    <li><a class="nav-link" href="#">Industri</a></li>
+                    @foreach ($kategori as $kat)
+                        <li><a class="nav-link" href="#">{{ $kat->nama_kategori }}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li class="dropdown">
