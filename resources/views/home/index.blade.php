@@ -18,6 +18,13 @@
                 var map = L.map('map').setView([<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>], 13).addLayer(osm);
 
                 map. locate({setView: true, maxZoom: 16});
+
+                navigator.geolocation.getCurrentPosition(function(location) {
+                    var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+                    alert(latlng);
+                    var marker = L.marker(latlng).addTo(map);
+                });
+                
                 
                 // function onAccuratePositionProgress (e) {
                 //     console.log(e.accuracy);
@@ -41,10 +48,11 @@
                 //     maxWait: 15000, // defaults to 10000
                 //     desiredAccuracy: 30 // defaults to 20
                 // });
-                
+
                 var data = [
                     <?php foreach ($kordinats as $key => $value) { ?>
-                        {"lokasi":[<?= $value->x ?>, <?= $value->y ?>], "nama":"<?= $value->nama ?>"},
+                        {"lokasi":[<?= $value->x ?>, <?= $value->y ?>], "nama_pekerjaan":"<?= $value->nama_pekerjaan ?>"
+                        },
                     <?php } ?>
                 ];
 
@@ -89,10 +97,10 @@
 
                 ////////////populate map with markers from sample data
                 for(i in data) {
-                    var nama = data[i].nama;  //value searched
+                    var nama_pekerjaan = data[i].nama_pekerjaan;  //value searched
                     var lokasi = data[i].lokasi;      //position found
-                    var marker = new L.circleMarker(new L.latLng(lokasi), {title: nama});//see property searched
-                    marker.bindPopup('Nama: '+ nama );
+                    var marker = new L.circleMarker(new L.latLng(lokasi), {title: nama_pekerjaan} );//see property searched
+                    marker.bindPopup('Nama Pekerjaan: '+ nama_pekerjaan );
                     markersLayer.addLayer(marker);
                 }
 
@@ -114,21 +122,21 @@
                     shadowSize: [41, 41]
                 });
 
-                <?php foreach ($kordinats as $data) { ?>
-                   var markerLayers = L.marker([<?= $data->x ?>, <?= $data->y ?>]).addTo(map);
-
-                    L.circleMarker([ <?= $data->x ?>, <?= $data->y ?>]).addTo(map).bindPopup('<?= $data->nama ?>'+ '<br>' + '<?= $data->alamat ?>' + '<br>' + '<?= $data->no_hp ?>' +'<br> Jam Operasional : '+' <?= $data->jam_buka ?>' +' : '+'<?= $data->jam_tutup ?>' +'<br>'+'{!! \Carbon\Carbon::now()->format('H:i:s')>=$data->jam_buka&&\Carbon\Carbon::now()->format('H:i:s')<$data->jam_tutup?'<span class="text-success"> Buka</span>':'<span class=" text-danger"> Tutup</span>' !!}' +'<br><br>'+
-                        '<button class="btn btn-info btn-sm mb-2" onclick="dariSini(<?= $data->x ?>, <?= $data->y ?>)">Dari Sini</button>'+
-                        '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini(<?= $data->x ?>, <?= $data->y ?>)">Ke Sini</button>'+
-                        '<br><a href="/peta/<?= $data->id ?>" class="text-decoration-none text-dark">Selengkapnya</a>').openPopup();
-
-                    @if(\Carbon\Carbon::now()->format('H:i')>=$data->jam_buka && \Carbon\Carbon::now()->format('H:i:s')<=$data->jam_tutup)
-                        var markerLayers = L.marker([<?= $data->x ?>, <?= $data->y ?>]).addTo(map);
-                    @else
-                        var markerLayers = L.marker([<?= $data->x ?>, <?= $data->y ?>],{icon: redIcon}).addTo(map);
-                    @endif
-                <?php } ?>
             </script>
+            @foreach ($kordinats as $data)
+                <script>
+                    var markerLayers = L.marker([<?= $data->x ?>, <?= $data->y ?>]).addTo(map);
+
+                    L.circleMarker([ <?= $data->x ?>, <?= $data->y ?>]).addTo(map).bindPopup('<img width="200px" height="100px" src="{{ asset('storage/' . $data->foto) }}">'+
+                        '<br><br><pre>Pekerjaan : '+'<?= $data->nama_pekerjaan ?>     '+ '<br>Lokasi    : ' + '<?= $data->perusahaan ?>     ' + '<br>CP        : ' + '<?= $data->contact_person ?>     '+
+                        '<br>Kontak    : ' + '<?= $data->no_telp ?>' + '<br>Tipe      : ' + '<?= $data->tipe_pekerjaan ?>' + '<br>Deskripsi : ' + '<?= $data->deskripsi ?></pre>' +
+                        '<button class="btn btn-info btn-sm mb-2" onclick="dariSini(<?= $data->x ?>, <?= $data->y ?>)">Dari Sini</button>'+
+                        '        <button class="btn btn-info btn-sm mb-2" onclick="keSini(<?= $data->x ?>, <?= $data->y ?>)">Ke Sini</button>'
+                        + '<br>').openPopup();
+
+                   
+                </script>
+            @endforeach
         </div>
-    // </div>
+    </div>
 @endsection
