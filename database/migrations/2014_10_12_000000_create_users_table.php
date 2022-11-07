@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('no_telp',13);
             $table->string('perusahaan');
             $table->boolean('is_admin')->default(false);
-            $table->enum('is_block', ['Yes','No'])->default('No');
+            $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
