@@ -59,7 +59,7 @@
             @include('newlayouts.navbar')
             @include('newlayouts.sidebar')
             <div class="main-content">
-              <section class="section">
+              <section class="section" style="margin: left 5px;">
                 @yield('content')
               </section>
             </div>

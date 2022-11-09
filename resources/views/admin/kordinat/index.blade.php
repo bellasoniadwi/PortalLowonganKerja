@@ -25,8 +25,8 @@
                     // var marker = L.marker(latlng).addTo(map);
                     
                     var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup();
-                    // var marker = L.marker(latlng).addTo(map).bindPopup('<button class="btn btn-info btn-sm mb-2" onclick="dariSini('+ location.coords.latitude, location.coords.longitude +')">Dari Sini</button>'+
-                    //     '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini('+ location.coords.latitude, location.coords.longitude +')">Ke Sini</button>').openPopup();
+                    //var marker = L.marker(latlng).addTo(map).bindPopup('<button class="btn btn-info btn-sm mb-2" onclick="dariSini(\''+location.coords.latitude, location.coords.longitude+'\')">Dari Sini</button>'+
+                    //     '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini(\''+location.coords.latitude, location.coords.longitude+'\')">Ke Sini</button>').openPopup();
                 });
                 
                 
