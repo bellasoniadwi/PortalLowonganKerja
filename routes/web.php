@@ -30,6 +30,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [PetaController::class, 'index'])->name('peta.index');
 Route::get('/about', [PetaController::class, 'about'])->name('peta.about');
 Route::get('/peta/{peta}', [PetaController::class, 'show'])->name('peta.show');
+Route::get('/detail/{id}', [LowonganPekerjaanController::class, 'detail'])->name('detail');
 
 // tracking transaksi berdasarkan token
 Route::get('/transaksi', [TransaksiHomeController::class, 'index'])->name('track.index');
@@ -49,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
     Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
     Route::resource('/dashboard/transaksi', TransaksiController::class)->except(['show']);
-    Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class)->except(['show']);
+    Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class);
     Route::get('/dashboard/arsiplowonganpekerjaan', [LowonganPekerjaanController::class, 'inactive'])->name('lowonganpekerjaan.inactive');
     Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
 
