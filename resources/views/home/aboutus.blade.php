@@ -58,28 +58,28 @@
       <div class="row">
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab">Lokasi Terdekat</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab">Dilengkapi Rute</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab">Pencarian Cepat</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab">Akses mudah</a>
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab"><i class="fas fa-street-view"></i>  Lokasi Terdekat</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab"><i class="fas fa-route"></i>  Dilengkapi Rute</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab"><i class="fas fa-binoculars"></i>  Pencarian Cepat</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab"><i class="fas fa-thumbs-up"></i>  Akses mudah</a>
           </div>
         </div>
         <div class="col-8">
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><br>
                 LOKERPORTAL menampilkan ada/tidaknya lowongan pekerjaan dengan tampilan
                 berupa maps, sehingga pengguna bisa mengetahui Lowongan dengan lokasi jarak
                 yang berdekatan dengannya
             </div>
-            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><br><br>
                 LOKERPORTAL dilengkapi dengan fitur show route, sehingga mampu membantu pengguna menemukan 
                 rute lokasi lowongan pekerjaan yang dituju
             </div>
-            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"><br><br>
                 Dengan LOKERPORTAL, pengguna bisa menemukan kriteria pekerjaan yang sesuai dengan cepat melalui 
                 fitur searching yang disediakan di dalamnya
             </div>
-            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"><br>
                 LOKERPORTAL memiliki tampilan utama berupa maps yang pastinya membuat pengguna tidak asing lagi dengan
                 cara aksesnya, sehingga LOKERPORTAL memberikan kemudahan terhadap akses pengguna karena tampilan seluruh data lowongan
                 pekerjaan dikemas sedemikian ringkas
