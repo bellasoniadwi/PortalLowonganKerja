@@ -133,8 +133,10 @@
 
                     L.circleMarker([ <?= $data->x ?>, <?= $data->y ?>]).addTo(map).bindPopup('<img width="200px" height="100px" src="{{ asset('storage/' . $data->foto) }}">'+
                         '<br><br><pre>Pekerjaan : '+'<?= $data->nama_pekerjaan ?>     '+ '<br>Lokasi    : ' + '<?= $data->perusahaan ?>     ' + '<br>CP        : ' + '<?= $data->contact_person ?>     '+
-                        '<br>Kontak    : ' + '<?= $data->no_telp ?>' + '<br>Tipe      : ' + '<?= $data->tipe_pekerjaan ?>' + '<br>Deskripsi : ' + '<?= $data->deskripsi ?></pre>' +
-                        '<button class="btn btn-info btn-sm mb-2" onclick="dariSini(<?= $data->x ?>, <?= $data->y ?>)">Dari Sini</button>'+
+                        '<br>Kontak    : ' + '<?= $data->no_telp ?>' + 
+                        '<br>Gaji      : ' + '<?= $data->gaji ?></pre>' +
+                        '<a href="/detail/<?= $data->id ?>" class="text-center">Selengkapnya</a>' +
+                        '<br><br><button class="btn btn-info btn-sm mb-2" onclick="dariSini(<?= $data->x ?>, <?= $data->y ?>)">Dari Sini</button>'+
                         '        <button class="btn btn-info btn-sm mb-2" onclick="keSini(<?= $data->x ?>, <?= $data->y ?>)">Ke Sini</button>'
                         + '<br>').openPopup();
 

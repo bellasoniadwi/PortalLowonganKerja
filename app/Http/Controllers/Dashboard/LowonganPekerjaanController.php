@@ -123,9 +123,18 @@ class LowonganPekerjaanController extends Controller
      * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function show(LowonganPekerjaan $toko)
+    public function show($id)
     {
-        //
+        $lowongan = LowonganPekerjaan::find($id);
+        $kategori = Kategori::all();
+        return view('admin.kordinat.show',compact('lowongan','kategori'));
+    }
+
+    public function detail($id)
+    {
+        $lowongan = LowonganPekerjaan::find($id);
+        $kategori = Kategori::all();
+        return view('admin.kordinat.show',compact('lowongan','kategori'));
     }
 
     /**
