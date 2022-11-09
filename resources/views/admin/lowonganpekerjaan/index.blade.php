@@ -51,7 +51,9 @@
                                         <th class="text-center">Perusahaan</th>
                                         <th class="text-center">Kategori</th>
                                         <th class="text-center">Tipe Pekerjaan</th>
-                                        <th class="text-center">Deskripsi</th>
+                                        <th class="text-center">Gaji</th>
+                                        <th class="text-center">Jam Kerja</th>
+                                        <th width="300px" class="text-center">Deskripsi</th>
                                         @cannot('admin')
                                         <th class="text-center">Status</th>
                                         @endcannot
@@ -74,7 +76,9 @@
                                             <br>{{ $lp->perusahaan }}</td>
                                         <td class="text-center">{{ $lp->kategori->nama_kategori }}</td>
                                         <td class="text-center">{{ $lp->tipe_pekerjaan }}</td>
-                                        <td class="text-center">{{ $lp->deskripsi }}</td>
+                                        <td class="text-center">{{ $lp->gaji }}</td>
+                                        <td class="text-center">{{ $lp->jam_kerja }}</td>
+                                        <td class="text-center">{{ Str::limit($lp->deskripsi,25) }}</td>
                                         <!-- CheckBox Status -->
                                         @cannot('admin')
                                         <td class="text-center">
