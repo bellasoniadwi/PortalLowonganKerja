@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('peta.about') }}">ABOUT</a>
+                        <a class="nav-link @yield('about')" href="{{ route('peta.about') }}">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">LOGIN</a>

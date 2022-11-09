@@ -74,10 +74,9 @@
                 <div class="col-md-7">
                     <div class="titlepage">
                         <h2>Tentang <span class="blu">LOKERPORTAL</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit </p>
+                        <p>LOKERPORTAL adalah sebuah portal berbasis website yang mempermudah pencarian
+                            lowongan pekerjaan.
+                        </p>
                         <a class="read_more">Read More</a>
                     </div>
                 </div>
@@ -103,22 +102,24 @@
                         <div class="row">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 padding_right0">
                                 <ul class="easy">
-                                    <li><a href="#content">Kelebihan 1</a></li>
-                                    <li><a href="#content">Kelebihan 2</a></li>
-                                    <li><a href="#content">Kelebihan 3</a></li>
-                                    <li><a href="#content">Kelebihan 4</a></li>
+                                    <li><a href="#content">Lokasi Terdekat</a></li>
+                                    <li><a href="#content">Rute Lokasi</a></li>
+                                    <li><a href="#content">Pencarian Mudah</a></li>
+                                    <li><a href="#content">Penyebaran Informasi</a></li>
                                 </ul>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 padding_left0">
                                 <div class="choose_box" id="content">
                                     <i><img src="{{ asset('aboutus/images/admin.png') }}" alt="#" /></i>
-                                    <h3> Ad Minim</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum."</p>
+                                    <h3>LOKERPORTAL</h3>
+                                    <p>Beberapa alasan yang mendasari mengapa anda perlu menggunakan LOKERPORTAL<br>
+                                    1. LOKERPORTAL menampilkan ada/tidaknya lowongan pekerjaan dengan tampilan <br>
+                                       berupa maps, sehingga pengguna bisa mengetahui Lowongan dengan lokasi jarak<br>
+                                       yang berdekatan dengannya<br>
+                                    2. LOKERPORTAL mampu menampilkan rute menuju lokasi lowongan yang dituju<br>
+                                    3. Dengan LOKERPORTAL, pengguna bisa mencari pekerjaan yang sesuai dengan kriteria<br>
+                                    4. LOKERPORTAL membantu penyebaran Informasi Lowongan Pekerjaan
+                                    </p>
                                 </div>
                             </div>
                         </div>

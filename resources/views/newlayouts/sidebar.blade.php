@@ -42,11 +42,11 @@
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-clipboard-list"></i><span>Kategori
                         Pekerjaan</span></a>
-                <ul class="dropdown-menu">
+                {{-- <ul class="dropdown-menu">
                     @foreach ($kategori as $kat)
                         <li><a class="nav-link" href="#">{{ $kat->nama_kategori }}</a></li>
                     @endforeach
-                </ul>
+                </ul> --}}
             </li>
         </ul>
     </aside>
