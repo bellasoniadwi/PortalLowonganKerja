@@ -87,4 +87,8 @@ class PetaController extends Controller
     {
         //
     }
+    public function about()
+    {
+        return view('dashboard.about');
+    }
 }

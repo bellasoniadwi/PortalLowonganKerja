@@ -28,6 +28,7 @@ use App\Http\Controllers\UserController;
 
 // seluruh titik laundry
 Route::get('/', [PetaController::class, 'index'])->name('peta.index');
+Route::get('/about', [PetaController::class, 'about'])->name('peta.about');
 Route::get('/peta/{peta}', [PetaController::class, 'show'])->name('peta.show');
 
 // tracking transaksi berdasarkan token
@@ -40,6 +41,7 @@ Auth::routes();
 // udah login
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    
 
     Route::get('/dashboard/perusahaan',[UserController::class, 'index'])->name('perusahaan');
     Route::resource('/dashboard/profile', UserController::class);

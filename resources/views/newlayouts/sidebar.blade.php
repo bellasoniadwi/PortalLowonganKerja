@@ -2,7 +2,7 @@
     <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-                <a href="{{route('home')}}">Portal</a>
+                <a href="{{route('home')}}">LokerPortal</a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
                 <a href="index.html">Pl</a>
