@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- <div class="container-fluid"> --}}
-        <div id="map" style="height: 500px; margin: 50px;">
+        <div id="map" style="height: 550px; margin: 5px; margin: left 5px; ">
             <script>
                 // var map = L.map('map').setView([-0.471852, 117.160556], 13);
                 var curLocation = [0, 0];
@@ -25,8 +25,9 @@
                     // var marker = L.marker(latlng).addTo(map);
                     
                     var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup();
-                    // var marker = L.marker(latlng).addTo(map).bindPopup('<button class="btn btn-info btn-sm mb-2" onclick="dariSini('+ location.coords.latitude, location.coords.longitude +')">Dari Sini</button>'+
-                    //     '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini('+ location.coords.latitude, location.coords.longitude +')">Ke Sini</button>').openPopup();
+                    dariSini(location.coords.latitude, location.coords.longitude);
+                    //var marker = L.marker(latlng).addTo(map).bindPopup('<button class="btn btn-info btn-sm mb-2" onclick="dariSini(\''+ location.coords.latitude, location.coords.longitude +'\')" block>Dari Sini</button>'+
+                    //    '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini(\''+ location.coords.latitude, location.coords.longitude +'\')" block>Ke Sini</button>');
                 });
                 
                 
@@ -129,6 +130,8 @@
             </script>
             @foreach ($kordinats as $data)
                 <script>
+
+                    
                     var markerLayers = L.marker([<?= $data->x ?>, <?= $data->y ?>]).addTo(map);
 
                     L.circleMarker([ <?= $data->x ?>, <?= $data->y ?>]).addTo(map).bindPopup('<img width="200px" height="100px" src="{{ asset('storage/' . $data->foto) }}">'+
