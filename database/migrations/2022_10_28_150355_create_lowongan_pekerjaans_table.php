@@ -23,6 +23,8 @@ class CreateLowonganPekerjaansTable extends Migration
             $table->double('x')->nullable();
             $table->double('y')->nullable();
             $table->string('deskripsi')->nullable();
+            $table->string('gaji')->nullable();
+            $table->string('jam_kerja')->nullable();
             $table->string('contact_person')->nullable();
             $table->string('no_telp')->nullable();
             $table->string('foto')->nullable();

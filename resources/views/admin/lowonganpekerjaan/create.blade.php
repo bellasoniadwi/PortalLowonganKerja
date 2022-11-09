@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="nama_pekerjaan">Nama Pekerjaan</label>
+                                    <label for="nama_pekerjaan">Nama Pekerjaan *</label>
                                     <input type="text" class="form-control @error('nama_pekerjaan') is-invalid @enderror"
                                         id="nama_pekerjaan" name="nama_pekerjaan" placeholder="Nama Pekerjaan" required
                                         value="{{ old('nama_pekerjaan') }}" autofocus>
@@ -47,7 +47,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="contact_person">Contact Person</label>
+                                    <label for="contact_person">Contact Person *</label>
                                     <input type="text" class="form-control @error('contact_person') is-invalid @enderror"
                                         id="contact_person" name="contact_person" placeholder="Contact Person" required
                                         value="{{ auth()->user()->nama }}" readonly>
@@ -60,7 +60,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="perusahaan">Perusahaan</label>
+                                    <label for="perusahaan">Perusahaan *</label>
                                     <input type="text" class="form-control @error('perusahaan') is-invalid @enderror"
                                         id="perusahaan" name="perusahaan" placeholder="Nama Perusahaan" required
                                         value="{{ auth()->user()->perusahaan }}" readonly>
@@ -71,7 +71,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="no_telp">Nomor Telepon</label>
+                                    <label for="no_telp">Nomor Telepon *</label>
                                     <input type="number" class="form-control @error('no_telp') is-invalid @enderror"
                                         id="no_telp" name="no_telp" placeholder="Nomor Telepon" required
                                         value="{{ auth()->user()->no_telp }}" readonly>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="kategori_id">Kategori</label>
+                                    <label for="kategori_id">Kategori *</label>
                                     <select class="form-control select2 @error('kategori_id') is-invalid @enderror" 
                                         id="kategori_id" name="kategori_id" required>
                                         <option value="">--Pilih Kategori Pekerjaan--</option>
@@ -99,7 +99,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="tipe_pekerjaan">Tipe Pekerjaan</label>
+                                    <label for="tipe_pekerjaan">Tipe Pekerjaan *</label>
                                     <select class="form-control select2 @error('tipe_pekerjaan') is-invalid @enderror"
                                         id="tipe_pekerjaan" name="tipe_pekerjaan" required>
                                         <option value="">--Pilih Tipe Pekerjaan--</option>
@@ -115,9 +115,20 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="deskripsi">Deskripsi</label>
-                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-                                        id="deskripsi" name="deskripsi" placeholder="Gaji, Tunjangan, dll" required
+                                    <label for="jam_kerja">Jam Kerja *</label>
+                                    <input type="text" class="form-control @error('jam_kerja') is-invalid @enderror"
+                                        id="jam_kerja" name="jam_kerja" placeholder="6 jam/hari" required
+                                        value="{{ old('jam_kerja') }}">
+                                    @error('jam_kerja')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="deskripsi">Deskripsi *</label>
+                                    <input type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
+                                        id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
                                         value="{{ old('deskripsi') }}">
                                     @error('deskripsi')
                                         <div class="invalid-feedback">
@@ -125,8 +136,21 @@
                                         </div>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="gaji">Gaji</label>
+                                    <input type="text" class="form-control @error('gaji') is-invalid @enderror"
+                                        id="gaji" name="gaji" placeholder="Nominal gaji (kosongi jika rahasia)"
+                                        value="{{ old('gaji') }}">
+                                    @error('gaji')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                                 <div class="form-group col-md-3">
-                                    <label for="x">Latitude</label>
+                                    <label for="x">Latitude *</label>
                                     <input type="text" class="form-control @error('x') is-invalid @enderror"
                                         id="x" name="x" placeholder="Latitude" required
                                         value="{{ old('x') }}" readonly>
@@ -137,7 +161,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="y">Longitude</label>
+                                    <label for="y">Longitude *</label>
                                     <input type="text" class="form-control @error('y') is-invalid @enderror"
                                         id="y" name="y" placeholder="Longitude" required
                                         value="{{ old('y') }}" readonly>
@@ -150,7 +174,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="foto">Foto Perusahaan</label>
+                                    <label for="foto">Foto Perusahaan *</label>
                                     <input type="file" class="form-control @error('foto') is-invalid @enderror"
                                         id="foto" name="foto" placeholder="Upload Foto" required
                                         value="{{ old('foto') }}" onchange="return showPreview(this)">

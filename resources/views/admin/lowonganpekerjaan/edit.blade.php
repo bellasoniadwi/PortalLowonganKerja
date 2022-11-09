@@ -114,9 +114,20 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="deskripsi">Deskripsi</label>
-                                        <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-                                            id="deskripsi" name="deskripsi" placeholder="Deskripsi" required
+                                        <label for="jam_kerja">Jam Kerja *</label>
+                                        <input type="text" class="form-control @error('jam_kerja') is-invalid @enderror"
+                                            id="jam_kerja" name="jam_kerja" placeholder="6 jam/hari" required
+                                            value="{{ old('jam_kerja', $lowongan->jam_kerja) }}">
+                                        @error('jam_kerja')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="deskripsi">Deskripsi *</label>
+                                        <input type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
+                                            id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
                                             value="{{ old('deskripsi', $lowongan->deskripsi) }}">
                                         @error('deskripsi')
                                             <div class="invalid-feedback">
@@ -124,11 +135,24 @@
                                             </div>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="gaji">Gaji</label>
+                                        <input type="text" class="form-control @error('gaji') is-invalid @enderror"
+                                            id="gaji" name="gaji" placeholder="Nominal gaji (kosongi jika rahasia)"
+                                            value="{{ old('gaji', $lowongan->gaji) }}">
+                                        @error('gaji')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                     <div class="form-group col-md-3">
-                                        <label for="x">Latitude</label>
+                                        <label for="x">Latitude *</label>
                                         <input type="text" class="form-control @error('x') is-invalid @enderror"
                                             id="x" name="x" placeholder="Latitude" required
-                                            value="{{ old('x', $lowongan->x) }}" readonly />
+                                            value="{{ old('x', $lowongan->x) }}" readonly>
                                         @error('x')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -136,7 +160,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="y">Longitude</label>
+                                        <label for="y">Longitude *</label>
                                         <input type="text" class="form-control @error('y') is-invalid @enderror"
                                             id="y" name="y" placeholder="Longitude" required
                                             value="{{ old('y', $lowongan->y) }}" readonly>

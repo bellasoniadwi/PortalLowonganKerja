@@ -86,7 +86,8 @@ class LowonganPekerjaanController extends Controller
             'perusahaan' => 'required',
             'x' => 'required',
             'y' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'required|max:50',
+            'jam_kerja' => 'required',
             'contact_person' => 'required',
             'no_telp' => 'required',
             'foto' => 'required|max:5120',
@@ -99,6 +100,12 @@ class LowonganPekerjaanController extends Controller
         $lowongan->tipe_pekerjaan = $request->get('tipe_pekerjaan');
         $lowongan->perusahaan = $request->get('perusahaan');
         $lowongan->deskripsi = $request->get('deskripsi');
+        if ($request->get('gaji') == null) {
+            $lowongan->gaji = "-";
+        }else{
+            $lowongan->gaji = $request->get('gaji');
+        }
+        $lowongan->jam_kerja = $request->get('jam_kerja');
         $lowongan->contact_person = $request->get('contact_person');
         $lowongan->no_telp = $request->get('no_telp');
         $lowongan->x = $request->get('x');
@@ -151,24 +158,25 @@ class LowonganPekerjaanController extends Controller
             'perusahaan' => 'required',
             'x' => 'required',
             'y' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'required|max:50',
+            'jam_kerja' => 'required',
             'contact_person' => 'required',
             'no_telp' => 'required',
         ]);
 
         $lowongan = LowonganPekerjaan::where('id', $id)->first();
 
-        // if($request->file('foto')){
-        //     if($request->oldImage){
-        //         Storage::delete([$request->oldImage]);
-        //     }
-        //     $validate['foto'] = $request->file('foto')->store('images');
-        // }
         $lowongan->nama_pekerjaan = $request->get('nama_pekerjaan');
         $lowongan->kategori_id = $request->get('kategori_id');
         $lowongan->tipe_pekerjaan = $request->get('tipe_pekerjaan');
         $lowongan->perusahaan = $request->get('perusahaan');
         $lowongan->deskripsi = $request->get('deskripsi');
+        if ($request->get('gaji') == null) {
+            $lowongan->gaji = "-";
+        }else{
+            $lowongan->gaji = $request->get('gaji');
+        }
+        $lowongan->jam_kerja = $request->get('jam_kerja');
         $lowongan->contact_person = $request->get('contact_person');
         $lowongan->no_telp = $request->get('no_telp');
         $lowongan->x = $request->get('x');
