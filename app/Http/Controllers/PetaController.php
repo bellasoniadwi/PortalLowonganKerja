@@ -17,7 +17,8 @@ class PetaController extends Controller
     {
         $kategori = Kategori::all(); 
 
-        return view('home.index',['kordinats' => Peta::get()], ['kategori'=>$kategori]);
+        return view('home.index',['kordinats' => Peta::get()], 
+        ['kategori'=>$kategori]);
     }
 
     /**
@@ -89,6 +90,6 @@ class PetaController extends Controller
     }
     public function about()
     {
-        return view('dashboard.about');
+        return view('home.about');
     }
 }
