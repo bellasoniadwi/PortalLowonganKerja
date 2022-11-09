@@ -17,7 +17,7 @@ class PetaController extends Controller
     {
         $kategori = Kategori::all(); 
 
-        return view('home.index',['kordinats' => Peta::get()], 
+        return view('home.index',['kordinats' => Peta::where('status', true)->get()], 
         ['kategori'=>$kategori]);
     }
 
