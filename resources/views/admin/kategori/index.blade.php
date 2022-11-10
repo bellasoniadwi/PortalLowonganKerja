@@ -37,26 +37,26 @@
                             <table class="table table-striped" id="table-1">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Kategori</th>
-                                        <th>Action</th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Nama Kategori</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         @foreach ($kategori as $kat)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $kat->nama_kategori }}</td>
-                                        <td>
-                                            <div class="form-group col-md-1">
-                                                
-                                            </div>
-                                            <div class="form-group col-md-1">
+                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                        <td class="text-center">{{ $kat->nama_kategori }}</td>
+                                        <td class="text-center">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 text-right">
+                                                    <br>
                                                 <a href="/dashboard/kategori/{{ $kat->id }}/edit"
                                                     class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
-                                            </div>
-                                            <div class="form-group col-md-1">
+                                                </div>
+                                                <div class="form-group col-md-1 text-left">
+                                                    <br>
                                                 <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
@@ -64,6 +64,7 @@
                                                         class="btn btn-danger show_confirm" type="submit"><i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
