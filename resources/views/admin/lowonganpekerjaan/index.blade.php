@@ -38,6 +38,16 @@
                         </div>
                     @endcan
                     <div class="card-body">
+                        <div class="float-right">
+                            <form action="{{ url()->current() }}" method="GET">
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cari .." aria-label="Search" name="keyword" value="{{ request('keyword') }}" required>
+                                <div class="input-group-append">                                            
+                                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
                         @cannot('admin')
                             <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
                         @endcan

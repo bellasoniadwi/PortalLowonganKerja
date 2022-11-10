@@ -6,6 +6,7 @@ use App\Models\LowonganPekerjaan;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
 class LowonganPekerjaanController extends Controller
@@ -15,45 +16,100 @@ class LowonganPekerjaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $admin = auth()->user()->is_admin;
         if($admin)
         {
-            return view('admin.lowonganpekerjaan.index',[
-                'lowongan' => LowonganPekerjaan::where('status', true)->paginate(5)
-            ]);
+            $pagination = 5;
+            $lowongan = LowonganPekerjaan::where('status', true)
+            ->when($request->keyword, function ($query) use ($request) {
+            $query
+                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                ->orWhere('contact_person', 'like', "%{$request->keyword}%")
+                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                ->orWhere('no_telp', 'like', "%{$request->keyword}%")
+                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
+                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
+                });
+            })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.index',compact('lowongan'))
+                ->with('i', (request()->input('page', 1) - 1) * $pagination);
+
         }
 
         $user = auth()->user()->nama;
         if($user)
         {
-            return view('admin.lowonganpekerjaan.index',[
-                'lowongan' => LowonganPekerjaan::where('contact_person', '=', $user)
-                ->where('status', true)
-                ->paginate(5)
-            ]);
+            $pagination = 5;
+            $lowongan = LowonganPekerjaan::where('contact_person', '=', $user)
+            ->where('status', true)
+            ->when($request->keyword, function ($query) use ($request) {
+            $query
+                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
+                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
+                });
+            })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.index',compact('lowongan'))
+                ->with('i', (request()->input('page', 1) - 1) * $pagination);
         }
     }
 
-    public function inactive()
+    public function inactive(Request $request)
     {
         $admin = auth()->user()->is_admin;
         if($admin)
         {
-            return view('admin.lowonganpekerjaan.inactive',[
-                'lowongan' => LowonganPekerjaan::where('status', false)->paginate(5)
-            ]);
+            $pagination = 5;
+            $lowongan = LowonganPekerjaan::where('status', false)
+            ->when($request->keyword, function ($query) use ($request) {
+            $query
+                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                ->orWhere('contact_person', 'like', "%{$request->keyword}%")
+                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                ->orWhere('no_telp', 'like', "%{$request->keyword}%")
+                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
+                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
+                });
+            })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.inactive',compact('lowongan'))
+                ->with('i', (request()->input('page', 1) - 1) * $pagination);
         }
 
         $user = auth()->user()->nama;
         if($user)
         {
-            return view('admin.lowonganpekerjaan.inactive',[
-                'lowongan' => LowonganPekerjaan::where('contact_person', '=', $user)
-                ->where('status', false)
-                ->paginate(5)
-            ]);
+            $pagination = 5;
+            $lowongan = LowonganPekerjaan::where('contact_person', '=', $user)
+            ->where('status', false)
+            ->when($request->keyword, function ($query) use ($request) {
+            $query
+                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
+                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
+                });
+            })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.inactive',compact('lowongan'))
+                ->with('i', (request()->input('page', 1) - 1) * $pagination);
         }
     }
 
