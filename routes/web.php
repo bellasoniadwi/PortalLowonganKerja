@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\StatusController;
 use App\Http\Controllers\Dashboard\LayananController;
 use App\Http\Controllers\Dashboard\LowonganPekerjaanController;
 use App\Http\Controllers\Dashboard\TransaksiController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -29,12 +30,10 @@ use App\Http\Controllers\UserController;
 // seluruh titik laundry
 Route::get('/', [PetaController::class, 'index'])->name('peta.index');
 Route::get('/about', [PetaController::class, 'about'])->name('peta.about');
+Route::get('/faqs', [FaqController::class, 'user'])->name('faq.user');
 Route::get('/peta/{peta}', [PetaController::class, 'show'])->name('peta.show');
 Route::get('/detail/{id}', [LowonganPekerjaanController::class, 'detail'])->name('detail');
 
-// tracking transaksi berdasarkan token
-Route::get('/transaksi', [TransaksiHomeController::class, 'index'])->name('track.index');
-Route::get('/transaksi/{transaksi:token}', [TransaksiHomeController::class, 'show'])->name('track.show');
 
 //authenticate & authorization
 Auth::routes();
@@ -48,16 +47,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/profile', UserController::class);
     Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);  
     Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
+    Route::resource('/dashboard/faq', FaqController::class)->middleware('admin')->except(['show']);
     Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class);
     Route::get('/dashboard/arsiplowonganpekerjaan', [LowonganPekerjaanController::class, 'inactive'])->name('lowonganpekerjaan.inactive');
 
     //ajax
     Route::get('/status/update', [LowonganPekerjaanController::class, 'updateStatus'])->name('update.status');
     Route::get('/allowuser/update', [UserController::class, 'updateStatus'])->name('allowuser');
-
-    //gadipake
-    Route::resource('/dashboard/toko', TokoController::class)->except(['show']);
-    Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
-    Route::resource('/dashboard/transaksi', TransaksiController::class)->except(['show']);
-    Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
 });
