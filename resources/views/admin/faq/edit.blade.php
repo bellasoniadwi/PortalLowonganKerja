@@ -22,25 +22,27 @@
                             <h4>Form Edit Pertanyaan</h4>
                         </div>
                         <div class="card-body">
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="pertanyaan">Pertanyaan</label>
-                                    <input type="text" class="form-control @error('pertanyaan') is-invalid @enderror"
-                                        id="pertanyaan" name="pertanyaan" placeholder="Pertanyaan" required
-                                        value="{{ old('pertanyaan', $faq->pertanyaan) }}" readonly>
-                                    @error('pertanyaan')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="table-1">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Pertanyaan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">{{ $faq->pertanyaan }}</td>
+                                </tr>
+                            </tbody>
+                                </table>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="jawaban">Jawaban Anda</label>
-                                    <input type="text" class="form-control @error('jawaban') is-invalid @enderror"
+                                    <textarea type="text" class="form-control @error('jawaban') is-invalid @enderror"
                                         id="jawaban" name="jawaban" placeholder="Tuliskan jawaban atas pertanyaan yang ada" required
-                                        value="{{ old('jawaban', $faq->jawaban) }}">
+                                        value="{{ old('jawaban', $faq->jawaban) }}">{{ old('jawaban', $faq->jawaban) }}</textarea>
                                     @error('jawaban')
                                         <div class="invalid-feedback">
                                             {{ $message }}

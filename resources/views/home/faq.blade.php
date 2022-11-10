@@ -31,6 +31,7 @@
         </div>
         @endforeach
       </div>
+    <a href="{{ route('userfaq.create') }}">Tidak Menemukan Pertanyaan yang Dicari? Tanyakan Sekarang!</a>
     </div>
   </div>
 </div>

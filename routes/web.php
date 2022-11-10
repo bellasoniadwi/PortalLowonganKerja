@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\LowonganPekerjaanController;
 use App\Http\Controllers\Dashboard\TransaksiController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserFaqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::get('/about', [PetaController::class, 'about'])->name('peta.about');
 Route::get('/faqs', [FaqController::class, 'user'])->name('faq.user');
 Route::get('/peta/{peta}', [PetaController::class, 'show'])->name('peta.show');
 Route::get('/detail/{id}', [LowonganPekerjaanController::class, 'detail'])->name('detail');
+Route::resource('/userfaq', UserFaqController::class)->only(['create','store']);
 
 
 //authenticate & authorization

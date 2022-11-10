@@ -36,14 +36,14 @@
 
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link @yield('about')" href="{{ route('peta.about') }}">ABOUT</a>
+                    <li class="nav-item @yield('about')">
+                        <a class="nav-link" href="{{ route('peta.about') }}">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @yield('faq')" href="{{ route('faq.user') }}">FAQ</a>
+                    <li class="nav-item @yield('faq')">
+                        <a class="nav-link" href="{{ route('faq.user') }}">FAQ</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
