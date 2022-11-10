@@ -22,6 +22,7 @@
                 
                 @can('admin')
                 <li class="@yield('kategori')"><a class="nav-link" href="{{ route('kategori.index') }}"><i class="fas fa-clipboard-list"></i> <span>Kategori</span></a></li>
+                <li class="@yield('faqs')"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fas fa-comment-alt"></i> <span>Pertanyaan</span></a></li>
                 @endcan
             </ul>
 
