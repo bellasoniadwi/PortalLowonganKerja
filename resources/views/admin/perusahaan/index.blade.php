@@ -32,6 +32,16 @@
                     </div>
                     <div class="card-body">
                         {{-- <a href="/dashboard/toko/create" class="btn btn-primary"> + Tambah </a> --}}
+                        <div class="float-right">
+                            <form action="{{ url()->current() }}" method="GET">
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cari .." aria-label="Search" name="keyword" value="{{ request('keyword') }}" required>
+                                <div class="input-group-append">                                            
+                                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">
@@ -50,7 +60,7 @@
                                     <tr>
                                         @foreach ($user as $us)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td scope="row">{{ ++$i }}</td>
                                         <td>{{ $us->perusahaan }}</td>
                                         <td>{{ $us->nama }}</td>
                                         <td>{{ $us->no_telp }}</td>

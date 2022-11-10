@@ -46,13 +46,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard/perusahaan',[UserController::class, 'index'])->name('perusahaan');
     Route::resource('/dashboard/profile', UserController::class);
-    Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);
-    Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
+    Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);  
     Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
-    Route::resource('/dashboard/transaksi', TransaksiController::class)->except(['show']);
     Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class);
     Route::get('/dashboard/arsiplowonganpekerjaan', [LowonganPekerjaanController::class, 'inactive'])->name('lowonganpekerjaan.inactive');
-    Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
 
     //ajax
     Route::get('/status/update', [LowonganPekerjaanController::class, 'updateStatus'])->name('update.status');
@@ -60,4 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     //gadipake
     Route::resource('/dashboard/toko', TokoController::class)->except(['show']);
+    Route::resource('/dashboard/status', StatusController::class)->middleware('admin');
+    Route::resource('/dashboard/transaksi', TransaksiController::class)->except(['show']);
+    Route::resource('/dashboard/layanan', LayananController::class)->except(['show']);
 });
