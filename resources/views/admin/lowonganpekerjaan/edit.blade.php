@@ -124,12 +124,23 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="deskripsi">Deskripsi *</label>
-                                        <input type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
-                                            id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
-                                            value="{{ old('deskripsi', $lowongan->deskripsi) }}">
-                                        @error('deskripsi')
+                                    <div class="form-group col-md-3">
+                                        <label for="x">Latitude *</label>
+                                        <input type="text" class="form-control @error('x') is-invalid @enderror"
+                                            id="x" name="x" placeholder="Latitude" required
+                                            value="{{ old('x', $lowongan->x) }}" readonly>
+                                        @error('x')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="y">Longitude *</label>
+                                        <input type="text" class="form-control @error('y') is-invalid @enderror"
+                                            id="y" name="y" placeholder="Longitude" required
+                                            value="{{ old('y', $lowongan->y) }}" readonly>
+                                        @error('y')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -148,23 +159,12 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="x">Latitude *</label>
-                                        <input type="text" class="form-control @error('x') is-invalid @enderror"
-                                            id="x" name="x" placeholder="Latitude" required
-                                            value="{{ old('x', $lowongan->x) }}" readonly>
-                                        @error('x')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="y">Longitude *</label>
-                                        <input type="text" class="form-control @error('y') is-invalid @enderror"
-                                            id="y" name="y" placeholder="Longitude" required
-                                            value="{{ old('y', $lowongan->y) }}" readonly>
-                                        @error('y')
+                                    <div class="form-group col-md-6">
+                                        <label for="deskripsi">Deskripsi *</label>
+                                        <textarea type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
+                                            id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
+                                            value="{{ old('deskripsi', $lowongan->deskripsi) }}">{{ old('deskripsi', $lowongan->deskripsi) }}</textarea>
+                                        @error('deskripsi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
