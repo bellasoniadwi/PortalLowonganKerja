@@ -2,14 +2,10 @@
 
 @section('faq', 'active')
 
+@section('icon', 'far fa-comments')
+@section('judul', 'FREQUENTLY ASKED QUESTION')
+
 @section('content')
-<div class="section-header">
-    {{-- <h1>DataTables</h1> --}}
-    <div class="section-header-breadcrumb">
-        {{-- <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div> --}}
-        <div class="breadcrumb-item"><a><i class="fas fa-address-book"></i> FAQ</a></div>
-    </div>
-</div>
 <div class="section-body">
     <h2 class="section-title">List Pertanyaan yang Mungkin Membantu Anda</h2>
 <div class="row">

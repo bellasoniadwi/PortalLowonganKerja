@@ -2,14 +2,10 @@
 
 @section('about', 'active')
 
+@section('icon', 'far fa-address-card')
+@section('judul', 'ABOUT US')
+
 @section('content')
-<div class="section-header">
-    {{-- <h1>DataTables</h1> --}}
-    <div class="section-header-breadcrumb">
-        {{-- <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div> --}}
-        <div class="breadcrumb-item"><a><i class="fas fa-address-book"></i> About Us</a></div>
-    </div>
-</div>
 <div class="row">
     <div class="col-12 col-sm-12 col-lg-12">
       <div class="card author-box card-primary">
