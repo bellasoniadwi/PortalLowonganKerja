@@ -30,36 +30,6 @@
         </ul>
     </nav>
 @endauth
-@guest
-    <div class="card-body">
-        <nav class="navbar navbar-expand-lg bg-primary">
-
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item @yield('maps')">
-                        <a class="nav-link" href="/">MAPS</a>
-                    </li>
-                    <li class="nav-item @yield('about')">
-                        <a class="nav-link" href="{{ route('peta.about') }}">ABOUT</a>
-                    </li>
-                    <li class="nav-item @yield('faq')">
-                        <a class="nav-link" href="{{ route('faq.user') }}">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
-                    </li>
-                </ul>
-                <span class="navbar-text">
-                    <form class="form-inline">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-dark" type="submit">Search</button>
-                    </form>
-                </span>
-            </div>
-        </nav>
-    </div>
-@endguest
-
 @section('js')
 {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
@@ -88,3 +58,42 @@
   
 </script>
 @endsection
+
+@guest
+<nav class="navbar navbar-expand-lg main-navbar">
+    <a href="/" class="navbar-brand sidebar-gone-hide">LOKERPORTAL</a>
+    <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+    <div class="nav-collapse">
+      <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
+        <i class="fas fa-ellipsis-v"></i>
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item @yield('maps')"><a href="/" class="nav-link">MAPS</a></li>
+        <li class="nav-item @yield('about')"><a href="{{ route('peta.about') }}" class="nav-link">ABOUT</a></li>
+        <li class="nav-item @yield('faq')"><a href="{{ route('faq.user') }}" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">LOGIN</a></li>
+      </ul>
+    </div>
+    <form class="form-inline ml-auto">
+      <ul class="navbar-nav">
+        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+      </ul>
+      <div class="search-element">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+  </nav>
+
+  <nav class="navbar navbar-secondary navbar-expand-lg">
+    <div class="container">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link"><i class="@yield('icon')"></i><span>@yield('judul')</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+@endguest
+
