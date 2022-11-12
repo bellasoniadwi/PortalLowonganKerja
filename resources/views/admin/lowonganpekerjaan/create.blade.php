@@ -126,11 +126,11 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="deskripsi">Deskripsi *</label>
-                                    <input type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
-                                        id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
-                                        value="{{ old('deskripsi') }}">
-                                    @error('deskripsi')
+                                    <label for="foto">Foto Perusahaan *</label>
+                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
+                                        id="foto" name="foto" placeholder="Upload Foto" required
+                                        value="{{ old('foto') }}" onchange="return showPreview(this)">
+                                    @error('foto')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -174,11 +174,11 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="foto">Foto Perusahaan *</label>
-                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                        id="foto" name="foto" placeholder="Upload Foto" required
-                                        value="{{ old('foto') }}" onchange="return showPreview(this)">
-                                    @error('foto')
+                                    <label for="deskripsi">Deskripsi *</label>
+                                    <textarea type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
+                                        id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
+                                        value="{{ old('deskripsi') }}"></textarea>
+                                    @error('deskripsi')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
