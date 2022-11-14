@@ -61,7 +61,7 @@
                         </div>
                         <p>{{ Str::limit($lp->deskripsi) }}</p>
                         <div class="article-cta">
-                            <a href="{{ route('lowonganpekerjaan.detail', $lp->id) }}">Selengkapnya <i
+                            <a href="{{ route('lowonganpekerjaan.detail_user', $lp->id) }}">Selengkapnya <i
                                     class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
