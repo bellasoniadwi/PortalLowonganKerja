@@ -69,4 +69,9 @@
             </div>
         @endforeach
     </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+          {{ $lowongan->links() }}
+      </div>
+  </div>
 @endsection

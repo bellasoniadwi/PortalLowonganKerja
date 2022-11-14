@@ -16,7 +16,7 @@ class TrackingController extends Controller
      */
     public function index(Request $request)
     {
-        $pagination = 10;
+        $pagination = 12;
         $kategori = Kategori::all();
         $sorted = $kategori->SortBy('nama_kategori');
 
