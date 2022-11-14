@@ -2,14 +2,10 @@
 
 @section('faq', 'active')
 
+@section('icon', 'fas fa-pencil-ruler')
+@section('judul', 'TULIS PERTANYAAN')
+
 @section('content')
-<div class="section-header">
-    {{-- <h1>DataTables</h1> --}}
-    <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item"><a href="{{ route('faq.user') }}"><i class="fas fa-address-book"></i> FAQ</a></div>
-        <div class="breadcrumb-item"><a><i class="fas fa-pencil-ruler"></i> Tulis Pertanyaan</a></div>
-    </div>
-</div>
 <div class="section-body">
   <div class="row">
       <div class="col-12 col-md-12 col-lg-12">
