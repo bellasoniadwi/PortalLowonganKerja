@@ -6,6 +6,7 @@ use App\Models\LowonganPekerjaan;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Titik;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
@@ -136,37 +137,37 @@ class LowonganPekerjaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_pekerjaan' => 'required',
+            'nama_pekerjaan' => 'required|string',
             'kategori_id' => 'required',
             'tipe_pekerjaan' => 'required',
             'perusahaan' => 'required',
             'x' => 'required',
             'y' => 'required',
-            'deskripsi' => 'required|max:100',
+            'deskripsi' => 'required|max:100|min:25',
             'jam_kerja' => 'required',
             'contact_person' => 'required',
             'no_telp' => 'required',
-            'foto' => 'required|max:5120',
+            'foto' => 'required|mimes:jpg,jpeg,png|max:5120',
         ]);
 
-        $lowongan = new LowonganPekerjaan;
+        $lowongan = new LowonganPekerjaan();
 
-        $lowongan->nama_pekerjaan = $request->get('nama_pekerjaan');
-        $lowongan->kategori_id = $request->get('kategori_id');
-        $lowongan->tipe_pekerjaan = $request->get('tipe_pekerjaan');
-        $lowongan->perusahaan = $request->get('perusahaan');
-        $lowongan->deskripsi = $request->get('deskripsi');
-        if ($request->get('gaji') == null) {
+        $lowongan->nama_pekerjaan = $request->nama_pekerjaan;
+        $lowongan->kategori_id = $request->kategori_id;
+        $lowongan->tipe_pekerjaan = $request->tipe_pekerjaan;
+        $lowongan->perusahaan = $request->perusahaan;
+        $lowongan->deskripsi = $request->deskripsi;
+        if ($request->gaji == null) {
             $lowongan->gaji = "-";
         }else{
-            $lowongan->gaji = $request->get('gaji');
+            $lowongan->gaji = $request->gaji;
         }
-        $lowongan->jam_kerja = $request->get('jam_kerja');
-        $lowongan->contact_person = $request->get('contact_person');
-        $lowongan->no_telp = $request->get('no_telp');
-        $lowongan->x = $request->get('x');
-        $lowongan->y = $request->get('y');
-        $lowongan->foto = $request->file('foto')->store('images','public');  
+        $lowongan->jam_kerja = $request->jam_kerja;
+        $lowongan->contact_person = $request->contact_person;
+        $lowongan->no_telp = $request->no_telp;
+        $lowongan->x = $request->x;
+        $lowongan->y = $request->y;
+        $lowongan->foto = $request->file('foto')->store('images');  
         
         
         $lowongan->save();
@@ -190,7 +191,8 @@ class LowonganPekerjaanController extends Controller
     {
         $lowongan = LowonganPekerjaan::find($id);
         $kategori = Kategori::all();
-        return view('admin.kordinat.show',compact('lowongan','kategori'));
+        $kordinats = Titik::where('id', $id)->get();
+        return view('admin.kordinat.show',compact('lowongan','kategori', 'kordinats'));
     }
 
     /**
@@ -223,7 +225,7 @@ class LowonganPekerjaanController extends Controller
             'perusahaan' => 'required',
             'x' => 'required',
             'y' => 'required',
-            'deskripsi' => 'required|max:100',
+            'deskripsi' => 'required|max:100|min:25',
             'jam_kerja' => 'required',
             'contact_person' => 'required',
             'no_telp' => 'required',
@@ -250,7 +252,7 @@ class LowonganPekerjaanController extends Controller
             if ($lowongan->foto && file_exists(storage_path('app/public/' . $lowongan->gambar))) {
                 Storage::delete('public/' . $lowongan->foto);
             }
-            $image_name = $request->file('foto')->store('images', 'public');
+            $image_name = $request->file('foto')->store('images');
             $lowongan->foto = $image_name;
         }
 
