@@ -195,6 +195,14 @@ class LowonganPekerjaanController extends Controller
         return view('admin.kordinat.show',compact('lowongan','kategori', 'kordinats'));
     }
 
+    public function detail_user($id)
+    {
+        $lowongan = LowonganPekerjaan::find($id);
+        $kategori = Kategori::all();
+        $kordinats = Titik::where('id', $id)->get();
+        return view('home.show',compact('lowongan','kategori', 'kordinats'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

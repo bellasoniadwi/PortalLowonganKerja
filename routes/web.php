@@ -35,6 +35,7 @@ Route::get('/about', [PetaController::class, 'about'])->name('peta.about');
 Route::get('/faqs', [FaqController::class, 'user'])->name('faq.user');
 Route::get('/peta/{peta}', [PetaController::class, 'show'])->name('peta.show');
 Route::get('/detail/{id}', [LowonganPekerjaanController::class, 'detail'])->name('lowonganpekerjaan.detail');
+Route::get('/show/{id}', [LowonganPekerjaanController::class, 'detail_user'])->name('lowonganpekerjaan.detail_user');
 Route::resource('/userfaq', UserFaqController::class)->only(['create','store']);
 Route::resource('/tracking', TrackingController::class)->only(['index']);
 
