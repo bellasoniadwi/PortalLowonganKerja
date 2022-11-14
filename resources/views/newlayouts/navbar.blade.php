@@ -75,13 +75,7 @@
       </ul>
     </div>
     <form class="form-inline ml-auto">
-      <ul class="navbar-nav">
-        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
-      </ul>
-      <div class="search-element">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-      </div>
+      <a href="{{ route('tracking.index') }}" class="nav-link"><i class="fa fa-search" aria-hidden="true"></i>  SEARCH</a>
     </form>
   </nav>
 
