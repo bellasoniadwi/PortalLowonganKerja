@@ -23,7 +23,7 @@
                                 <div class="alert-body">
                                     <div class="alert-title"><strong>Whoops!</strong> There were some problems with your input.</div>
                                     <ul>
-                                        @foreach ($errors->all as $error)
+                                        @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
                                     </ul>
@@ -177,7 +177,7 @@
                                     <label for="deskripsi">Deskripsi *</label>
                                     <textarea type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
                                         id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
-                                        value="{{ old('deskripsi') }}"></textarea>
+                                        value="{{ old('deskripsi') }}">{{ old('deskripsi') }}</textarea>
                                     @error('deskripsi')
                                         <div class="invalid-feedback">
                                             {{ $message }}
