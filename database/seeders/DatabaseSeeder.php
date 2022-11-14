@@ -10,6 +10,7 @@ use Database\Seeders\UserSeeder;
 use Database\Seeders\StatusSeeder;
 use Database\Seeders\LayananSeeder;
 use Database\Seeders\TransaksiSeeder;
+use Database\Seeders\FaqSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,7 +30,8 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             TransaksiSeeder::class,
             KategoriSeeder::class,
-            LowonganPekerjaanSeeder::class
+            LowonganPekerjaanSeeder::class,
+            FaqSeeder::class
         ]);
     }
 }
