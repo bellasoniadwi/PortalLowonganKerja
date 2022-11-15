@@ -5,9 +5,9 @@
 @section('content')
     <div class="section-header">
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-          <div class="breadcrumb-item"><a href="{{ route('faq.index') }}">Faq</a></div>
-            <div class="breadcrumb-item"><a href="/dashboard/faq/{{ $faq->id }}/edit">Edit Faq</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('faq.index') }}"><i class="fas fa-comment-alt"></i> FAQ</a></div>
+            <div class="breadcrumb-item"><a href="/dashboard/faq/{{ $faq->id }}/edit"><i class="fas fa-pencil-ruler"></i> Edit FAQ</a></div>
         </div>
     </div>
 

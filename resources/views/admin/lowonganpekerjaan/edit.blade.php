@@ -6,11 +6,9 @@
     @if (Auth::user()->nama == $lowongan->contact_person)
         <div class="section-header">
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}">Lowongan Pekerjaan</a></div>
-                <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}/edit">Edit Lowongan
-                        Pekerjaan</a>
-                </div>
+                <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard </a></div>
+                <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i> Lowongan Pekerjaan </a></div>
+                <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}/edit"><i class="fas fa-pencil-ruler"></i> Edit Lowongan Pekerjaan </a></div>
             </div>
         </div>
 

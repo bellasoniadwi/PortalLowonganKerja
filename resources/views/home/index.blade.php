@@ -5,9 +5,10 @@
 @section('icon', 'fas fa-map-marked-alt')
 @section('judul', 'MAPS LOWONGAN')
 
+
 @section('content')
 
-    <div id="map" style="height: 550px; margin: 5px; margin: left 5px; ">
+    <div id="map" class="map-new-look">
         <script>
             // var map = L.map('map').setView([-0.471852, 117.160556], 13);
             var curLocation = [0, 0];

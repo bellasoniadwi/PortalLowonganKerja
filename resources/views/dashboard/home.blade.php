@@ -5,8 +5,11 @@
 @section('content')
     <!-- Main Content -->
     <div class="section-header">
-        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
+        </div>
     </div>
+    
     <div class="row">
         {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
