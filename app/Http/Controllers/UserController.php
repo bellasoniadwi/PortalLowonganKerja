@@ -15,14 +15,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $admin = auth()->user()->is_admin;
         if($admin)
         {
-            return view('admin.perusahaan.index',[
-                'user' => User::paginate(5)
-            ]);
+            $pagination = 5;
+            $user = User::when($request->keyword, function ($query) use ($request) {
+            $query
+                ->where('perusahaan', 'like', "%{$request->keyword}%")
+                ->orWhere('nama', 'like', "%{$request->keyword}%")
+                ->orWhere('no_telp', 'like', "%{$request->keyword}%")
+                ->orWhere('email', 'like', "%{$request->keyword}%");
+        })->orderBy('perusahaan')->paginate($pagination);
+            return view('admin.perusahaan.index',compact('user'))
+            ->with('i', (request()->input('page', 1) - 1) * $pagination);
         }
     }
 

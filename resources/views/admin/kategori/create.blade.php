@@ -5,9 +5,11 @@
 @section('content')
     <div class="section-header">
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}">Kategori</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('kategori.create') }}">Tambah Kategori</a></div>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}"><i class="fas fa-clipboard-list"></i> Kategori</a></div>
+                <div class="breadcrumb-item"><a href="{{ route('kategori.create') }}"><i class="fas fa-folder-plus"></i> Tambah Kategori</a></div>
+            </div>
         </div>
     </div>
 

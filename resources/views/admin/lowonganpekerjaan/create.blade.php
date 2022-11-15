@@ -5,9 +5,9 @@
 @section('content')
     <div class="section-header">
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}">Lowongan Pekerjaan</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.create') }}">Tambah Lowongan Pekerjaan</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i> Lowongan Pekerjaan</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.create') }}"><i class="fas fa-folder-plus"></i> Tambah Lowongan Pekerjaan</a></div>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
                                 <div class="alert-body">
                                     <div class="alert-title"><strong>Whoops!</strong> There were some problems with your input.</div>
                                     <ul>
-                                        @foreach ($errors->all as $error)
+                                        @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
                                     </ul>
@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="nama_pekerjaan">Nama Pekerjaan</label>
+                                    <label for="nama_pekerjaan">Nama Pekerjaan *</label>
                                     <input type="text" class="form-control @error('nama_pekerjaan') is-invalid @enderror"
                                         id="nama_pekerjaan" name="nama_pekerjaan" placeholder="Nama Pekerjaan" required
                                         value="{{ old('nama_pekerjaan') }}" autofocus>
@@ -47,7 +47,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="contact_person">Contact Person</label>
+                                    <label for="contact_person">Contact Person *</label>
                                     <input type="text" class="form-control @error('contact_person') is-invalid @enderror"
                                         id="contact_person" name="contact_person" placeholder="Contact Person" required
                                         value="{{ auth()->user()->nama }}" readonly>
@@ -60,7 +60,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="perusahaan">Perusahaan</label>
+                                    <label for="perusahaan">Perusahaan *</label>
                                     <input type="text" class="form-control @error('perusahaan') is-invalid @enderror"
                                         id="perusahaan" name="perusahaan" placeholder="Nama Perusahaan" required
                                         value="{{ auth()->user()->perusahaan }}" readonly>
@@ -71,7 +71,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="no_telp">Nomor Telepon</label>
+                                    <label for="no_telp">Nomor Telepon *</label>
                                     <input type="number" class="form-control @error('no_telp') is-invalid @enderror"
                                         id="no_telp" name="no_telp" placeholder="Nomor Telepon" required
                                         value="{{ auth()->user()->no_telp }}" readonly>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="kategori_id">Kategori</label>
+                                    <label for="kategori_id">Kategori *</label>
                                     <select class="form-control select2 @error('kategori_id') is-invalid @enderror" 
                                         id="kategori_id" name="kategori_id" required>
                                         <option value="">--Pilih Kategori Pekerjaan--</option>
@@ -99,7 +99,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="tipe_pekerjaan">Tipe Pekerjaan</label>
+                                    <label for="tipe_pekerjaan">Tipe Pekerjaan *</label>
                                     <select class="form-control select2 @error('tipe_pekerjaan') is-invalid @enderror"
                                         id="tipe_pekerjaan" name="tipe_pekerjaan" required>
                                         <option value="">--Pilih Tipe Pekerjaan--</option>
@@ -115,18 +115,42 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="deskripsi">Deskripsi</label>
-                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-                                        id="deskripsi" name="deskripsi" placeholder="Gaji, Tunjangan, dll" required
-                                        value="{{ old('deskripsi') }}">
-                                    @error('deskripsi')
+                                    <label for="jam_kerja">Jam Kerja *</label>
+                                    <input type="text" class="form-control @error('jam_kerja') is-invalid @enderror"
+                                        id="jam_kerja" name="jam_kerja" placeholder="6 jam/hari" required
+                                        value="{{ old('jam_kerja') }}">
+                                    @error('jam_kerja')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="foto">Foto Perusahaan *</label>
+                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
+                                        id="foto" name="foto" placeholder="Upload Foto" required
+                                        value="{{ old('foto') }}" onchange="return showPreview(this)">
+                                    @error('foto')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="gaji">Gaji</label>
+                                    <input type="text" class="form-control @error('gaji') is-invalid @enderror"
+                                        id="gaji" name="gaji" placeholder="Nominal gaji (kosongi jika rahasia)"
+                                        value="{{ old('gaji') }}">
+                                    @error('gaji')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="x">Latitude</label>
+                                    <label for="x">Latitude *</label>
                                     <input type="text" class="form-control @error('x') is-invalid @enderror"
                                         id="x" name="x" placeholder="Latitude" required
                                         value="{{ old('x') }}" readonly>
@@ -137,7 +161,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="y">Longitude</label>
+                                    <label for="y">Longitude *</label>
                                     <input type="text" class="form-control @error('y') is-invalid @enderror"
                                         id="y" name="y" placeholder="Longitude" required
                                         value="{{ old('y') }}" readonly>
@@ -150,11 +174,11 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="foto">Foto Perusahaan</label>
-                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                        id="foto" name="foto" placeholder="Upload Foto" required
-                                        value="{{ old('foto') }}" onchange="return showPreview(this)">
-                                    @error('foto')
+                                    <label for="deskripsi">Deskripsi *</label>
+                                    <textarea type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
+                                        id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
+                                        value="{{ old('deskripsi') }}">{{ old('deskripsi') }}</textarea>
+                                    @error('deskripsi')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -191,7 +215,7 @@
 
                                         var curLocation = [0, 0];
                                         if (curLocation[0] == 0 && curLocation[1] == 0) {
-                                            curLocation = [-7.9440167, 112.6151627];
+                                            curLocation = [<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>];
                                         }
 
                                         var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -201,25 +225,35 @@
                                                 attribution: osmAttrib
                                             });
 
-                                        var map = L.map('map').setView([-7.9439407, 112.6150103], 17).addLayer(osm);
+                                        var map = L.map('map').setView([<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>], 13).addLayer(osm);
 
-                                        map.attributionControl.setPrefix(false);
-                                        var marker = new L.marker(curLocation, {
+                                        map.locate({
+                                            setView: true,
+                                            maxZoom: 16
+                                        });
+
+                                        //map.attributionControl.setPrefix(false);
+
+                                        navigator.geolocation.getCurrentPosition(function(location) {
+                                            var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+
+                                            var marker = L.marker(latlng, {
                                             draggable: 'true'
-                                        });
+                                            }).addTo(map).bindPopup('Lokasi Saya').openPopup();
 
-                                        marker.on('dragend', function(event) {
-                                            var position = marker.getLatLng();
-                                            marker.setLatLng(position, {
-                                                draggable: 'true'
-                                            }).bindPopup(position).update();
-                                            //id (longitude atau latitude) pada blade html akan dikenali sebagai identitas tempat untuk menempatkan hasil marker pada peta
-                                            $("#x").val(position.lat);
-                                            $("#y").val(position.lng).keyup();
-                                        });
+                                            marker.on('dragend', function(event) {
+                                                var position = marker.getLatLng();
+                                                marker.setLatLng(position, {
+                                                    draggable: 'true'
+                                                }).bindPopup(position).update();
+                                                //id (longitude atau latitude) pada blade html akan dikenali sebagai identitas tempat untuk menempatkan hasil marker pada peta
+                                                $("#x").val(position.lat);
+                                                $("#y").val(position.lng).keyup();
+                                            });
 
-                                        //Nilai longitude dan latitude berubah seiring berubahnya posisi marker
-                                        $("#x, #y").change(function() {
+                                            //Nilai longitude dan latitude berubah seiring berubahnya posisi marker
+
+                                            $("#x, #y").change(function() {
                                             var position = [parseInt($("#x").val()), parseInt($("#y").val())];
                                             marker.setLatLng(position, {
                                                 draggable: 'true'
@@ -227,6 +261,14 @@
                                             map.panTo(position);
                                         });
                                         map.addLayer(marker);
+
+                                        });
+                                        
+
+                                        
+
+                                        
+                                        
                                     </script>
                                 </div>
                             </div>

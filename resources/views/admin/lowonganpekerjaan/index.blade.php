@@ -38,6 +38,16 @@
                         </div>
                     @endcan
                     <div class="card-body">
+                        <div class="float-right">
+                            <form action="{{ url()->current() }}" method="GET">
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cari .." aria-label="Search" name="keyword" value="{{ request('keyword') }}" required>
+                                <div class="input-group-append">                                            
+                                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
                         @cannot('admin')
                             <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
                         @endcan
@@ -51,7 +61,9 @@
                                         <th class="text-center">Perusahaan</th>
                                         <th class="text-center">Kategori</th>
                                         <th class="text-center">Tipe Pekerjaan</th>
-                                        <th class="text-center">Deskripsi</th>
+                                        <th class="text-center">Gaji</th>
+                                        <th class="text-center">Jam Kerja</th>
+                                        <th width="300px" class="text-center">Deskripsi</th>
                                         @cannot('admin')
                                         <th class="text-center">Status</th>
                                         @endcannot
@@ -74,7 +86,9 @@
                                             <br>{{ $lp->perusahaan }}</td>
                                         <td class="text-center">{{ $lp->kategori->nama_kategori }}</td>
                                         <td class="text-center">{{ $lp->tipe_pekerjaan }}</td>
-                                        <td class="text-center">{{ $lp->deskripsi }}</td>
+                                        <td class="text-center">{{ $lp->gaji }}</td>
+                                        <td class="text-center">{{ $lp->jam_kerja }}</td>
+                                        <td class="text-center">{{ Str::limit($lp->deskripsi,25) }}</td>
                                         <!-- CheckBox Status -->
                                         @cannot('admin')
                                         <td class="text-center">

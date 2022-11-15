@@ -12,7 +12,7 @@
                 <li class="@yield('home')"><a class="nav-link" href="{{route('home')}}"><i class="fas fa-desktop"></i> <span>Dashboard</span></a></li>
 
                 <li class="menu-header">Main Menu</li>
-                <li class="@yield('peta')"><a class="nav-link" href="{{ route('titik.index') }}"><i class="fas fa-map-marker-alt"></i> <span>Peta</span></a></li>
+                <li class="@yield('maps')"><a class="nav-link" href="{{ route('titik.index') }}"><i class="fas fa-map-marker-alt"></i> <span>Peta</span></a></li>
                 @can('admin')
                 <li class="@yield('perusahaan')"><a class="nav-link" href="{{ route('perusahaan') }}"><i class="fas fa-city"></i> <span>Perusahaan</span></a></li>
                 @endcan
@@ -22,33 +22,10 @@
                 
                 @can('admin')
                 <li class="@yield('kategori')"><a class="nav-link" href="{{ route('kategori.index') }}"><i class="fas fa-clipboard-list"></i> <span>Kategori</span></a></li>
+                <li class="@yield('faqs')"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fas fa-comment-alt"></i> <span>Pertanyaan</span></a></li>
                 @endcan
             </ul>
 
         </aside>
     </div>
 @endauth
-@guest
-<div class="main-sidebar sidebar-style-2">
-    <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <a href="index.html">Portal</a>
-        </div>
-        <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">Pl</a>
-        </div>
-        <ul class="sidebar-menu">
-            <li class="menu-header"></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-clipboard-list"></i><span>Kategori
-                        Pekerjaan</span></a>
-                <ul class="dropdown-menu">
-                    @foreach ($kategori as $kat)
-                        <li><a class="nav-link" href="#">{{ $kat->nama_kategori }}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-        </ul>
-    </aside>
-</div>
-@endguest

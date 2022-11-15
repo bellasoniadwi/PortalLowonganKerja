@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peta;
-use App\Models\Kategori;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
-class PetaController extends Controller
+class UserFaqController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,7 @@ class PetaController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::all(); 
-
-        return view('home.index',['kordinats' => Peta::where('status', true)->get()], 
-        ['kategori'=>$kategori]);
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class PetaController extends Controller
      */
     public function create()
     {
-        //
+        return view('home.userfaq');
     }
 
     /**
@@ -39,29 +35,33 @@ class PetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'pertanyaan' => 'required'
+        ]);
+
+        Faq::create($validate);
+
+        return redirect('/faqs')->with('success','Terima Kasih Telah Memberikan Pertanyaan. Pertanyaan Akan Ditampilkan Ketika Admin Telah Menjawab');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Peta $peta)
+    public function show($id)
     {
-        return view('home.show',[
-            'maps' => Peta::where('id','=', $peta->id)->get()
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Peta $peta)
+    public function edit($id)
     {
         //
     }
@@ -70,10 +70,10 @@ class PetaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Peta $peta)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,15 +81,11 @@ class PetaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Peta $peta)
+    public function destroy($id)
     {
         //
-    }
-    public function about()
-    {
-        return view('home.aboutus');
     }
 }

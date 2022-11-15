@@ -22,6 +22,8 @@ class LowonganPekerjaan extends Model
         'x',
         'y',
         'deskripsi',
+        'gaji',
+        'jam_kerja',
         'contact_person',
         'no_telp'
     ];

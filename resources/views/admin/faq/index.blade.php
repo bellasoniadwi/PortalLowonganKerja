@@ -1,66 +1,72 @@
 @extends('newlayouts.main')
 
-@section('kategori', 'active')
+@section('faqs', 'active')
 
 @section('content')
     <div class="section-header">
         {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}"><i class="fas fa-clipboard-list"></i> Kategori</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('faq.index') }}"><i class="fas fa-comment-alt"></i> FAQ</a></div>
         </div>
     </div>
 
     <div class="section-body">
-        {{-- <p class="section-lead">
-            @if (session('success'))
-                <div class="alert alert-success alert-has-icon">
-                    <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
-                    <div class="alert-body">
-                        <div class="alert-title">Success</div>
-                        {{ session('success') }}
-                    </div>
-                </div>
-            @endif
-        </p> --}}
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>List Kategori</h4>
+                        <h4>List Pertanyaan</h4>
                     </div>
                     <div class="card-body">
-                        <a href="/dashboard/kategori/create" class="btn btn-primary"> + Tambah </a>
+                        {{-- <a href="/dashboard/kategori/create" class="btn btn-primary"> + Tambah </a> --}}
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">
                                 <thead>
                                     <tr>
                                         <th class="text-center">No</th>
-                                        <th class="text-center">Nama Kategori</th>
+                                        <th class="text-center">Pertanyaan</th>
+                                        <th class="text-center">Jawaban</th>
+                                        <th class="text-center">Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        @foreach ($kategori as $kat)
+                                        @foreach ($faq as $fq)
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td class="text-center">{{ $kat->nama_kategori }}</td>
+                                        <td class="text-center">{{ Str::limit($fq->pertanyaan, 50) }}</td>
+                                        <td class="text-center">
+                                            @if ($fq->jawaban == null)
+                                            <a href="/dashboard/faq/{{ $fq->id }}/edit"
+                                                class="btn btn-primary">Jawab</a>
+                                            @else
+                                                {{ Str::limit($fq->jawaban, 50) }}
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if ($fq->jawaban == null)
+                                                <div class="badge badge-warning">Belum Terjawab</div>
+                                            @else
+                                                <div class="badge badge-success">Terjawab</div>
+                                            @endif
+                                        </td>
                                         <td class="text-center">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6 text-right">
                                                     <br>
-                                                <a href="/dashboard/kategori/{{ $kat->id }}/edit"
+                                                <a href="/dashboard/faq/{{ $fq->id }}/edit"
                                                     class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
                                                 </div>
                                                 <div class="form-group col-md-1 text-left">
                                                     <br>
-                                                <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
+                                                <form action="/dashboard/faq/{{ $fq->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button href="/dashboard/kategori/{{ $kat->id }}"
+                                                    <button href="/dashboard/faq/{{ $fq->id }}"
                                                         class="btn btn-danger show_confirm" type="submit"><i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>
@@ -75,16 +81,16 @@
                             <div class="form-row">
                                 <div class="form-group col-md-9">
                                     <p>Showing
-                                        {{ $kategori->firstItem() }}
+                                        {{ $faq->firstItem() }}
                                         to
-                                        {{ $kategori->lastItem() }}
+                                        {{ $faq->lastItem() }}
                                         of
-                                        {{ $kategori->total() }}
+                                        {{ $faq->total() }}
                                         entries
                                     </p>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    {{ $kategori->links() }}
+                                    {{ $faq->links() }}
                                 </div>
                             </div>
 

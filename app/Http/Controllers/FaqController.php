@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peta;
-use App\Models\Kategori;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
-class PetaController extends Controller
+class FaqController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,19 @@ class PetaController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::all(); 
-
-        return view('home.index',['kordinats' => Peta::where('status', true)->get()], 
-        ['kategori'=>$kategori]);
+        return view('admin.faq.index',[
+            'faq' => Faq::orderBy('created_at', 'asc')
+            ->paginate(7)
+        ]);
     }
+
+    public function user()
+    {
+        return view('home.faq',[
+            'faqs' => Faq::where('jawaban', '!=', null)->paginate(7)
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -39,57 +46,62 @@ class PetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Peta $peta)
+    public function show($id)
     {
-        return view('home.show',[
-            'maps' => Peta::where('id','=', $peta->id)->get()
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Peta $peta)
+    public function edit(Faq $faq)
     {
-        //
+        return view('admin.faq.edit',[
+            'faq' => $faq
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Peta $peta)
+    public function update(Request $request, Faq $faq)
     {
-        //
+        $rules = [
+            'jawaban' => 'required'
+        ];
+
+        $validate = $request->validate($rules);
+
+        Faq::where('id', $faq->id)->update($validate);
+
+        return redirect('/dashboard/faq')->with('success','Terima kasih, Jawaban Anda Telah Direkam');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Peta  $peta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Peta $peta)
+    public function destroy(Faq $faq)
     {
-        //
-    }
-    public function about()
-    {
-        return view('home.aboutus');
+        Faq::destroy($faq->id);
+            return redirect('/dashboard/faq')->with('success','Satu Pertanyaan Berhasil Dihapus');
     }
 }

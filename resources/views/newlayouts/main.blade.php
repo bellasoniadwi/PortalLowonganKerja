@@ -52,6 +52,7 @@
 <!-- /END GA -->
 </head>
 
+@auth
 <body>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
@@ -100,3 +101,51 @@
   <!-- Custom scripts for all pages-->
   <script src="sbadmin2/js/sb-admin-2.min.js"></script>
 </body>
+@endauth
+
+@guest
+<body class="layout-3">
+  <div id="app">
+    <div class="main-wrapper container">
+      <div class="navbar-bg"></div>
+      @include('newlayouts.navbar')
+      <div class="main-content">
+        <section class="section">
+          @yield('content')
+        </section>
+      </div>
+      @include('newlayouts.footer')
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="{{ asset('newlayouts/dist/assets/modules/jquery.min.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/popper.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/tooltip.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/moment.min.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/js/stisla.js')}}"></script>
+  
+  <!-- JS Libraies -->
+  <script src="{{ asset('newlayouts/dist/assets/modules/simple-weather/jquery.simpleWeather.min.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/chart.min.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/jqvmap/dist/jquery.vmap.min.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/summernote/summernote-bs4.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+
+  <!-- Page Specific JS File -->
+  <script src="{{ asset('newlayouts/dist/assets/js/page/index-0.js')}}"></script>
+  
+  <!-- Template JS File -->
+  <script src="{{ asset('newlayouts/dist/assets/js/scripts.js')}}"></script>
+  <script src="{{ asset('newlayouts/dist/assets/js/custom.js')}}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="sbadmin2/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="sbadmin2/js/sb-admin-2.min.js"></script>
+</body>
+@endguest
