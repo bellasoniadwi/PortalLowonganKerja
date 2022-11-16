@@ -1,5 +1,7 @@
 @extends('newlayouts.main')
 
+@section('maps', 'active')
+
 @section('content')
     <div class="section-header">
         {{-- <h1>DataTables</h1> --}}

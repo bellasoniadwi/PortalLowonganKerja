@@ -43,9 +43,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     
 
-    Route::get('/dashboard/perusahaan',[UserController::class, 'index'])->name('perusahaan');
+    Route::resource('/dashboard/perusahaan', UserController::class);
     Route::resource('/dashboard/profile', UserController::class);
-    Route::resource('/dashboard/titik', TitikController::class)->only(['index','show']);  
+    Route::resource('/dashboard/titik', TitikController::class)->only(['index']);
+    Route::get('/dashboard/show/{id}', [TitikController::class, 'show']);
     Route::resource('/dashboard/kategori', KategoriController::class)->middleware('admin')->except(['show']);
     Route::resource('/dashboard/faq', FaqController::class)->middleware('admin')->except(['show']);
     Route::resource('/dashboard/lowonganpekerjaan', LowonganPekerjaanController::class);

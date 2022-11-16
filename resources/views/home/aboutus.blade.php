@@ -11,13 +11,13 @@
       <div class="card author-box card-primary">
         <div class="card-body">
           <div class="author-box-left">
-            <img alt="image" width="180px" height="100px" src="{{ asset('aboutus/images/about_img.jpg') }}">
+            <img alt="image" width="180px" height="100px" src="{{ asset('layoutAuth/images/icons/logohitam.png') }}">
             <div class="clearfix"></div>
             {{-- <a href="#" class="btn btn-primary mt-3 follow-btn" data-follow-action="alert('follow clicked');" data-unfollow-action="alert('unfollow clicked');">Follow</a> --}}
           </div>
           <div class="author-box-details">
             <div class="author-box-name">
-              <a href="/">   Tentang LokerPortal</a>
+              <a href="/">   Tentang LOKERPORTAL</a>
             </div>
             {{-- <div class="author-box-job">Web Developer</div> --}}
             <div class="author-box-description">
@@ -48,7 +48,7 @@
 </div>
 <div class="card" id="read_more">
     <div class="card-header">
-      <h4>Kenapa Memilih LokerPortal?</h4>
+      <h4>Kenapa Memilih LOKERPORTAL?</h4>
     </div>
     <div class="card-body">
       <div class="row">
