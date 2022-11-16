@@ -7,7 +7,13 @@
 
 
 @section('content')
-
+  <div class="alert alert-light alert-has-icon">
+    <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+    <div class="alert-body">
+      <div class="alert-title">INFO</div>
+        Apabila sistem tidak menemukan lokasi anda secara tepat, muat ulang halaman website. Mohon maaf atas ketidaknyamanannya
+    </div>
+  </div>
     <div id="map" class="map-new-look">
         <script>
             // var map = L.map('map').setView([-0.471852, 117.160556], 13);
@@ -33,10 +39,11 @@
                 // alert(latlng);
                 // var marker = L.marker(latlng).addTo(map);
 
-                var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup();
+                var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup().on('dblclick', onClick);
+
+            function onClick(e) {
                 dariSini(location.coords.latitude, location.coords.longitude);
-                //var marker = L.marker(latlng).addTo(map).bindPopup('<button class="btn btn-info btn-sm mb-2" onclick="dariSini(\''+ location.coords.latitude, location.coords.longitude +'\')" block>Dari Sini</button>'+
-                //    '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini(\''+ location.coords.latitude, location.coords.longitude +'\')" block>Ke Sini</button>');
+            }
             });
 
 

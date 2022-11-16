@@ -3933,8 +3933,8 @@ body:not(.sidebar-mini)
 
 .map-new-look {
     height: 550px;
-    width: 1230px;
-    margin-left: -61px;
+    width: 1150px;
+    margin-left: -20px;
 }
 
 @media screen and (max-width: 960px) {
@@ -3942,14 +3942,14 @@ body:not(.sidebar-mini)
         height: 550px;
         width: 560px;
         margin-left: 0px;
-        margin-top: 61px;
+        margin-top: 30px;
     }
 }
 
 @media screen and (max-width: 800px) {
     .map-new-look {
         height: 550px;
-        width: 550px;
+        width: 560px;
         margin-left: 0px;
     }
 }

@@ -126,7 +126,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect('/dashboard/perusahaan')->with('success','1 kontributor berhasil dihapus');
     }
 
     public function updateStatus(Request $request)

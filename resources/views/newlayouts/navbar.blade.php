@@ -62,10 +62,10 @@
 @guest
 <nav class="navbar navbar-expand-lg main-navbar">
     <a href="/" class="navbar-brand sidebar-gone-hide">LOKERPORTAL</a>
-    <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+    {{-- <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a> --}}
     <div class="nav-collapse">
       <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
-        <i class="fas fa-ellipsis-v"></i>
+        <i class="fas fa-bars"></i>
       </a>
       <ul class="navbar-nav">
         <li class="nav-item @yield('maps')"><a href="/" class="nav-link">MAPS</a></li>
