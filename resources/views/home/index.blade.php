@@ -42,8 +42,8 @@
                 var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup().on('dblclick', onClick);
 
                 var circle = L.circle([location.coords.latitude, location.coords.longitude], 100, {
-                    color: 'red',
-                    fillColor: '#f03',
+                    color: '#00ABB3',
+                    fillColor: '#00ABB3',
                     fillOpacity: 0.3
                 }).addTo(map);
 
