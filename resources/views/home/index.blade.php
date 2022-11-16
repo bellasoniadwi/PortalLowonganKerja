@@ -194,7 +194,7 @@
             <script>
                 var markerLayers = L.marker([<?= $data->x ?>, <?= $data->y ?>]).addTo(map);
 
-                L.circleMarker([<?= $data->x ?>, <?= $data->y ?>]).addTo(map).bindPopup(
+                L.marker([<?= $data->x ?>, <?= $data->y ?>]).addTo(map).bindPopup(
                     '<img width="200px" height="100px" src="{{ asset('storage/' . $data->foto) }}">' +
                     '<br><br><pre>Pekerjaan : ' + '<?= $data->nama_pekerjaan ?>     ' + '<br>Lokasi    : ' +
                     '<?= $data->perusahaan ?>     ' + '<br>CP        : ' + '<?= $data->contact_person ?>     ' +
