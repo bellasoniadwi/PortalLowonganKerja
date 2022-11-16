@@ -55,11 +55,11 @@
                 command.onAdd = function(map) {
                     var div = L.DomUtil.create('div', 'command');
 
-                    div.innerHTML = '<form><id="command" type="text"/>Filter Lokasi</form>'+
-                    '<form><input id="command" type="checkbox"/>10 KM</form>'+
-                    '<form><input id="command2" type="checkbox"/>5 KM</form>'+
-                    '<form><input id="command3" type="checkbox"/>3 KM</form>'+
-                    '<form><input id="command0" type="checkbox"/>0 KM</form>';
+                    div.innerHTML = '<form><id="command" type="text"/><b><strong>Filter Lokasi</form>'+
+                    '<form><input id="command" type="checkbox"/> 10 KM</form>'+
+                    '<form><input id="command2" type="checkbox"/> 5 KM</form>'+
+                    '<form><input id="command3" type="checkbox"/> 3 KM</form>'+
+                    '<form><input id="command0" type="checkbox"/> 0 KM</strong></b></form>';
                     return div;
                 };
 
