@@ -9,7 +9,7 @@
 <div class="section-header">
   <div class="section-header-breadcrumb">
     <div class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i> Beranda</a></div>
-      <div class="breadcrumb-item"><i class="far fa-comments"></i> About Us</div>
+      <div class="breadcrumb-item"><i class="far fa-comments"></i> FAQ</div>
   </div>
 </div>
 <div class="section-body">
