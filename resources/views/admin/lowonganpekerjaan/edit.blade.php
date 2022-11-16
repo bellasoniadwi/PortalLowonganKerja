@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="deskripsi">Deskripsi *</label>
-                                        <textarea type="text" maxlength="100" class="form-control @error('deskripsi') is-invalid @enderror"
+                                        <textarea type="text" maxlength="200" class="form-control @error('deskripsi') is-invalid @enderror"
                                             id="deskripsi" name="deskripsi" placeholder="Deskripsi singkat lowongan pekerjaan" required
                                             value="{{ old('deskripsi', $lowongan->deskripsi) }}">{{ old('deskripsi', $lowongan->deskripsi) }}</textarea>
                                         @error('deskripsi')

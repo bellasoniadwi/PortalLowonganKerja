@@ -59,7 +59,7 @@
                             <h2><a>{{ $lp->nama_pekerjaan }}</a></h2>
                             <h2><a>{{ $lp->perusahaan }}</a></h2>
                         </div>
-                        <p>{{ Str::limit($lp->deskripsi) }}</p>
+                        <p>{{ Str::limit($lp->deskripsi,50) }}</p>
                         <div class="article-cta">
                             <a href="{{ route('lowonganpekerjaan.detail_user', $lp->id) }}">Selengkapnya <i
                                     class="fas fa-chevron-right"></i></a>
