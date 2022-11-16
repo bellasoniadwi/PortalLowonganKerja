@@ -5,7 +5,7 @@
                 <a href="{{route('home')}}">LokerPortal</a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
-                <a href="index.html">Pl</a>
+                <a href="{{route('home')}}">LP</a>
             </div>
             <ul class="sidebar-menu">
                 <li class="menu-header">Dashboard</li>
