@@ -5,9 +5,17 @@
 @section('icon', 'far fa-address-card')
 @section('judul', 'ABOUT US')
 
+
+
 @section('content')
 <div class="row">
     <div class="col-12 col-sm-12 col-lg-12">
+      <div class="section-header">
+        <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i> Beranda</a></div>
+            <div class="breadcrumb-item"><i class="far fa-address-card"></i> About Us</div>
+        </div>
+      </div>
       <div class="card author-box card-primary">
         <div class="card-body">
           <div class="author-box-left">
@@ -15,6 +23,7 @@
             <div class="clearfix"></div>
             {{-- <a href="#" class="btn btn-primary mt-3 follow-btn" data-follow-action="alert('follow clicked');" data-unfollow-action="alert('unfollow clicked');">Follow</a> --}}
           </div>
+          
           <div class="author-box-details">
             <div class="author-box-name">
               <a href="/">   Tentang LokerPortal</a>
