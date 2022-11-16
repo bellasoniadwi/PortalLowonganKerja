@@ -7,8 +7,12 @@
 
 
 @section('content')
-<div class="alert alert-warning">
-    INFO : Apabila sistem tidak menemukan lokasi anda secara tepat, mohon untuk merefresh halaman website kembali. Mohon maaf atas ketidaknyamanannya
+  <div class="alert alert-light alert-has-icon">
+    <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+    <div class="alert-body">
+      <div class="alert-title">INFO</div>
+        Apabila sistem tidak menemukan lokasi anda secara tepat, muat ulang halaman website. Mohon maaf atas ketidaknyamanannya
+    </div>
   </div>
     <div id="map" class="map-new-look">
         <script>
