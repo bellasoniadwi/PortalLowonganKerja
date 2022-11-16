@@ -19,7 +19,7 @@
       <div class="card author-box card-primary">
         <div class="card-body">
           <div class="author-box-left">
-            <img alt="image" width="180px" height="100px" src="{{ asset('layoutAuth/images/icons/logohitam.png') }}">
+            <img alt="image" width="180px" height="180px" src="{{ asset('layoutAuth/images/icons/about.png') }}">
             <div class="clearfix"></div>
             {{-- <a href="#" class="btn btn-primary mt-3 follow-btn" data-follow-action="alert('follow clicked');" data-unfollow-action="alert('unfollow clicked');">Follow</a> --}}
           </div>
@@ -30,8 +30,10 @@
             </div>
             {{-- <div class="author-box-job">Web Developer</div> --}}
             <div class="author-box-description">
-              <p>   LOKERPORTAL adalah sebuah portal berbasis website yang mempermudah pencarian
-                lowongan pekerjaan.</p>
+              <p> 
+                LOKERPORTAL adalah sebuah portal berbasis website yang mempermudah pencarian lowongan pekerjaan. Job Seeker dapat mengakses informasi lengkap beserta pemetaan lokasinya. Rekruter dari berbagai tingkatan akan mengajak Anda bergabung pada perusahaan. Siapkan diri Anda dan bergabunglah pada perusahaan yang anda inginkan.
+
+              </p>
             </div>
             {{-- <div class="mb-2 mt-3"><div class="text-small font-weight-bold">Follow Hasan On</div></div> --}}
             <a href="#" class="btn btn-social-icon mr-1 btn-facebook">
