@@ -41,9 +41,53 @@
 
                 var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup().on('dblclick', onClick);
 
-            function onClick(e) {
-                dariSini(location.coords.latitude, location.coords.longitude);
-            }
+                var circle = L.circle([location.coords.latitude, location.coords.longitude], 100, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.3
+                }).addTo(map);
+
+                // create the control
+                var command = L.control({
+                    position: 'topleft'
+                });
+
+                command.onAdd = function(map) {
+                    var div = L.DomUtil.create('div', 'command');
+
+                    div.innerHTML = '<form><id="command" type="text"/>Filter Lokasi</form>'+
+                    '<form><input id="command" type="checkbox"/>10 KM</form>'+
+                    '<form><input id="command2" type="checkbox"/>5 KM</form>'+
+                    '<form><input id="command3" type="checkbox"/>3 KM</form>'+
+                    '<form><input id="command0" type="checkbox"/>0 KM</form>';
+                    return div;
+                };
+
+                command.addTo(map);
+
+
+                // add the event handler
+                function handleCommand10() {
+                    circle.setRadius(10000);
+                }
+                function handleCommand5() {
+                    circle.setRadius(5000);
+                }
+                function handleCommand3() {
+                    circle.setRadius(3000);
+                }
+                function handleCommand0() {
+                    circle.setRadius(50);
+                }
+
+                document.getElementById("command").addEventListener("click", handleCommand10, false);
+                document.getElementById("command2").addEventListener("click", handleCommand5, false);
+                document.getElementById("command3").addEventListener("click", handleCommand3, false);
+                document.getElementById("command0").addEventListener("click", handleCommand0, false);
+
+                function onClick(e) {
+                    dariSini(location.coords.latitude, location.coords.longitude);
+                }
             });
 
 
