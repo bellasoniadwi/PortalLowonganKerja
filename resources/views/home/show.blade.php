@@ -104,16 +104,95 @@
                     <script>
                         // var map = L.map('map').setView([-0.471852, 117.160556], 13);
                         var curLocation = [0, 0];
-                        if (curLocation[0] == 0 && curLocation[1] == 0) {
-                            curLocation = [<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>]
-                        }
-                        var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                            osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                            osm = L.tileLayer(osmUrl, {
-                                maxZoom: 18,
-                                attribution: osmAttrib
-                            });
-                        var map = L.map('map').setView([<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>], 15).addLayer(osm);
+            if (curLocation[0] == 0 && curLocation[1] == 0) {
+                curLocation = [<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>]
+            }
+            var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                osm = L.tileLayer(osmUrl, {
+                    maxZoom: 18,
+                    attribution: osmAttrib
+                });
+            var map = L.map('map').setView([<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>], 13).addLayer(osm);
+
+            map.locate({
+                setView: true,
+                maxZoom: 16
+            });
+
+            navigator.geolocation.getCurrentPosition(function(location) {
+                var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+                // alert(latlng);
+                // var marker = L.marker(latlng).addTo(map);
+
+                var marker = L.marker(latlng).addTo(map).bindPopup('Lokasi Saya').openPopup();
+                dariSini(location.coords.latitude, location.coords.longitude);
+                //var marker = L.marker(latlng).addTo(map).bindPopup('<button class="btn btn-info btn-sm mb-2" onclick="dariSini(\''+ location.coords.latitude, location.coords.longitude +'\')" block>Dari Sini</button>'+
+                //    '<br><button class="btn btn-info btn-sm mb-2" onclick="keSini(\''+ location.coords.latitude, location.coords.longitude +'\')" block>Ke Sini</button>');
+            });
+
+
+            // function onAccuratePositionProgress (e) {
+            //     console.log(e.accuracy);
+            //     console.log(e.latlng);
+            // }
+
+            // function onAccuratePositionFound (e) {
+            //     console.log(e.accuracy);
+            //     console.log(e.latlng);
+            // }
+
+            // function onAccuratePositionError (e) {
+            //     console.log(e.message)
+            // }
+
+            // map.on('accuratepositionprogress', onAccuratePositionProgress);
+            // map.on('accuratepositionfound', onAccuratePositionFound);
+            // map.on('accuratepositionerror', onAccuratePositionError);
+
+            // map.findAccuratePosition({
+            //     maxWait: 15000, // defaults to 10000
+            //     desiredAccuracy: 30 // defaults to 20
+            // });
+
+            var data = [
+                <?php foreach ($kordinats as $key => $value) { ?> {
+                    "lokasi": [<?= $value->x ?>, <?= $value->y ?>],
+                    "nama_pekerjaan": "<?= $value->nama_pekerjaan ?>"
+                },
+                <?php } ?>
+            ];
+
+            //layer contain searched elements
+            var markersLayer = new L.LayerGroup();
+            map.addLayer(markersLayer);
+
+            //Routing Machine Liedman
+            var control = L.Routing.control({
+                    //ambil koordinat berada sekarang
+                    waypoints: [
+                        //L.latLng(-0.5516380071640015, 117.11798858642578),
+                        //.latLng(curr_latitude, curr_longitude),
+                        //L.latLng(-0.5504058599472046, 117.12004852294922)
+                    ],
+                    routeWhileDragging: true,
+                    geocoder: L.Control.Geocoder.nominatim()
+                })
+                .on('routesfound', function(e) {
+                    var routes = e.routes;
+                    alert('Found ' + routes.length + ' route(s).');
+                })
+                .addTo(map);
+
+            function dariSini(lat, lng) {
+                var latLng = L.latLng(lat, lng);
+                control.spliceWaypoints(0, 1, latLng);
+            }
+
+            function keSini(lat, lng) {
+                var latLng = L.latLng(lat, lng);
+                control.spliceWaypoints(control.getWaypoints().length - 1, 1, latLng);
+            }
         
                         var greenIcon = new L.Icon({
                             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -141,7 +220,9 @@
                             '<br><br><pre>Pekerjaan : ' + '<?= $data->nama_pekerjaan ?>     ' + '<br>Lokasi    : ' +
                             '<?= $data->perusahaan ?>     ' + '<br>CP        : ' + '<?= $data->contact_person ?>     ' +
                             '<br>Kontak    : ' + '<?= $data->no_telp ?>' +
-                            '<br>Gaji      : ' + '<?= $data->gaji ?></pre>').openPopup();
+                            '<br>Gaji      : ' + '<?= $data->gaji ?></pre>'+
+                    '<br><br><button class="btn btn-info btn-sm mb-2" onclick="dariSini(<?= $data->x ?>, <?= $data->y ?>)">Dari Sini</button>' +
+                    '        <button class="btn btn-info btn-sm mb-2" onclick="keSini(<?= $data->x ?>, <?= $data->y ?>)">Ke Sini</button>' +'<br>').openPopup();
                         <?php } ?>
                     </script>
                 </div>
