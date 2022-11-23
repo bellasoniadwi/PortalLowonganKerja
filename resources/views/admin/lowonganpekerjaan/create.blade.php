@@ -215,9 +215,8 @@
 
                                         var curLocation = [0, 0];
                                         if (curLocation[0] == 0 && curLocation[1] == 0) {
-                                            curLocation = [<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>];
+                                            curLocation = [-7.9440167, 112.6151627];
                                         }
-
                                         var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                                             osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                                             osm = L.tileLayer(osmUrl, {
@@ -225,50 +224,34 @@
                                                 attribution: osmAttrib
                                             });
 
-                                        var map = L.map('map').setView([<?= $kordinats[0]->x ?>, <?= $kordinats[0]->y ?>], 13).addLayer(osm);
-
-                                        map.locate({
-                                            setView: true,
-                                            maxZoom: 16
+                                        var map = L.map('map').setView([-7.9439407, 112.6150103], 17).addLayer(osm);
+                                        
+                                        map.attributionControl.setPrefix(false);
+                                        var marker = new L.marker(curLocation, {
+                                            draggable: 'true'
+                                        
                                         });
 
-                                        //map.attributionControl.setPrefix(false);
+                                        marker.on('dragend', function(event) {
+                                            var position = marker.getLatLng();
+                                            marker.setLatLng(position, {
+                                                draggable: 'true'
+                                            }).bindPopup(position).update();
+                                            
+                                            $("#x").val(position.lat);
+                                            $("#y").val(position.lng).keyup();
+                                        });
 
-                                        navigator.geolocation.getCurrentPosition(function(location) {
-                                            var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
-
-                                            var marker = L.marker(latlng, {
-                                            draggable: 'true'
-                                            }).addTo(map).bindPopup('Lokasi Saya').openPopup();
-
-                                            marker.on('dragend', function(event) {
-                                                var position = marker.getLatLng();
-                                                marker.setLatLng(position, {
-                                                    draggable: 'true'
-                                                }).bindPopup(position).update();
-                                                //id (longitude atau latitude) pada blade html akan dikenali sebagai identitas tempat untuk menempatkan hasil marker pada peta
-                                                $("#x").val(position.lat);
-                                                $("#y").val(position.lng).keyup();
-                                            });
-
-                                            //Nilai longitude dan latitude berubah seiring berubahnya posisi marker
-
-                                            $("#x, #y").change(function() {
+                                        
+                                        $("#x, #y").change(function() {
+                                            
                                             var position = [parseInt($("#x").val()), parseInt($("#y").val())];
                                             marker.setLatLng(position, {
                                                 draggable: 'true'
                                             }).bindPopup(position).update();
                                             map.panTo(position);
                                         });
-                                        map.addLayer(marker);
-
-                                        });
-                                        
-
-                                        
-
-                                        
-                                        
+                                        map.addLayer(marker); 
                                     </script>
                                 </div>
                             </div>

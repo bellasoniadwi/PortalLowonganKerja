@@ -125,8 +125,9 @@ class LowonganPekerjaanController extends Controller
         $sorted = $kategori->SortBy('nama_kategori');
 
         return view('admin.lowonganpekerjaan.create',
-        ['kategori'=>$sorted], 
-        ['kordinats' => Titik::where('status', true)->get()]);
+        ['kategori'=>$sorted]);
+        // ['kategori'=>$sorted], 
+        // ['kordinats' => Titik::where('status', true)->get()]);
     }
 
     /**
