@@ -2,115 +2,135 @@
 <html lang="en">
 
 <head>
-    <title>Login Portal</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{ asset('layoutAuth/images/icons/loker.png') }}" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('layoutAuth/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('layoutAuth/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/animate/animate.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/css-hamburgers/hamburgers.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/animsition/css/animsition.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/select2/select2.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/vendor/daterangepicker/daterangepicker.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/css/util.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('layoutAuth/css/main.css') }}">
-    <!--===============================================================================================-->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Login</title>
+
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{ asset('newlayouts/dist/assets/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('newlayouts/dist/assets/modules/fontawesome/css/all.min.css') }}">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('newlayouts/dist/assets/modules/bootstrap-social/bootstrap-social.css') }}">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('newlayouts/dist/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('newlayouts/dist/assets/css/components.css') }}">
+    <!-- Start GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-94034622-3');
+    </script>
+    <!-- /END GA -->
 </head>
 
 <body>
-
-    <div class="limiter">
-        <div class="container-login100" style="background-image: url('{{ asset('layoutAuth/images/bg-01.jpg') }}'">
-            <div class="wrap-login100 p-t-30 p-b-50">
-                <span class="login100-form-title p-b-41">
-                    Login Akun
-                </span>
-                <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
-                    @csrf
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
+    <div id="app">
+        <section class="section">
+            <div class="container mt-5">
+                <div class="row">
+                    <div
+                        class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                        <div class="login-brand">
+                            <img src="{{ asset('layoutAuth/images/icons/loker.png') }}" alt="logo" width="100"
+                                class="shadow-light rounded-circle">
                         </div>
-                    @endif
 
-                    <div class="wrap-input100 validate-input" data-validate="Masukkan username">
-                        <input class="input100 @error('username') is-invalid @enderror" type="username" id="username"
-                            name="username" placeholder="Username" value="{{ old('username') }}" required
-                            autocomplete="username">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h4>Login</h4>
+                            </div>
 
-                        @error('username')
-                            <span class="focus-input100" data-placeholder="&#xe82a;">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            <div class="card-body">
+                                <form method="POST" action="{{ route('login') }}" class="needs-validation"
+                                    novalidate="">
+                                    @csrf
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
+
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="username" id="username" name="username" class="form-control @error('username') is-invalid @enderror" tabindex="1"
+                                            value="{{ old('username') }}" required autofocus>
+
+                                        @error('username')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Password</label>
+                                        <input type="password" id="password" name="password"
+                                            class="form-control @error('password') is-invalid @enderror" tabindex="2"
+                                            required>
+
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="row sm-gutters">
+                                        <div class="col-6">
+                                            <a class="btn btn-success btn-lg btn-block" tabindex="4"
+                                                href="{{ route('peta.index') }}">
+                                                Kembali
+                                            </a>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary btn-lg btn-block"
+                                                tabindex="3">
+                                                Sign In
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-muted text-center">
+                            Belum memiliki akun? <a href="{{ route('register') }}">Daftar Sekarang!</a>
+                        </div>
+                        <div class="simple-footer">
+                            Copyright &copy; Kelompok 8 - Proyek 2 <div class="bullet"></div> Designed By <a
+                                href="https://nauv.al/">Muhamad
+                                Nauval Azhar</a> Distributed By <a href="https://themewagon.com/">Themewagon</a>
+                        </div>
                     </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Masukkan password">
-                        <input class="input100 @error('password') is-invalid @enderror" type="password" id="password"
-                            name="password" placeholder="Password" required autocomplete="current-password">
-
-                        @error('password')
-                            <span class="focus-input100" data-placeholder="&#xe82a;">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="container-login100-form-btn m-t-32">
-                        <a class="login100-form-btn-success" href="{{ route('peta.index') }}">
-                            Kembali
-                        </a>
-                        <a></a>
-                        <button type="submit" class="login100-form-btn">
-                            Sign In
-                        </button>
-                    </div>
-
-                    <div class="container-login100-form-btn m-t-32">
-                        <a class="btn btn-link" href="{{ route('register') }}">
-                            Belum memiliki akun?
-                        </a>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
-    </div>
 
+    <!-- General JS Scripts -->
+    <script src="{{ asset('newlayouts/dist/assets/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('newlayouts/dist/assets/modules/popper.js') }}"></script>
+    <script src="{{ asset('newlayouts/dist/assets/modules/tooltip.js') }}"></script>
+    <script src="{{ asset('newlayouts/dist/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('newlayouts/dist/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('newlayouts/dist/assets/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('newlayouts/dist/assets/js/stisla.js') }}"></script>
 
-    <div id="dropDownSelect1"></div>
+    <!-- JS Libraies -->
 
-    <!--===============================================================================================-->
-    <script src="{{ asset('layoutAuth/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
-    <!--===============================================================================================-->
-    <script src="{{ asset('layoutAuth/vendor/animsition/js/animsition.min.js') }}"></script>
-    <!--===============================================================================================-->
-    <script src="{{ asset('layoutAuth/vendor/bootstrap/js/popper.js') }}"></script>
-    <script src="{{ asset('layoutAuth/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!--===============================================================================================-->
-    <script src="{{ asset('layoutAuth/vendor/select2/select2.min.js') }}"></script>
-    <!--===============================================================================================-->
-    <script src="{{ asset('layoutAuth/vendor/daterangepicker/moment.min.js') }}"></script>
-    <script src="{{ asset('layoutAuth/vendor/daterangepicker/daterangepicker.js') }}"></script>
-    <!--===============================================================================================-->
-    <script src="{{ asset('layoutAuth/vendor/countdowntime/countdowntime.js') }}"></script>
-    <!--===============================================================================================-->
-    <script src="{{ asset('layoutAuth/js/main.js') }}"></script>
+    <!-- Page Specific JS File -->
 
+    <!-- Template JS File -->
+    <script src="{{ asset('newlayouts/dist/assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('newlayouts/dist/assets/js/custom.js') }}"></script>
 </body>
 
 </html>
