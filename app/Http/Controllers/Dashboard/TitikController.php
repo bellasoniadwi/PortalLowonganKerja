@@ -15,9 +15,15 @@ class TitikController extends Controller
      */
     public function index()
     {
-        return view('admin.kordinat.index',[
-            'kordinats' => Titik::where('status', true)->get()
-        ]);
+        $kordinats = Titik::where('status', true);
+
+        if($kordinats->count() > 0){
+            return view('home.index',['kordinats' => Titik::where('status', true)->get()]);
+        }
+        else {
+            return  view('home.nodata')->with('danger', 
+            'Belum ada data pekerjaan tersimpan. Silahkan login untuk menambah data');
+        }
     }
 
     /**
