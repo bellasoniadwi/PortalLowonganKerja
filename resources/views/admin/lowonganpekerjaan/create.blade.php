@@ -185,17 +185,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-1">
+                                    <br><br>
                                     
-                                    <a></a>
                                 </div>
-                                <div class="form-group col-md-1">
+                                
+                                <div class="form-group col-md-2">
                                     <br><br>
                                     <a href="{{ route('lowonganpekerjaan.index') }}" class="btn btn-primary">Back</a>
-                                </div>
-                                <div class="form-group col-md-1">
-                                    <br><br>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
+                                
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12" id="map" style="height: 500px; margin-top: 50px;">
