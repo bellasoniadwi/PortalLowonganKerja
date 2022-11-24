@@ -9,7 +9,7 @@
             <div class="breadcrumb-item"><a href="{{ route('titik.index') }}"><i class="fas fa-map-marked-alt"></i> Peta</a></div>
         </div>
     </div>
-    <div id="map" style="height: 500px; margin: 50px;">
+    <div id="map" style="height: 500px; margin: 20px;">
         <script>
             // var map = L.map('map').setView([-0.471852, 117.160556], 13);
             var curLocation = [0, 0];

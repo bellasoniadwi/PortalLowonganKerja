@@ -18,7 +18,7 @@ class TitikController extends Controller
         $kordinats = Titik::where('status', true);
 
         if($kordinats->count() > 0){
-            return view('home.index',['kordinats' => Titik::where('status', true)->get()]);
+            return view('admin.kordinat.index',['kordinats' => Titik::where('status', true)->get()]);
         }
         else {
             return  view('home.nodata')->with('danger', 
