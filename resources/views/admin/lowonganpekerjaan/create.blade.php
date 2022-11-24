@@ -84,15 +84,15 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="kategori_id">Kategori *</label>
-                                    <select class="form-control select2 @error('kategori_id') is-invalid @enderror" 
-                                        id="kategori_id" name="kategori_id" required>
+                                    <label for="kategori">Kategori *</label>
+                                    <select class="form-control select2 @error('kategori') is-invalid @enderror" 
+                                        id="kategori" name="kategori" required>
                                         <option value="">--Pilih Kategori Pekerjaan--</option>
                                         @foreach ($kategori as $data)
-                                            <option value="{{$data->id}}" {{old('kategori_id') == $data->id ? 'selected' : ''}}>{{$data->nama_kategori}}</option>
+                                            <option value="{{$data->nama_kategori}}" {{old('kategori') == $data->nama_kategori ? 'selected' : ''}}>{{$data->nama_kategori}}</option>
                                         @endforeach
                                     </select>
-                                    @error('kategori_id')
+                                    @error('kategori')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

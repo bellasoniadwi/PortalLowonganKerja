@@ -17,8 +17,7 @@ class CreateLowonganPekerjaansTable extends Migration
             $table->id();
             $table->string('nama_pekerjaan')->nullable();
             $table->string('perusahaan')->nullable();
-            $table->unsignedBigInteger('kategori_id')->nullable();
-            $table->foreign('kategori_id')->references('id')->on('kategoris');
+            $table->string('kategori')->nullable();
             $table->string('tipe_pekerjaan')->nullable();
             $table->double('x')->nullable();
             $table->double('y')->nullable();

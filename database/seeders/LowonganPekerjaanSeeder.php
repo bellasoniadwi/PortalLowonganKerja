@@ -16,12 +16,12 @@ class LowonganPekerjaanSeeder extends Seeder
     {
         LowonganPekerjaan::create([
             'nama_pekerjaan' => 'Dosen',
-            'kategori_id' => '1' ,
+            'kategori' => 'Pendidikan' ,
             'tipe_pekerjaan' => 'Full Time',
             'perusahaan' => 'Ambi Corp',
             'x' => '-7.899770321098634',
             'y' => '112.52919676867126',
-            'deskripsi' => 'Gaji 3jt',
+            'deskripsi' => 'Butuh 3 orang minimal lulusan S2 Matematika murni yang siap mengajar di kampus A',
             'contact_person' => 'Ambi',
             'no_telp' => '085123404776',
         ]);

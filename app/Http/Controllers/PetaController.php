@@ -15,10 +15,15 @@ class PetaController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::all(); 
+        $kordinats = Peta::where('status', true);
 
-        return view('home.index',['kordinats' => Peta::where('status', true)->get()], 
-        ['kategori'=>$kategori]);
+        if($kordinats->count() > 0){
+            return view('home.index',['kordinats' => Peta::where('status', true)->get()]);
+        }
+        else {
+            return  view('home.nodata')->with('danger', 
+            'Belum ada data pekerjaan tersimpan. Silahkan login untuk menambah data');
+        }
     }
 
     /**

@@ -14,7 +14,7 @@ class LowonganPekerjaan extends Model
 
     protected $fillable = [
         'nama_pekerjaan',
-        'kategori_id',
+        'kategori',
         'tipe_pekerjaan',
         'status',
         'foto',

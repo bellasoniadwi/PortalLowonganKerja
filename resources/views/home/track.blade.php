@@ -7,33 +7,25 @@
 
     <div class="row">
       <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-        <form action="{{ url()->current() }}" method="GET">
+        
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <form action="{{ url('/cari')}}" method="GET">
             <div class="input-group">
                 <select class="custom-select" id="inputGroupSelect05" name="keyword" value="{{ request('keyword') }}">
                     <option value="">--Pilih Kategori Pekerjaan--</option>
                     @foreach ($sorted as $data)
                         <option value="{{ $data->nama_kategori }}"
-                            {{ old('kategori_id') == $data->nama_kategori ? 'selected' : '' }}>{{ $data->nama_kategori }}
+                            {{ old('kategori') == $data->nama_kategori ? 'selected' : '' }}>{{ $data->nama_kategori }}
                         </option>
                     @endforeach
                 </select>
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">FILTER</button>
-                </div>
-            </div>
-        </form>
-      </div>
-
-      <div class="col-12 col-sm-6 col-md-6 col-lg-5">
-      </div>
-
-      <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-        <form action="{{ url()->current() }}" method="GET">
-            <div class="input-group">
-                <input type="text" class="form-control" name="keyword" value="{{ request('keyword') }}">
-                </select>
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">SEARCH</button>
                 </div>
             </div>
         </form>
@@ -51,7 +43,7 @@
                         </div>
                         <div class="article-badge">
                             <div class="article-badge-item bg-danger"><i class="fas fa-clipboard-list"></i>
-                                {{ $lp->kategori->nama_kategori }}</div>
+                                {{ $lp->kategori }}</div>
                         </div>
                     </div>
                     <div class="article-details">

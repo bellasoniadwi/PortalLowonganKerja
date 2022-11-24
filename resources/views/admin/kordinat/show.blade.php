@@ -35,7 +35,7 @@
                                     <h4>Kategori</h4>
                                 </div>
                                 <div class="accordion-body collapse" id="panel-body-2" data-parent="#accordion">
-                                    <p class="mb-0">{{ $lowongan->kategori->nama_kategori }}</p>
+                                    <p class="mb-0">{{ $lowongan->kategori }}</p>
                                 </div>
                             </div>
                             <div class="accordion">
@@ -146,7 +146,7 @@
                             '<br><br><pre>Pekerjaan : ' + '<?= $data->nama_pekerjaan ?>     ' + '<br>Lokasi    : ' +
                             '<?= $data->perusahaan ?>     ' + '<br>CP        : ' + '<?= $data->contact_person ?>     ' +
                             '<br>Kontak    : ' + '<?= $data->no_telp ?>' +
-                            '<br>Gaji      : ' + '<?= $data->gaji ?></pre>').openPopup();
+                            '<br>Gaji      : ' + '<?= $data->gaji ?>' + '<br>Kategori  : ' + '<?= $data->kategori ?></pre>').openPopup();
                         <?php } ?>
                     </script>
                 </div>

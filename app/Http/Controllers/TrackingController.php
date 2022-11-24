@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\LowonganPekerjaan;
+use App\Models\Peta;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -23,21 +24,26 @@ class TrackingController extends Controller
         $lowongan = LowonganPekerjaan::where('status', true)
             ->when($request->keyword, function ($query) use ($request) {
             $query
-                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
-                ->orWhere('contact_person', 'like', "%{$request->keyword}%")
-                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('gaji', 'like', "%{$request->keyword}%")
-                ->orWhere('no_telp', 'like', "%{$request->keyword}%")
-                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
-                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
-                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
-                });
+                ->where('kategori', 'like', "%{$request->keyword}%");
             })
             ->orderBy('nama_pekerjaan')->paginate($pagination);
             return view('home.track',compact('lowongan', 'sorted'))
                 ->with($pagination);
+    }
+
+    public function search(Request $request)
+    {
+        // $kategori = Kategori::all();
+        $keyword = $request->keyword;
+        $kordinats = Peta::where('status', true)->where('kategori', 'like', "%" . $keyword . "%")->get();
+
+        if($kordinats->count() > 0){
+            return view('home.search',['kordinats' => Peta::where('status', true)
+            ->where('kategori', 'like', "%" . $keyword . "%")->get()]);
+        } else {
+            return  view('home.nodata')->with('danger', 
+            'Belum ada data pekerjaan tersimpan. Silahkan login untuk menambah data');
+        }
     }
 
     /**

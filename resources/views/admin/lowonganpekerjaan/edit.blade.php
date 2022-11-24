@@ -77,17 +77,14 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="kategori_id">Kategori</label>
-                                        <select class="form-control select2 @error('kategori_id') is-invalid @enderror"
-                                            id="kategori_id" name="kategori_id" required>
+                                        <label for="kategori">Kategori</label>
+                                        <select class="form-control select2 @error('kategori') is-invalid @enderror"
+                                            id="kategori" name="kategori" required>
                                             @foreach ($kategori as $data)
-                                                <option value="{{ $data->id }}"
-                                                    @if ($data->id == $data->nama_kategori) selected @endif>
-                                                    {{ $data->nama_kategori }}
-                                                </option>
+                                            <option value="{{ $data->nama_kategori }}" @if ($data->kategori == $data->nama_kategori) selected @endif>{{ $data->nama_kategori }}</option>
                                             @endforeach
                                         </select>
-                                        @error('kategori_id')
+                                        @error('kategori')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>

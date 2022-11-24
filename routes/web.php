@@ -34,6 +34,7 @@ Route::get('/show/{id}', [LowonganPekerjaanController::class, 'detail_user'])->n
 Route::resource('/userfaq', UserFaqController::class)->only(['create','store']);
 Route::resource('/tracking', TrackingController::class)->only(['index']);
 
+Route::get('/cari',[TrackingController::class, 'search']);
 
 //authenticate & authorization
 Auth::routes();

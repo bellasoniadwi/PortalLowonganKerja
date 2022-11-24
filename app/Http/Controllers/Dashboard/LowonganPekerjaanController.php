@@ -140,7 +140,7 @@ class LowonganPekerjaanController extends Controller
     {
         $request->validate([
             'nama_pekerjaan' => 'required|string',
-            'kategori_id' => 'required',
+            'kategori' => 'required',
             'tipe_pekerjaan' => 'required',
             'perusahaan' => 'required',
             'x' => 'required',
@@ -155,7 +155,7 @@ class LowonganPekerjaanController extends Controller
         $lowongan = new LowonganPekerjaan();
 
         $lowongan->nama_pekerjaan = $request->nama_pekerjaan;
-        $lowongan->kategori_id = $request->kategori_id;
+        $lowongan->kategori = $request->kategori;
         $lowongan->tipe_pekerjaan = $request->tipe_pekerjaan;
         $lowongan->perusahaan = $request->perusahaan;
         $lowongan->deskripsi = $request->deskripsi;
@@ -230,7 +230,7 @@ class LowonganPekerjaanController extends Controller
     {
         $request->validate([
             'nama_pekerjaan' => 'required',
-            'kategori_id' => 'required',
+            'kategori' => 'required',
             'tipe_pekerjaan' => 'required',
             'perusahaan' => 'required',
             'x' => 'required',
@@ -244,7 +244,7 @@ class LowonganPekerjaanController extends Controller
         $lowongan = LowonganPekerjaan::where('id', $id)->first();
 
         $lowongan->nama_pekerjaan = $request->get('nama_pekerjaan');
-        $lowongan->kategori_id = $request->get('kategori_id');
+        $lowongan->kategori = $request->get('kategori');
         $lowongan->tipe_pekerjaan = $request->get('tipe_pekerjaan');
         $lowongan->perusahaan = $request->get('perusahaan');
         $lowongan->deskripsi = $request->get('deskripsi');
