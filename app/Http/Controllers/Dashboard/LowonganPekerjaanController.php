@@ -34,9 +34,7 @@ class LowonganPekerjaanController extends Controller
                 ->orWhere('no_telp', 'like', "%{$request->keyword}%")
                 ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
                 ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
-                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
-                });
+                ->orWhere('kategori', 'like', "%{$request->keyword}%");
             })->orderBy('nama_pekerjaan')->paginate($pagination);
             return view('admin.lowonganpekerjaan.index',compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
@@ -57,9 +55,7 @@ class LowonganPekerjaanController extends Controller
                 ->orWhere('gaji', 'like', "%{$request->keyword}%")
                 ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
                 ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
-                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
-                });
+                ->orWhere('kategori', 'like', "%{$request->keyword}%");
             })->orderBy('nama_pekerjaan')->paginate($pagination);
             return view('admin.lowonganpekerjaan.index',compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
@@ -83,9 +79,7 @@ class LowonganPekerjaanController extends Controller
                 ->orWhere('no_telp', 'like', "%{$request->keyword}%")
                 ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
                 ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
-                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
-                });
+                ->orWhere('kategori', 'like', "%{$request->keyword}%");
             })->orderBy('nama_pekerjaan')->paginate($pagination);
             return view('admin.lowonganpekerjaan.inactive',compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
@@ -105,9 +99,7 @@ class LowonganPekerjaanController extends Controller
                 ->orWhere('gaji', 'like', "%{$request->keyword}%")
                 ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
                 ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhereHas('kategori',function(Builder $kategori) use ($request){
-                    $kategori->where('nama_kategori','like',"%{$request->keyword}%");
-                });
+                ->orWhere('kategori', 'like', "%{$request->keyword}%");
             })->orderBy('nama_pekerjaan')->paginate($pagination);
             return view('admin.lowonganpekerjaan.inactive',compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
