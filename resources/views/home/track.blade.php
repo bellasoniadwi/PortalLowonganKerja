@@ -1,5 +1,7 @@
 @extends('newlayouts.main')
 
+@section('search', 'active')
+
 @section('icon', 'fa fa-search')
 @section('judul', 'LACAK LOWONGAN')
 

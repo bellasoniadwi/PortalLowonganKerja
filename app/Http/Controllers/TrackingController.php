@@ -22,10 +22,10 @@ class TrackingController extends Controller
         $sorted = $kategori->SortBy('nama_kategori');
 
         $lowongan = LowonganPekerjaan::where('status', true)
-            ->when($request->keyword, function ($query) use ($request) {
-            $query
-                ->where('kategori', 'like', "%{$request->keyword}%");
-            })
+            // ->when($request->keyword, function ($query) use ($request) {
+            // $query
+            //     ->where('kategori', 'like', "%{$request->keyword}%");
+            // })
             ->orderBy('nama_pekerjaan')->paginate($pagination);
             return view('home.track',compact('lowongan', 'sorted'))
                 ->with($pagination);
@@ -38,11 +38,13 @@ class TrackingController extends Controller
         $kordinats = Peta::where('status', true)->where('kategori', 'like', "%" . $keyword . "%")->get();
 
         if($kordinats->count() > 0){
-            return view('home.search',['kordinats' => Peta::where('status', true)
-            ->where('kategori', 'like', "%" . $keyword . "%")->get()]);
+            $namakat = $request->keyword;
+            $lowongan = LowonganPekerjaan::where('status', true)->where('kategori', 'like', "%" . $keyword . "%")->paginate(4)->withQueryString();
+            $kordinats = Peta::where('status', true)->where('kategori', 'like', "%" . $keyword . "%")->get();
+            return view('home.search', compact('lowongan', 'kordinats', 'namakat'));
         } else {
-            return  view('home.nodata')->with('danger', 
-            'Belum ada data pekerjaan tersimpan. Silahkan login untuk menambah data');
+            $namakat = $request->keyword;
+            return  view('home.nofound', compact('namakat'));
         }
     }
 

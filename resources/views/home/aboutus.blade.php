@@ -84,7 +84,7 @@
             </div>
             <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"><br><br>
                 Dengan LOKERPORTAL, pengguna bisa menemukan kriteria pekerjaan yang sesuai dengan cepat melalui 
-                fitur searching yang disediakan di dalamnya
+                fitur filtering yang disediakan di dalamnya
             </div>
             <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"><br>
                 LOKERPORTAL memiliki tampilan utama berupa maps yang pastinya membuat pengguna tidak asing lagi dengan

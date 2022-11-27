@@ -2,8 +2,8 @@
 
 @section('maps', 'active')
 
-@section('icon', 'fas fa-map-marked-alt')
-@section('judul', 'MAPS LOWONGAN')
+@section('icon', 'fa fa-search')
+@section('judul', 'HASIL FILTER')
 
 
 @section('content')
@@ -15,7 +15,7 @@
         Belum ada lowongan pekerjaan untuk ditampilkan
     </div>
   </div>
-    <div id="map" class="map-new-look">
+  <div id="map" style="height: 700px; margin: 25px;">
         <script>
             function showPreview(objFileInput) {
                 if (objFileInput.files[0]) {
