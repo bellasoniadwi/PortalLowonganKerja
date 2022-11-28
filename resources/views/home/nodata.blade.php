@@ -2,8 +2,8 @@
 
 @section('maps', 'active')
 
-@section('icon', 'fa fa-search')
-@section('judul', 'HASIL FILTER')
+@section('icon', 'fas fa-map-marked-alt')
+@section('judul', 'MAPS LOWONGAN')
 
 
 @section('content')
