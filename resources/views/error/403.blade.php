@@ -60,8 +60,8 @@
           </div>
         </div>
         <div class="footer-left">
-            <div class="bullet"></div> Kelompok 8 - Proyek 2</a>
-          </div>
+          Copyright &copy; Kelompok 8 - Proyek 2 <div class="bullet"></div> Designed By <a href="https://nauv.al/">Muhamad
+            Nauval Azhar</a> Distributed By <a href="https://themewagon.com/">Themewagon</a>
       </div>
     </section>
   </div>
