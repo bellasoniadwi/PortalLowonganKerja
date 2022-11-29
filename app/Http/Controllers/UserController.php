@@ -116,7 +116,7 @@ class UserController extends Controller
         $user -> perusahaan = $request->perusahaan;
         $user -> save();
 
-        return redirect('/home')->with('success','Profile Updated Successfully!');
+        return redirect('/home')->with('success','Profile Berhasil Diupdate!');
     }
 
     /**
