@@ -152,7 +152,7 @@
                                 <div class="form-group col-md-3">
                                     <label for="x">Latitude *</label>
                                     <input type="text" class="form-control @error('x') is-invalid @enderror"
-                                        id="x" name="x" placeholder="Latitude" required
+                                        id="x" name="x" placeholder="Titik latitude diisi melalui peta di bawah form" required
                                         value="{{ old('x') }}" readonly>
                                     @error('x')
                                         <div class="invalid-feedback">
@@ -163,7 +163,7 @@
                                 <div class="form-group col-md-3">
                                     <label for="y">Longitude *</label>
                                     <input type="text" class="form-control @error('y') is-invalid @enderror"
-                                        id="y" name="y" placeholder="Longitude" required
+                                        id="y" name="y" placeholder="Titik longitude diisi melalui peta di bawah form" required
                                         value="{{ old('y') }}" readonly>
                                     @error('y')
                                         <div class="invalid-feedback">
