@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Register</title>
+    <title>Register Portal</title>
+    <link rel="icon" type="image/png" href="{{ asset('layoutAuth/images/icons/loker.png') }}" />
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('newlayouts/dist/assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -161,16 +162,24 @@
                         <div class="mt-5 text-muted text-center">
                             Sudah Memiliki Akun? <a href="{{ route('login') }}">Masuk Sekarang!</a>
                         </div>
-                        <div class="simple-footer">
+                        {{-- <div class="simple-footer">
                             Copyright &copy; Kelompok 8 - Proyek 2 <div class="bullet"></div> Designed By <a
                                 href="https://nauv.al/">Muhamad
                                 Nauval Azhar</a> Distributed By <a href="https://themewagon.com/">Themewagon</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
         </section>
     </div>
+    <footer class="main-footer">
+        <div class="footer-left">
+            Copyright &copy; Kelompok 8 - Proyek 2 <div class="bullet"></div> Designed By <a href="https://nauv.al/">Muhamad
+                Nauval Azhar</a> Distributed By <a href="https://themewagon.com/">Themewagon</a>
+        </div>
+        <div class="footer-right">
+        </div>
+    </footer>
 
     <!-- General JS Scripts -->
     <script src="{{ asset('newlayouts/dist/assets/modules/jquery.min.js') }}"></script>
