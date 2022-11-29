@@ -81,7 +81,7 @@
                                         <td class="text-center">{{ $lp->nama_pekerjaan }}</td>
                                         <td class="text-center"><br><img width="100px" height="70px" src="{{ asset('storage/' . $lp->foto) }}">
                                             <br>{{ $lp->perusahaan }}</td>
-                                        <td class="text-center">{{ $lp->kategori->nama_kategori }}</td>
+                                        <td class="text-center">{{ $lp->kategori }}</td>
                                         <td class="text-center">{{ $lp->tipe_pekerjaan }}</td>
                                         <td class="text-center">{{ $lp->gaji }}</td>
                                         <td class="text-center">{{ $lp->jam_kerja }}</td>
