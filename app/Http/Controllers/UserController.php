@@ -21,7 +21,8 @@ class UserController extends Controller
         if($admin)
         {
             $pagination = 5;
-            $user = User::when($request->keyword, function ($query) use ($request) {
+            $user = User::where('is_admin', false)
+            ->when($request->keyword, function ($query) use ($request) {
             $query
                 ->where('perusahaan', 'like', "%{$request->keyword}%")
                 ->orWhere('nama', 'like', "%{$request->keyword}%")
