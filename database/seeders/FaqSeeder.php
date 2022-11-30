@@ -15,11 +15,24 @@ class FaqSeeder extends Seeder
     public function run()
     {
         Faq::create([
-            'pertanyaan' => 'Izin bertanya, akun saya terblokir dan saya disuruh menghubungi admin. Untuk menghubungi kontaknya dimana ya? Saya tidak menemukan soalnya. Terima kasih sebelumnya',
-            'jawaban' => 'Terima kasih pertanyaannya, apabila akun anda terblokir, bisa menghubungi kontak ini ya 08XX'
+            'pertanyaan' => 'Bagaimana cara menghubungi admin ketika akun terblokir?',
+            'jawaban' => 'Apabila akun terblokir bisa menghubungi nomor 085231404775'
         ]);
         Faq::create([
-            'pertanyaan' => 'Adminnya sibuk banget yaa, semangat ya admin !'
+            'pertanyaan' => 'Bagaimana jika lokasi saya tidak sesuai?',
+            'jawaban' => 'Pastikan koneksi internet berjalan dengan baik, dan muat ulang website'
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Bagaimana cara memunculkan koordinat lokasi saya pada kolom pencarian rute?',
+            'jawaban' => 'Klik dua kali pada pin lokasi saya'
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Bagaimana menampilkan pekerjaan berdasarkan kategori?',
+            'jawaban' => 'Masuk ke menu `Search` dan pilih kategori yang diinginkan'
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Bagaimana cara menggunakan filter radius?',
+            'jawaban' => 'Pilih satu radius yang diinginkan (Hanya dapat memilih satu radius saja)'
         ]);
     }
 }
