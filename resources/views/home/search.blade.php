@@ -58,8 +58,8 @@
             {{ $lowongan->links() }}
         </div>
     </div>
-    <div class="row">
-        <div id="map" class="map-new-look">
+    <div class="form-row">
+        <div class="form-group col-md-12" id="map" style="height: 600px;">
             <script>
                 // var map = L.map('map').setView([-0.471852, 117.160556], 13);
                 var curLocation = [0, 0];
