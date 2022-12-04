@@ -76,7 +76,7 @@
 
                 map.locate({
                     setView: true,
-                    maxZoom: 16
+                    maxZoom: 17
                 });
 
                 navigator.geolocation.getCurrentPosition(function(location) {
