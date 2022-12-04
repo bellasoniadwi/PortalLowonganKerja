@@ -15,7 +15,7 @@
         Belum ada lowongan pekerjaan untuk ditampilkan
     </div>
   </div>
-  <div id="map" style="height: 700px; margin: 25px;">
+  <div id="map" style="height: 600px;">
         <script>
             function showPreview(objFileInput) {
                 if (objFileInput.files[0]) {
@@ -119,7 +119,7 @@
         <div class="breadcrumb-item"><a href="{{ route('titik.index') }}"><i class="fas fa-map-marked-alt"></i> Peta</a></div>
     </div>
 </div>
-<div id="map" style="height: 700px; margin: 25px;">
+<div id="map" style="height: 600px;">
         <script>
             function showPreview(objFileInput) {
                 if (objFileInput.files[0]) {

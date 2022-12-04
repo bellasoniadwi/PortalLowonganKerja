@@ -14,7 +14,7 @@
         Apabila sistem tidak menemukan lokasi anda secara tepat, muat ulang halaman website. Mohon maaf atas ketidaknyamanannya
     </div>
   </div>
-    <div id="map" class="map-new-look">
+    <div id="map" style="height: 600px;">
         <script>
             // var map = L.map('map').setView([-0.471852, 117.160556], 13);
             var curLocation = [0, 0];
