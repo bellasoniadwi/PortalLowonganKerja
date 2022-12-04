@@ -7,23 +7,12 @@
         {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}"><i class="fas fa-clipboard-list"></i> Kategori</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('kategori.index') }}"><i class="fas fa-clipboard-list"></i>
+                    Kategori</a></div>
         </div>
     </div>
 
     <div class="section-body">
-        {{-- <p class="section-lead">
-            @if (session('success'))
-                <div class="alert alert-success alert-has-icon">
-                    <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
-                    <div class="alert-body">
-                        <div class="alert-title">Success</div>
-                        {{ session('success') }}
-                    </div>
-                </div>
-            @endif
-        </p> --}}
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -49,21 +38,47 @@
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td class="text-center">{{ $kat->nama_kategori }}</td>
                                         <td class="text-center">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6 text-right">
-                                                    <br>
-                                                <a href="/dashboard/kategori/{{ $kat->id }}/edit"
-                                                    class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
+                                            {{-- <div class="form-row">
+                                                <div class="form-group col-md-1">
+
                                                 </div>
-                                                <div class="form-group col-md-1 text-left">
-                                                    <br>
-                                                <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button href="/dashboard/kategori/{{ $kat->id }}"
-                                                        class="btn btn-danger show_confirm" type="submit"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </form>
+                                                <div class="form-group col-md-3">
+                                                    <a href="/dashboard/kategori/{{ $kat->id }}/edit"
+                                                        class="btn btn-warning">
+                                                        <i class="fas fa-pencil-ruler"></i>
+                                                    </a>
+                                                    <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button href="/dashboard/kategori/{{ $kat->id }}" type="submit" class="btn btn-danger show_confirm">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div> --}}
+
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-1">
+                                                </div>
+                                                <div class="form-group col-md-1">
+                                                    <a href="/dashboard/kategori/{{ $kat->id }}/edit"
+                                                        class="btn btn-warning">
+                                                        <i class="fas fa-pencil-ruler"></i>
+                                                    </a>
+                                                </div>
+                                                
+                                                <div class="form-group col-md-1">
+                                                    <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button href="/dashboard/kategori/{{ $kat->id }}" method="post"
+                                                            type="submit" class="btn btn-danger show_confirm">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>
@@ -96,29 +111,27 @@
     </div>
 @endsection
 @section('js')
-{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script type="text/javascript">
- 
-     $('.show_confirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-              title: `Yakin ingin menghapus data?`,
-              text: "Data ini akan terhapus permanen setelah anda menyetujui pesan ini",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              form.submit();
-            } else {
-                swal("Data Anda Aman!");
-            }
-          });
-      });
-  
-</script>
+    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Yakin ingin menghapus data?`,
+                    text: "Data ini akan terhapus permanen setelah anda menyetujui pesan ini",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    } else {
+                        swal("Data Anda Aman!");
+                    }
+                });
+        });
+    </script>
 @endsection
