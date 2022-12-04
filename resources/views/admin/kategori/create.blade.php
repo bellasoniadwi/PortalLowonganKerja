@@ -38,15 +38,14 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-5">
-                                    
+                                      
                                 </div>
-                                <div class="form-group col-md-1">
-                                    <a href="{{ route('kategori.index') }}" class="btn btn-primary">Back</a>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </div>
+                                  <div class="form-group col-md-2">
+                                      <a href="{{ route('kategori.index') }}" class="btn btn-primary">Back</a>
+                                      <button type="submit" class="btn btn-success">Submit</button>
+                                  </div>
+                                  
+                              </div>
                         </div>
                     </div>
                 </form>
