@@ -20,7 +20,6 @@
                         <h4>List Pertanyaan</h4>
                     </div>
                     <div class="card-body">
-                        {{-- <a href="/dashboard/kategori/create" class="btn btn-primary"> + Tambah </a> --}}
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">
@@ -56,20 +55,21 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="form-row">
-                                                <div class="form-group col-md-6 text-right">
-                                                    <br>
-                                                <a href="/dashboard/faq/{{ $fq->id }}/edit"
-                                                    class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
+                                                {{-- <div class="form-group col-md-4">
+                                                </div> --}}
+                                                <div class="form-group col-md-7">
+                                                    <a href="/dashboard/faq/{{ $fq->id }}/edit"
+                                                        class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
                                                 </div>
-                                                <div class="form-group col-md-1 text-left">
-                                                    <br>
-                                                <form action="/dashboard/faq/{{ $fq->id }}" method="post">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button href="/dashboard/faq/{{ $fq->id }}"
-                                                        class="btn btn-danger show_confirm" type="submit"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </form>
+                                                
+                                                <div class="form-group col-md-2">
+                                                    <form action="/dashboard/faq/{{ $fq->id }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button href="/dashboard/faq/{{ $fq->id }}"
+                                                            class="btn btn-danger show_confirm" type="submit"><i
+                                                                class="fas fa-trash-alt"></i></button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>

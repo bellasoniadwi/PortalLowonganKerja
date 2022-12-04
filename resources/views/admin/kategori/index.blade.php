@@ -38,37 +38,17 @@
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td class="text-center">{{ $kat->nama_kategori }}</td>
                                         <td class="text-center">
-                                            {{-- <div class="form-row">
-                                                <div class="form-group col-md-1">
-
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <a href="/dashboard/kategori/{{ $kat->id }}/edit"
-                                                        class="btn btn-warning">
-                                                        <i class="fas fa-pencil-ruler"></i>
-                                                    </a>
-                                                    <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button href="/dashboard/kategori/{{ $kat->id }}" type="submit" class="btn btn-danger show_confirm">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div> --}}
-
-
                                             <div class="form-row">
-                                                <div class="form-group col-md-1">
+                                                <div class="form-group col-md-4">
                                                 </div>
-                                                <div class="form-group col-md-1">
+                                                <div class="form-group col-md-2">
                                                     <a href="/dashboard/kategori/{{ $kat->id }}/edit"
                                                         class="btn btn-warning">
                                                         <i class="fas fa-pencil-ruler"></i>
                                                     </a>
                                                 </div>
                                                 
-                                                <div class="form-group col-md-1">
+                                                <div class="form-group col-md-2">
                                                     <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
                                                         @method('delete')
                                                         @csrf
