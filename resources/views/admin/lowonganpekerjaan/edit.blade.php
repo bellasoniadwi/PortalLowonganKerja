@@ -181,15 +181,11 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-1">
-                                        <a></a>
-                                    </div>
-                                    <div class="form-group col-md-1">
+
+                                    <div class="form-group col-md-1"></div>
+                                    <div class="form-group col-md-2">
                                         <br><br>
                                         <a href="{{ route('lowonganpekerjaan.index') }}" class="btn btn-primary">Back</a>
-                                    </div>
-                                    <div class="form-group col-md-1">
-                                        <br><br>
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
                                 </div>

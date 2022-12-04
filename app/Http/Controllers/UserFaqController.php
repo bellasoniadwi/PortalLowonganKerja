@@ -35,12 +35,13 @@ class UserFaqController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $request->validate([
             'pertanyaan' => 'required'
         ]);
 
-        Faq::create($validate);
-
+        $faq = new Faq();
+        $faq->pertanyaan = $request->pertanyaan;
+        $faq->save();
         return redirect('/faqs')->with('success','Terima Kasih Telah Memberikan Pertanyaan. Pertanyaan Akan Ditampilkan Ketika Admin Telah Menjawab');
     }
 
