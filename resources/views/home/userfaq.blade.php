@@ -28,7 +28,7 @@
                           <label for="pertanyaan">Pertanyaan</label>
                           <textarea type="text" class="form-control @error('pertanyaan') is-invalid @enderror"
                               id="pertanyaan" name="pertanyaan" placeholder="Tuliskan Pertanyaan yang Ingin Anda Tanyakan" required
-                              value="{{ old('pertanyaan') }}"></textarea>
+                              value="{{ old('pertanyaan') }}" maxlength="200"></textarea>
                           @error('pertanyaan')
                               <div class="invalid-feedback">
                                   {{ $message }}
