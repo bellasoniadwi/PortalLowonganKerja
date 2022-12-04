@@ -7,7 +7,8 @@
         {{-- <h1>DataTables</h1> --}}
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i> Lowongan Pekerjaan</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i>
+                    Lowongan Pekerjaan</a></div>
         </div>
     </div>
 
@@ -38,19 +39,27 @@
                         </div>
                     @endcan
                     <div class="card-body">
-                        <div class="float-right">
-                            <form action="{{ url()->current() }}" method="GET">
-                              <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Cari .." aria-label="Search" name="keyword" value="{{ request('keyword') }}" required>
-                                <div class="input-group-append">                                            
-                                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        @cannot('admin')
-                            <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
-                        @endcan
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                @cannot('admin')
+                                    <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
+                                @endcan
+                            </div>
+                            <div class="form-group col-md-5">
+                                <form action="{{ url()->current() }}" method="GET">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Cari .." aria-label="Search"
+                                            name="keyword" value="{{ request('keyword') }}" required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit"><i
+                                                    class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+
                         <div class="table-responsive">
                             <br>
                             <table class="table table-striped" id="table-1">
@@ -65,7 +74,7 @@
                                         <th class="text-center">Jam Kerja</th>
                                         <th width="300px" class="text-center">Deskripsi</th>
                                         @cannot('admin')
-                                        <th class="text-center">Status</th>
+                                            <th class="text-center">Status</th>
                                         @endcannot
                                         @can('admin')
                                             <th class="text-center">Contact Person</th>
@@ -82,21 +91,26 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td class="text-center">{{ $lp->nama_pekerjaan }}</td>
-                                        <td class="text-center"><br><img width="100px" height="70px" src="{{ asset('storage/' . $lp->foto) }}">
-                                            <br>{{ $lp->perusahaan }}</td>
+                                        <td class="text-center"><br><img width="100px" height="70px"
+                                                src="{{ asset('storage/' . $lp->foto) }}">
+                                            <br>{{ $lp->perusahaan }}
+                                        </td>
                                         <td class="text-center">{{ $lp->kategori }}</td>
                                         <td class="text-center">{{ $lp->tipe_pekerjaan }}</td>
                                         <td class="text-center">{{ $lp->gaji }}</td>
                                         <td class="text-center">{{ $lp->jam_kerja }}</td>
-                                        <td class="text-center">{{ Str::limit($lp->deskripsi,25) }}</td>
+                                        <td class="text-center">{{ Str::limit($lp->deskripsi, 25) }}</td>
                                         <!-- CheckBox Status -->
                                         @cannot('admin')
-                                        <td class="text-center">
-                                            <label class="custom-switch mt-2">
-                                            <input data-id="{{$lp->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $lp->status ? 'checked' : '' }}> 
-                                            <span class="custom-switch-description">Aktif</span>
-                                            </label>
-                                        </td>
+                                            <td class="text-center">
+                                                <label class="custom-switch mt-2">
+                                                    <input data-id="{{ $lp->id }}" class="toggle-class" type="checkbox"
+                                                        data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                                                        data-on="Active" data-off="InActive"
+                                                        {{ $lp->status ? 'checked' : '' }}>
+                                                    <span class="custom-switch-description">Aktif</span>
+                                                </label>
+                                            </td>
                                         @endcannot
 
                                         @can('admin')
@@ -112,13 +126,14 @@
                                                     <a href="{{ route('lowonganpekerjaan.edit', $lp->id) }}"
                                                         class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
                                                 </div>
-                                                
+
                                                 <div class="form-group col-md-1">
                                                     <form action="{{ route('lowonganpekerjaan.destroy', $lp->id) }}"
                                                         method="post">
                                                         @method('delete')
                                                         @csrf
-                                                        <button class="btn btn-danger show_confirm" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                                        <button class="btn btn-danger show_confirm" type="submit"><i
+                                                                class="fas fa-trash-alt"></i></button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -152,47 +167,49 @@
     </div>
 @endsection
 @section('js')
-<!-- Toggle -->
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> 
+    <!-- Toggle -->
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script>
-    $(function() { 
-            $('.toggle-class').change(function() { 
-            var status = $(this).prop('checked') == true ? 1 : 0;  
-            var id = $(this).data('id');  
-            $.ajax({ 
-     
-                type: "GET", 
-                dataType: "json", 
-                url: '/status/update', 
-                data: {'status': status, 'id': id}, 
-                success: function(data){ 
-                console.log(data.success) 
-             } 
-          }); 
-       }) 
-    }); 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script>
+        $(function() {
+            $('.toggle-class').change(function() {
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
 
-    $('.show_confirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-              title: `Yakin ingin menghapus data?`,
-              text: "Data ini akan terhapus permanen setelah anda menyetujui pesan ini",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              form.submit();
-            } else {
-                swal("Data Anda Aman!");
-            }
-          });
-      });
- </script>
+                    type: "GET",
+                    dataType: "json",
+                    url: '/status/update',
+                    data: {
+                        'status': status,
+                        'id': id
+                    },
+                    success: function(data) {
+                        console.log(data.success)
+                    }
+                });
+            })
+        });
+
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Yakin ingin menghapus data?`,
+                    text: "Data ini akan terhapus permanen setelah anda menyetujui pesan ini",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    } else {
+                        swal("Data Anda Aman!");
+                    }
+                });
+        });
+    </script>
 @endsection
-
