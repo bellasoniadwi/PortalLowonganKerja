@@ -40,12 +40,12 @@
                     @endcan
                     <div class="card-body">
                         <div class="form-row">
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-9">
                                 @cannot('admin')
                                     <a href="/dashboard/lowonganpekerjaan/create" class="btn btn-primary"> + Tambah </a>
                                 @endcan
                             </div>
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-3">
                                 <form action="{{ url()->current() }}" method="GET">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Cari .." aria-label="Search"
