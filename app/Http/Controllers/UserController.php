@@ -97,6 +97,7 @@ class UserController extends Controller
             'username' => 'required|string|max:20|unique:users,username,'.$id,
             'email' => 'required|email|unique:users,email,'.$id,
             'no_telp' => 'string|max:13|required|unique:users,no_telp,'.$id,
+            'password' => 'string|min:8|confirmed',
             'perusahaan' => 'required',
         ]);
 

@@ -55,18 +55,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="password">Ganti Password</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        id="password" name="password" placeholder="Ganti Password">
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                                         id="email" name="email" placeholder="Email" required
@@ -77,10 +65,22 @@
                                         </div>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="password">Ganti Password</label>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                        id="password" name="password" placeholder="Ganti Password">
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Konfirmasi Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        id="password" name="password" placeholder="Konfirmasi Password">
+                                        id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi Password">
                                     @error('password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -102,14 +102,13 @@
                                         </div>
                                     @enderror
                                 </div>
+
                                 <div class="form-group col-md-1">
-                                </div>
-                                <div class="form-group col-md-1,5">
                                     <br><br>
-                                    <a href="{{ route('home') }}" class="btn btn-primary">Dashboard</a>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <br><br>
+                                    <a href="{{ route('home') }}" class="btn btn-primary">Dashboard</a>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
