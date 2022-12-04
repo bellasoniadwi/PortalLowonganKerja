@@ -19,9 +19,9 @@
                     <form action="{{ route('logout') }}" method="post">
                         @method('post')
                         @csrf
-                        <button class="dropdown-item has-icon text-danger show_confirmation" type="submit">
+                        <a class="dropdown-item has-icon text-danger show_confirmation" type="submit">
                             <i class="fas fa-sign-out-alt"></i> Logout
-                        </button>
+                        </a>
                     </form>
                 </div>
             </li>
