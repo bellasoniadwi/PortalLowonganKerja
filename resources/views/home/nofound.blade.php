@@ -10,15 +10,14 @@
         <div class="breadcrumb-item"><i class="fa fa-search"></i> Hasil Pencarian</div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-6 col-lg-9"></div>
-
+<div class="float-right">
     <div class="col-12 col-sm-6 col-md-6 col-lg-3">
         <a href="{{ route('tracking.index') }}" class="btn btn-primary"><i class="fa fa-home"></i> Kembali</a>
     </div>
-  </div>
+</div>
 
 <div class="row">
+    <br>
     <div class="section-body">
     <h2 class="section-title">Tidak ada data !</h2>
     <p class="section-lead">Belum ada data ditemukan dalam kategori {{ $namakat }}</p>
