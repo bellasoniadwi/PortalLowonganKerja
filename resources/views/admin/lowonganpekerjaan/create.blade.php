@@ -197,7 +197,7 @@
                                 
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-12" id="map" style="height: 500px; margin-top: 50px;">
+                                <div class="form-group col-md-12" id="map" style="height: 600px;">
                                     <script>
                                         function showPreview(objFileInput) {
                                             if (objFileInput.files[0]) {
