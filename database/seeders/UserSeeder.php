@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'nama' => 'Ambi',
             'username' => 'ambi',
             'email' => 'ambi@gmail.com',
-            'no_telp' => '089876543212',
+            'no_telp' => '089876542500',
             'perusahaan' => 'Ambi Corp',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
