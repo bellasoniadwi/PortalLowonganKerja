@@ -26,7 +26,7 @@
           
           <div class="author-box-details">
             <div class="author-box-name">
-              <a href="/">   Tentang LOKERPORTAL</a>
+              <a href="/about">   Tentang LOKERPORTAL</a>
             </div>
             {{-- <div class="author-box-job">Web Developer</div> --}}
             <div class="author-box-description">
