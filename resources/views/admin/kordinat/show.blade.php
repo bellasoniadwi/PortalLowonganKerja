@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div id="map" style="height: 500px; margin: 50px;">
+                <div id="map" style="height: 600px;">
                     <script>
                         // var map = L.map('map').setView([-0.471852, 117.160556], 13);
                         var curLocation = [0, 0];

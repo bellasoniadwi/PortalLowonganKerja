@@ -11,21 +11,7 @@
     </div>
     
     <div class="row">
-        {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div class="card-wrap" href="{{ route('titik.index') }}">
-                    <div class="card-header">
-                        <h4>Lokasi</h4>
-                    </div>
-                    <div class="card-body">
-                        {{ App\Models\Peta::count() }}
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+        @cannot('admin')
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
@@ -33,7 +19,25 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Lowongan</h4>
+                        <h4>Lowongan Aktif</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ App\Models\LowonganPekerjaan::where('status', true)
+                        ->where('contact_person', '=', Auth()->user()->nama)->count() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endcannot
+        @can('admin')
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                    <i class="far fa-newspaper"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Lowongan Aktif</h4>
                     </div>
                     <div class="card-body">
                         {{ App\Models\LowonganPekerjaan::where('status', true)->count() }}
@@ -41,6 +45,7 @@
                 </div>
             </div>
         </div>
+        @endcan
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">

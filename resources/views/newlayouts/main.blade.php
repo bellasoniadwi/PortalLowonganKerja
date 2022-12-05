@@ -118,6 +118,9 @@
     </div>
   </div>
 
+  @include('sweetalert::alert')
+  @yield('js')
+
   <!-- General JS Scripts -->
   <script src="{{ asset('newlayouts/dist/assets/modules/jquery.min.js')}}"></script>
   <script src="{{ asset('newlayouts/dist/assets/modules/popper.js')}}"></script>

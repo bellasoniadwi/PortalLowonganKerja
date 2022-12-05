@@ -21,7 +21,7 @@
                             <div class="alert alert-danger alert-has-icon">
                                 <div class="alert-icon"><i class="fas fa-times"></i></div>
                                 <div class="alert-body">
-                                    <div class="alert-title"><strong>Whoops!</strong> There were some problems with your input.</div>
+                                    <div class="alert-title"><strong>Ups!</strong> Ada yang salah dengan isian Anda.</div>
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
