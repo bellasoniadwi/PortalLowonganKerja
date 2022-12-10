@@ -7,8 +7,10 @@
         <div class="section-header">
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-desktop"></i> Dashboard </a></div>
-                <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i> Lowongan Pekerjaan </a></div>
-                <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}/edit"><i class="fas fa-pencil-ruler"></i> Edit Lowongan Pekerjaan </a></div>
+                <div class="breadcrumb-item"><a href="{{ route('lowonganpekerjaan.index') }}"><i class="far fa-newspaper"></i>
+                        Lowongan Pekerjaan </a></div>
+                <div class="breadcrumb-item"><a href="/dashboard/lowonganpekerjaan/{{ $lowongan->id }}/edit"><i
+                            class="fas fa-pencil-ruler"></i> Edit Lowongan Pekerjaan </a></div>
             </div>
         </div>
 
@@ -78,10 +80,12 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="kategori">Kategori</label>
-                                        <select class="form-control select2 @error('kategori') is-invalid @enderror"
-                                            id="kategori" name="kategori" required>
-                                            @foreach ($kategori as $data)
-                                            <option value="{{ $data->nama_kategori }}" @if ($data->kategori == $data->nama_kategori) selected @endif>{{ $data->nama_kategori }}</option>
+                                        <select class="form-control select2" id="kategori" name="kategori" required>
+                                            @foreach ($sorted as $data)
+                                                <option value="{{ $data->nama_kategori }}"
+                                                    @if ($data->nama_kategori == $lowongan->kategori) selected @endif>
+                                                        {{ $data->nama_kategori }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @error('kategori')
@@ -146,7 +150,8 @@
                                     <div class="form-group col-md-6">
                                         <label for="gaji">Gaji</label>
                                         <input type="text" class="form-control @error('gaji') is-invalid @enderror"
-                                            id="gaji" name="gaji" placeholder="Nominal gaji (kosongi jika rahasia)"
+                                            id="gaji" name="gaji"
+                                            placeholder="Nominal gaji (kosongi jika rahasia)"
                                             value="{{ old('gaji', $lowongan->gaji) }}">
                                         @error('gaji')
                                             <div class="invalid-feedback">

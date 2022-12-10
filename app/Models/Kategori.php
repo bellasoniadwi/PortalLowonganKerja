@@ -17,6 +17,6 @@ class Kategori extends Model
     ];
 
     public function lowonganpekerjaan(){
-        return $this->hasMany('App\Models\LowonganPekerjaan', 'kategori_id', 'id');
+        return $this->hasMany('App\Models\LowonganPekerjaan', 'kategori', 'nama_kategori');
     }
 }

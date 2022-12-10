@@ -29,7 +29,7 @@ class LowonganPekerjaan extends Model
     ];
 
     public function kategori(){
-        return $this->belongsTo('App\Models\Kategori', 'kategori_id', 'id');
+        return $this->belongsTo('App\Models\Kategori', 'kategori', 'nama_kategori');
     }
 
     public function titik(): BelongsTo
