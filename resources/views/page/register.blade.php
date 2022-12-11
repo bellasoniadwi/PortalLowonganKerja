@@ -45,7 +45,7 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4>Daftar Akun</h4>
+                                <h4>Register</h4>
                             </div>
 
                             <div class="card-body">
@@ -116,10 +116,10 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col-6">
-                                            <label for="password">Konfirmasi Password</label>
+                                            <label for="password_confirmation">Konfirmasi Password</label>
                                             <input type="password" name="password_confirmation" id="password_confirmation"
                                                 class="form-control" tabindex="6" required>
-                                            @error('password')
+                                            @error('password_confirmation')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
