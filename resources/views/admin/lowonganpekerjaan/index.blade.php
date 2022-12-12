@@ -104,7 +104,7 @@
                                         @cannot('admin')
                                             <td class="text-center">
                                                 <label class="custom-switch mt-2">
-                                                    <input data-id="{{ $lp->id }}" class="toggle-class" type="checkbox"
+                                                    <input id="checkbox" data-id="{{ $lp->id }}" class="toggle-class" type="checkbox"
                                                         data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
                                                         data-on="Active" data-off="InActive"
                                                         {{ $lp->status ? 'checked' : '' }}>
@@ -123,7 +123,7 @@
                                                     {{-- <a></a> --}}
                                                 </div>
                                                 <div class="form-group col-md-1">
-                                                    <a href="{{ route('lowonganpekerjaan.edit', $lp->id) }}"
+                                                    <a id="edit" href="{{ route('lowonganpekerjaan.edit', $lp->id) }}"
                                                         class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
                                                 </div>
 
@@ -132,7 +132,7 @@
                                                         method="post">
                                                         @method('delete')
                                                         @csrf
-                                                        <button class="btn btn-danger show_confirm" type="submit"><i
+                                                        <button id="hapus" class="btn btn-danger show_confirm" type="submit"><i
                                                                 class="fas fa-trash-alt"></i></button>
                                                     </form>
                                                 </div>

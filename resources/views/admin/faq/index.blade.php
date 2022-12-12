@@ -58,7 +58,7 @@
                                                 {{-- <div class="form-group col-md-4">
                                                 </div> --}}
                                                 <div class="form-group col-md-7">
-                                                    <a href="/dashboard/faq/{{ $fq->id }}/edit"
+                                                    <a id="edit" href="/dashboard/faq/{{ $fq->id }}/edit"
                                                         class="btn btn-warning"><i class="fas fa-pencil-ruler"></i></a>
                                                 </div>
                                                 
@@ -66,7 +66,7 @@
                                                     <form action="/dashboard/faq/{{ $fq->id }}" method="post">
                                                         @method('delete')
                                                         @csrf
-                                                        <button href="/dashboard/faq/{{ $fq->id }}"
+                                                        <button id="hapus" href="/dashboard/faq/{{ $fq->id }}"
                                                             class="btn btn-danger show_confirm" type="submit"><i
                                                                 class="fas fa-trash-alt"></i></button>
                                                     </form>

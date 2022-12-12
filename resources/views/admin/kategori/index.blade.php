@@ -42,7 +42,7 @@
                                                 <div class="form-group col-md-4">
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <a href="/dashboard/kategori/{{ $kat->id }}/edit"
+                                                    <a id="edit" href="/dashboard/kategori/{{ $kat->id }}/edit"
                                                         class="btn btn-warning">
                                                         <i class="fas fa-pencil-ruler"></i>
                                                     </a>
@@ -52,7 +52,7 @@
                                                     <form action="/dashboard/kategori/{{ $kat->id }}" method="post">
                                                         @method('delete')
                                                         @csrf
-                                                        <button href="/dashboard/kategori/{{ $kat->id }}" method="post"
+                                                        <button id="hapus" href="/dashboard/kategori/{{ $kat->id }}" method="post"
                                                             type="submit" class="btn btn-danger show_confirm">
                                                             @method('delete')
                                                             @csrf
