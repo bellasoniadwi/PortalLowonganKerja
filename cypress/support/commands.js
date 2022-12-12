@@ -23,3 +23,6 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("toolbarButton", (name) =>
+    cy.get(`.leaflet-control-search leaflet-control-${name}`)
+);
