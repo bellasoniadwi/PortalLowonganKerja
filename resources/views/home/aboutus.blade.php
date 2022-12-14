@@ -50,7 +50,7 @@
             </a>
             <div class="w-100 d-sm-none"></div>
             <div class="float-right mt-sm-0 mt-3">
-              <a href="#read_more" class="btn">Read More <i class="fas fa-chevron-right"></i></a>
+              <a href="https://drive.google.com/file/d/1rRtm9jOow0qeMoYaml77vhBJnHHgyIQr/view?usp=share_link" class="btn">Klik untuk mendapatkan panduan pengguna <i class="fas fa-chevron-right"></i></a>
             </div>
           </div>
         </div>
