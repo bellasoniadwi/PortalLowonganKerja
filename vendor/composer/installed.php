@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a3b87d78343955f77b469e8b17652e4fe42b59b7',
+        'reference' => '389e079f656f258ce73a7a157aad2695fddadaf2',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -409,7 +409,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a3b87d78343955f77b469e8b17652e4fe42b59b7',
+            'reference' => '389e079f656f258ce73a7a157aad2695fddadaf2',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -653,12 +653,12 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '9.5.26',
-            'version' => '9.5.26.0',
+            'pretty_version' => '9.5.27',
+            'version' => '9.5.27.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
-            'reference' => '851867efcbb6a1b992ec515c71cdcf20d895e9d2',
+            'reference' => 'a2bc7ffdca99f92d959b3f2270529334030bba38',
             'dev_requirement' => true,
         ),
         'psr/container' => array(

@@ -7,11 +7,13 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "cypress:open": "cypress open"
     },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
         "axios": "^0.21",
+        "cypress": "^12.0.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "resolve-url-loader": "^5.0.0",

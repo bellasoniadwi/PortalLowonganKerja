@@ -58,7 +58,7 @@
                     div.style.padding = "10px"
                     div.style.borderRadius = "5px"
                     div.innerHTML = '<form><id="command" type="text"/><strong><b>Pilih Radius</b></strong></form>'+
-                    '<form><input id="command" type="checkbox" /> 10 KM</form>'+
+                    '<form><input id="command1" type="checkbox" /> 10 KM</form>'+
                     '<form><input id="command2" type="checkbox"/> 5 KM</form>'+
                     '<form><input id="command3" type="checkbox"/> 3 KM</form>'+
                     '<form><input id="command0" type="checkbox"/> 0 KM</form>';
@@ -83,7 +83,7 @@
                     circle.setRadius(50);
                 }
 
-                document.getElementById("command").addEventListener("click", handleCommand10, false);
+                document.getElementById("command1").addEventListener("click", handleCommand10, false);
                 document.getElementById("command2").addEventListener("click", handleCommand5, false);
                 document.getElementById("command3").addEventListener("click", handleCommand3, false);
                 document.getElementById("command0").addEventListener("click", handleCommand0, false);

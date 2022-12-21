@@ -56,7 +56,7 @@
                                         <td>{{ $us->email }}</td>
                                         <td class="text-center">
                                             <label class="custom-switch mt-2">
-                                            <input data-id="{{$us->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $us->is_active ? 'checked' : '' }}> 
+                                            <input id="checkbox" data-id="{{$us->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $us->is_active ? 'checked' : '' }}> 
                                             <span class="custom-switch-description">Diizinkan</span>
                                             </label>
                                         </td>
@@ -67,7 +67,7 @@
                                                 <form action="/dashboard/perusahaan/{{ $us->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button href="/dashboard/perusahaan/{{ $us->id }}"
+                                                    <button id="hapus" href="/dashboard/perusahaan/{{ $us->id }}"
                                                         class="btn btn-danger show_confirm" type="submit"><i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>

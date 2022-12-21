@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Exists;
 
 class UserController extends Controller
 {
@@ -97,7 +98,7 @@ class UserController extends Controller
             'username' => 'required|string|max:20|unique:users,username,'.$id,
             'email' => 'required|email|unique:users,email,'.$id,
             'no_telp' => 'string|max:13|required|unique:users,no_telp,'.$id,
-            'password' => 'string|min:8|confirmed',
+            'password' => 'nullable|min:7|confirmed',
             'perusahaan' => 'required',
         ]);
 
@@ -109,13 +110,16 @@ class UserController extends Controller
             $image_name = $request->file('foto')->store('profil', 'public');
             $user->foto = $image_name;
         }
-        $user -> nama = $request->nama;
-        $user -> password = Hash::make($request->password);
-        $user -> username = $request->username;
-        $user -> email = $request->email;
-        $user -> no_telp = $request->no_telp;
-        $user -> perusahaan = $request->perusahaan;
-        $user -> save();
+        if($request->filled('password')){
+            $request->merge(['password' => bcrypt($request->password)]);
+        }
+        unset($request['id']);
+		if (!$request->password) {
+	        unset($request['password']);
+		}
+        unset($request['password_confirmation']);
+ 
+        $user->update($request->all());
 
         return redirect('/home')->with('success','Profile Berhasil Diupdate!');
     }

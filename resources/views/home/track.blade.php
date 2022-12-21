@@ -9,7 +9,7 @@
     <div class="section-header">
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i> Beranda</a></div>
-            <div class="breadcrumb-item"><i class="fa fa-search"></i> Filter</div>
+            <div class="breadcrumb-item"><i class="fa fa-search"></i> Search</div>
         </div>
     </div>
 

@@ -20,44 +20,41 @@ class LowonganPekerjaanController extends Controller
     public function index(Request $request)
     {
         $admin = auth()->user()->is_admin;
-        if($admin)
-        {
+        if ($admin) {
             $pagination = 5;
             $lowongan = LowonganPekerjaan::where('status', true)
-            ->when($request->keyword, function ($query) use ($request) {
-            $query
-                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
-                ->orWhere('contact_person', 'like', "%{$request->keyword}%")
-                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('gaji', 'like', "%{$request->keyword}%")
-                ->orWhere('no_telp', 'like', "%{$request->keyword}%")
-                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
-                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhere('kategori', 'like', "%{$request->keyword}%");
-            })->orderBy('nama_pekerjaan')->paginate($pagination);
-            return view('admin.lowonganpekerjaan.index',compact('lowongan'))
+                ->when($request->keyword, function ($query) use ($request) {
+                    $query
+                        ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('contact_person', 'like', "%{$request->keyword}%")
+                        ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                        ->orWhere('no_telp', 'like', "%{$request->keyword}%")
+                        ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                        ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                        ->orWhere('kategori', 'like', "%{$request->keyword}%");
+                })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.index', compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
-
         }
 
         $user = auth()->user()->nama;
-        if($user)
-        {
+        if ($user) {
             $pagination = 5;
             $lowongan = LowonganPekerjaan::where('contact_person', '=', $user)
-            ->where('status', true)
-            ->when($request->keyword, function ($query) use ($request) {
-            $query
-                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
-                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('gaji', 'like', "%{$request->keyword}%")
-                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
-                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhere('kategori', 'like', "%{$request->keyword}%");
-            })->orderBy('nama_pekerjaan')->paginate($pagination);
-            return view('admin.lowonganpekerjaan.index',compact('lowongan'))
+                ->where('status', true)
+                ->when($request->keyword, function ($query) use ($request) {
+                    $query
+                        ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                        ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                        ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                        ->orWhere('kategori', 'like', "%{$request->keyword}%");
+                })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.index', compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
         }
     }
@@ -65,43 +62,41 @@ class LowonganPekerjaanController extends Controller
     public function inactive(Request $request)
     {
         $admin = auth()->user()->is_admin;
-        if($admin)
-        {
+        if ($admin) {
             $pagination = 5;
             $lowongan = LowonganPekerjaan::where('status', false)
-            ->when($request->keyword, function ($query) use ($request) {
-            $query
-                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
-                ->orWhere('contact_person', 'like', "%{$request->keyword}%")
-                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('gaji', 'like', "%{$request->keyword}%")
-                ->orWhere('no_telp', 'like', "%{$request->keyword}%")
-                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
-                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhere('kategori', 'like', "%{$request->keyword}%");
-            })->orderBy('nama_pekerjaan')->paginate($pagination);
-            return view('admin.lowonganpekerjaan.inactive',compact('lowongan'))
+                ->when($request->keyword, function ($query) use ($request) {
+                    $query
+                        ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('contact_person', 'like', "%{$request->keyword}%")
+                        ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                        ->orWhere('no_telp', 'like', "%{$request->keyword}%")
+                        ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                        ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                        ->orWhere('kategori', 'like', "%{$request->keyword}%");
+                })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.inactive', compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
         }
 
         $user = auth()->user()->nama;
-        if($user)
-        {
+        if ($user) {
             $pagination = 5;
             $lowongan = LowonganPekerjaan::where('contact_person', '=', $user)
-            ->where('status', false)
-            ->when($request->keyword, function ($query) use ($request) {
-            $query
-                ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
-                ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
-                ->orWhere('gaji', 'like', "%{$request->keyword}%")
-                ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
-                ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
-                ->orWhere('kategori', 'like', "%{$request->keyword}%");
-            })->orderBy('nama_pekerjaan')->paginate($pagination);
-            return view('admin.lowonganpekerjaan.inactive',compact('lowongan'))
+                ->where('status', false)
+                ->when($request->keyword, function ($query) use ($request) {
+                    $query
+                        ->where('nama_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('perusahaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('tipe_pekerjaan', 'like', "%{$request->keyword}%")
+                        ->orWhere('gaji', 'like', "%{$request->keyword}%")
+                        ->orWhere('jam_kerja', 'like', "%{$request->keyword}%")
+                        ->orWhere('deskripsi', 'like', "%{$request->keyword}%")
+                        ->orWhere('kategori', 'like', "%{$request->keyword}%");
+                })->orderBy('nama_pekerjaan')->paginate($pagination);
+            return view('admin.lowonganpekerjaan.inactive', compact('lowongan'))
                 ->with('i', (request()->input('page', 1) - 1) * $pagination);
         }
     }
@@ -116,8 +111,10 @@ class LowonganPekerjaanController extends Controller
         $kategori = Kategori::all();
         $sorted = $kategori->SortBy('nama_kategori');
 
-        return view('admin.lowonganpekerjaan.create',
-        ['kategori'=>$sorted]);
+        return view(
+            'admin.lowonganpekerjaan.create',
+            ['kategori' => $sorted]
+        );
     }
 
     /**
@@ -151,7 +148,7 @@ class LowonganPekerjaanController extends Controller
         $lowongan->deskripsi = $request->deskripsi;
         if ($request->gaji == null) {
             $lowongan->gaji = "-";
-        }else{
+        } else {
             $lowongan->gaji = $request->gaji;
         }
         $lowongan->jam_kerja = $request->jam_kerja;
@@ -159,24 +156,24 @@ class LowonganPekerjaanController extends Controller
         $lowongan->no_telp = $request->no_telp;
         $lowongan->x = $request->x;
         $lowongan->y = $request->y;
-        $lowongan->foto = $request->file('foto')->store('images');  
-        
-        
+        $lowongan->foto = $request->file('foto')->store('images');
+
+
         $lowongan->save();
-        return redirect('/dashboard/lowonganpekerjaan')->with('success','Lowongan Pekerjaan Baru Berhasil Ditambahkan');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success', 'Lowongan Pekerjaan Baru Berhasil Ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Toko  $toko
+     * @param  \App\Models\LowonganPekerjaan  $lowongan
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $lowongan = LowonganPekerjaan::find($id);
         $kategori = Kategori::all();
-        return view('admin.kordinat.show',compact('lowongan','kategori'));
+        return view('admin.kordinat.show', compact('lowongan', 'kategori'));
     }
 
     public function detail($id)
@@ -184,7 +181,7 @@ class LowonganPekerjaanController extends Controller
         $lowongan = LowonganPekerjaan::find($id);
         $kategori = Kategori::all();
         $kordinats = Titik::where('id', $id)->get();
-        return view('admin.kordinat.show',compact('lowongan','kategori', 'kordinats'));
+        return view('admin.kordinat.show', compact('lowongan', 'kategori', 'kordinats'));
     }
 
     public function detail_user($id)
@@ -192,28 +189,29 @@ class LowonganPekerjaanController extends Controller
         $lowongan = LowonganPekerjaan::find($id);
         $kategori = Kategori::all();
         $kordinats = Titik::where('id', $id)->get();
-        return view('home.show',compact('lowongan','kategori', 'kordinats'));
+        return view('home.show', compact('lowongan', 'kategori', 'kordinats'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Toko  $toko
+     * @param  \App\Models\LowonganPekerjaan  $lowongan
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-            $lowongan = LowonganPekerjaan::find($id);
-            $kategori = Kategori::all();
-            
-            return view('admin.lowonganpekerjaan.edit', compact('lowongan','kategori'));
+        $lowongan = LowonganPekerjaan::find($id);
+        $kategori = Kategori::all();
+        $sorted = $kategori->SortBy('nama_kategori');
+
+        return view('admin.lowonganpekerjaan.edit', compact('lowongan', 'sorted'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Toko  $toko
+     * @param  \App\Models\LowonganPekerjaan  $lowongan
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -240,7 +238,7 @@ class LowonganPekerjaanController extends Controller
         $lowongan->deskripsi = $request->get('deskripsi');
         if ($request->get('gaji') == null) {
             $lowongan->gaji = "-";
-        }else{
+        } else {
             $lowongan->gaji = $request->get('gaji');
         }
         $lowongan->jam_kerja = $request->get('jam_kerja');
@@ -257,26 +255,26 @@ class LowonganPekerjaanController extends Controller
         }
 
         $lowongan->save();
-        return redirect('/dashboard/lowonganpekerjaan')->with('success','Lowongan Pekerjaan Berhasil Diupdate');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success', 'Lowongan Pekerjaan Berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\LowonganPekerjaan  $toko
+     * @param  \App\Models\LowonganPekerjaan  $lowongan
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         LowonganPekerjaan::find($id)->delete();
-        return redirect('/dashboard/lowonganpekerjaan')->with('success','Lowongan Pekerjaan Berhasil Dihapus');
+        return redirect('/dashboard/lowonganpekerjaan')->with('success', 'Lowongan Pekerjaan Berhasil Dihapus');
     }
 
     public function updateStatus(Request $request)
     {
-        $lp = LowonganPekerjaan::find($request->id); 
-        $lp->status = $request->status; 
-        $lp->save(); 
-        return response()->json(['success'=>'Status change successfully.']); 
+        $lp = LowonganPekerjaan::find($request->id);
+        $lp->status = $request->status;
+        $lp->save();
+        return response()->json(['success' => 'Status change successfully.']);
     }
 }
