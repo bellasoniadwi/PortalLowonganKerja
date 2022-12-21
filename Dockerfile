@@ -1,22 +1,15 @@
 FROM php:8.0.2-fpm-alpine
 
-RUN apk add --no-cache nginx wget
+FROM php:7.4-fpm-alpine
 
-RUN mkdir -p /run/nginx
+RUN docker-php-ext-install pdo pdo_mysql sockets
+RUN curl -sS https://getcomposer.org/installer​ | php -- \
+     --install-dir=/usr/local/bin --filename=composer
 
-COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN mkdir -p /app
-COPY . /app
-
-RUN docker-php-ext-install pdo pdo_mysql
-
-RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar && mv composer.phar /usr/local/bin"
-RUN cd /app && \
-    /usr/local/bin/composer install --ignore-platform-req=ext-gd
-
-RUN chown -R www-data: /app
-
-CMD sh /app/docker/startup.sh
+WORKDIR /app
+COPY . .
+RUN composer install
 
 
