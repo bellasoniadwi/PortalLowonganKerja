@@ -12,6 +12,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFaqController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,15 @@ Route::middleware(['auth'])->group(function () {
     //ajax
     Route::get('/status/update', [LowonganPekerjaanController::class, 'updateStatus'])->name('update.status');
     Route::get('/allowuser/update', [UserController::class, 'updateStatus'])->name('allowuser');
+
+    
+});
+
+Route::get('/migrate',function(){
+    Artisan::call('migrate-fresh');
+    Artisan::call('db:seed');
+});
+
+Route::get('/cache-clear',function(){
+    Artisan::call('cache:clear');
 });
